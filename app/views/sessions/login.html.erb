@@ -1,0 +1,17 @@
+<%if notice%>
+    <script>
+        alert("<%= notice %>");
+    </script>
+<%end%>
+
+<% @page_title = "UserAuth | Login" -%>
+<div class= "Sign_Form">
+  <h1>Log in</h1>
+  <%= form_tag(:action => 'login_attempt') do %>
+      <p>아이디 :</br> <%= text_field_tag(:login_id) %></p>
+      <p>비밀번호 :</br> <%= password_field_tag :password %></p>
+      <% test = button_tag "Join" %>
+      <%= submit_tag("Log In") %>
+      <a href="<%= new_user_path %>"><input type="button" value="Join"></a>
+<% end %>
+</div>

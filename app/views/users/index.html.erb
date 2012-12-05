@@ -1,0 +1,24 @@
+<h1>모든 유저 목록</h1> <br/>
+<%= @users %>
+<br/>
+<h1>개발자 목록</h1> <br/>
+<%= @sw_developers %>
+<br/>
+<h1>평가자 목록</h1> <br/>
+<%= @evaluators %>
+<br/>
+<h1>관리자 목록</h1> <br/>
+<%= @administrators %>
+<br/>
+<h1>용역의뢰자 목록</h1> <br/>
+<%= @requestors %>
+<br/>
+
+
+<%if notice%>
+    <script>
+      // notice 사용 예제
+        //alert("<%= notice %>");
+        //$(window.location.replace("/list/"))
+    </script>
+<%end%>

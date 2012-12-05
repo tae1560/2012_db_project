@@ -1,0 +1,36 @@
+<% @page_title = "UserAuth | Signup" %>
+<div class= "Sign_Form">
+  <h1>Sign Up</h1>
+  <%= form_for(:user, :url => {:controller => 'users', :action => :create}) do |f| %>
+
+      <p> 이름 :<br /> <%= f.text_field :name%> </p>
+      <p> 아이디 :<br /> <%= f.text_field :login_id%> </p>
+      <p> 비밀번호 :<br /> <%= f.password_field :password%></p>
+      <p> 비밀번호 확인 :<br /> <%= f.password_field :password_confirmation%> </p>
+      <p> 직업 : <br /> <%= f.select :roll, ["개발자", "관리자", "평가자", "용역의뢰자"]%> </p>
+      <p> 이메일 :<br /> <%= f.text_field :email%> </p>
+      <p> 주소 :<br /> <%= f.text_field :address%> </p>
+      <p> 전화번호 :<br /> <%= f.text_field :phone%> </p>
+      <p> 이메일 :<br /> <%= f.text_field :email%> </p>
+
+
+
+      <%= f.submit :Signup %>
+      <a href="<%= sessions_login_path %>"><input type="button" value="cancel"></a>
+  <% end %>
+
+  <% if notice %>
+      <ul class="Signup_Errors">
+        <%= notice %>
+      </ul>
+  <% end %>
+
+
+  <% if @user.errors.any? %>
+      <ul class="Signup_Errors">
+        <% for message_error in @user.errors.full_messages %>
+            <li>* <%= message_error %></li>
+        <% end %>
+      </ul>
+  <% end %>
+</div>

@@ -1,4 +1,24 @@
 DbProject::Application.routes.draw do
+  get "sessions/login"
+  post "sessions/login_attempt"
+
+  get "sessions/home"
+  get "sessions/profile"
+  get "sessions/setting"
+  get "sessions/logout"
+  match "sessions", :to => "sessions#home"
+
+  root :to => "sessions#login"
+  #root :to => "sessions#login"
+  #match "signup", :to => "users#new"
+  #match "login", :to => "sessions#login"
+  #match "logout", :to => "sessions#logout"
+  #match "home", :to => "sessions#home"
+  #match "profile", :to => "sessions#profile"
+  #match "setting", :to => "sessions#setting"
+
+  resources :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
