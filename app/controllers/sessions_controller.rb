@@ -27,7 +27,15 @@ class SessionsController < ApplicationController
   end
 
   def home
-
+    if @current_user.sw_developer
+      redirect_to :controller => :sw_developers, :action => :home
+    elsif @current_user.requestor
+      redirect_to :controller => :requestors, :action => :home
+    elsif @current_user.evaluator
+      redirect_to :controller => :evaluators, :action => :home
+    elsif @current_user.administrator
+      redirect_to :controller => :administrators, :action => :home
+    end
   end
 
   def profile

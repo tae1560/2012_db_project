@@ -10,7 +10,6 @@ class UsersController < ApplicationController
     @requestors = Requestor.all
 
     respond_to do |format|
-      #format.html {redirect_to new_user_url, :alert => 'Post was successfully updated.'}
       format.html {}
       format.json { render json: @users }
     end
@@ -25,8 +24,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        u = nil
         case @user.roll
-
           when "개발자" then
             u =  SwDeveloper.new
           when "평가자" then
@@ -35,7 +34,8 @@ class UsersController < ApplicationController
             u = Administrator.new
           when "용역의뢰자" then
             u = Requestor.new
-
+        end
+        if u
           u.user = @user
           u.save
         end

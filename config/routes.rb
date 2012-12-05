@@ -3,12 +3,23 @@ DbProject::Application.routes.draw do
   post "sessions/login_attempt"
 
   get "sessions/home"
-  get "sessions/profile"
-  get "sessions/setting"
   get "sessions/logout"
   match "sessions", :to => "sessions#home"
 
   root :to => "sessions#login"
+
+  match "administrators/home"
+  match "administrators/profile"
+
+  match "evaluators/home"
+  match "evaluators/profile"
+
+  match "sw_developers/home"
+  match "sw_developers/profile"
+
+  match "requestors/home"
+  match "requestors/profile"
+
   #root :to => "sessions#login"
   #match "signup", :to => "users#new"
   #match "login", :to => "sessions#login"
