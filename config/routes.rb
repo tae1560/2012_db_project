@@ -16,6 +16,7 @@ DbProject::Application.routes.draw do
 
   match "sw_developers/home"
   match "sw_developers/profile"
+  match "sw_developers/development_results"
 
   match "requestors/home"
   match "requestors/profile"
@@ -29,6 +30,7 @@ DbProject::Application.routes.draw do
   #match "setting", :to => "sessions#setting"
 
   resources :users
+  resources :development_results
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

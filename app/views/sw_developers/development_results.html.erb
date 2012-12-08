@@ -1,0 +1,42 @@
+<%= render 'menu' %>
+
+<div>
+  <h1>개발결과물 페이지</h1>
+</div>
+
+<div>
+  <h1>개발결과물 업로드</h1>
+</div>
+<div>
+  <%= form_for DevelopmentResult.new, :format => :json, :html => {:multipart => true} do |f| %>
+      이름 : <%= f.text_field :name %> <br/>
+      <%= file_field :files, :file1 %> <br/>
+      <%= file_field :files, :file2 %> <br/>
+      <%= file_field :files, :file3 %> <br/>
+      <%= f.submit %> <br/>
+  <% end %>
+</div>
+
+<div>
+  <h1>개발결과물 리스트</h1>
+</div>
+<div>
+  개발결과물 리스트
+  <% @development_results.each do |development_result| %>
+    <div>
+      이름 : <%= development_result.name %><br/>
+      파일 리스트 : <br/>
+      <% development_result.result_files.each do |result_file| %>
+          <%= link_to result_file.path, "/data/" + result_file.path, :target => '_blank' %>
+          <br/>
+      <% end  %>
+
+
+      평가 리스트 : <%= development_result.evaluation_results.inspect %>
+      <br/>
+      전문분야 리스트 : <%= development_result.pro_fields %>
+      <br/>
+    </div>
+  <% end %>
+</div>
+

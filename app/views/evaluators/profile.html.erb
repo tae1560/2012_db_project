@@ -1,13 +1,4 @@
-profile.html.erb<%= render 'menu' %>
+<%= render 'menu' %>
 
-<h1>기본 데이터</h1>
-<div>
-  <p> 이름 : <%= @current_user.name %> </p>
-  <p> 아이디 : <%= @current_user.login_id %> </p>
-  <p> 역할 : <%= @current_user.roll %> </p>
-</div>
+<%= render 'users/profile' %>
 
-<h1>전체 데이터</h1>
-<div>
-  <%= @current_user.inspect %>
-</div>

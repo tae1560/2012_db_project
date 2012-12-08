@@ -7,5 +7,6 @@ class Evaluator < ActiveRecord::Base
   has_and_belongs_to_many :development_results, :join_table => :evaluation_requests
   has_and_belongs_to_many :administrators, :join_table => :evaluation_requests
 
+  has_many :evaluator_pro_fields
   has_many :pro_fields, :through => :evaluator_pro_fields
 end
