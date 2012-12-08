@@ -79,7 +79,15 @@ hr
 
 .user_box_roll
 {
-	font-size: 70%;
+	font-size: 60%;
+}
+
+.user_box_info li span
+{
+	position: absolute;
+	display: inline-block;
+	width: 820px;
+	right: 0;
 }
 
 .center_div
