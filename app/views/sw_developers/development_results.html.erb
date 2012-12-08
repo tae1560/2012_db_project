@@ -1,42 +1,85 @@
 <%= render 'menu' %>
 
-<div>
-  <h1>개발결과물 페이지</h1>
+<div class="fullsize_box box">
+  <h2>개발결과물</h2>
 </div>
 
-<div>
-  <h1>개발결과물 업로드</h1>
-</div>
-<div>
+<div class="fullsize_box box">
+  <h3 id="developer_upload_button" class="pseudo_link">개발결과물 업로드</h3>
+  <div id="developer_upload_view">
+  
+  <hr />
+  
   <%= form_for DevelopmentResult.new, :format => :json, :html => {:multipart => true} do |f| %>
-      이름 : <%= f.text_field :name %> <br/>
-      <%= file_field :files, :file1 %> <br/>
-      <%= file_field :files, :file2 %> <br/>
-      <%= file_field :files, :file3 %> <br/>
-      <%= f.submit %> <br/>
+    <ul>
+      <li>개발결과물 이름 <%= f.text_field :name %> </li>
+      <li><hr /></li>
+      <li>개발결과물 첨부자료 </li>
+      <li class="input_fileupload"> [1] <%= file_field :files, :file1 %> </li>
+      <li class="input_fileupload"> [2] <%= file_field :files, :file2 %> </li>
+      <li class="input_fileupload"> [3] <%= file_field :files, :file3 %> </li>
+      <li><hr /></li>
+      <li class="input_submit"><%= f.submit "개발결과물 올리기" %> </li>
+    </ul>
   <% end %>
+  
+  </div>
+  
+  <script type="text/javascript">
+  $("#developer_upload_button").click(function(){
+	if ($("#developer_upload_view").is(":hidden")) {$("#developer_upload_view").slideDown(350);}
+	else {$("#developer_upload_view").slideUp(350);}
+  });
+  $("#developer_upload_view").hide();
+  </script>
 </div>
 
-<div>
-  <h1>개발결과물 리스트</h1>
-</div>
-<div>
-  개발결과물 리스트
+<div class="fullsize_box box">
+  <h3>내 개발결과물</h3>
+  <hr />
+  <% if @development_results.empty? %>
+  <div class="small_msg">업로드한 개발결과물이 없습니다!</div>
+  <hr />
+  <% else %>
   <% @development_results.each do |development_result| %>
-    <div>
-      이름 : <%= development_result.name %><br/>
-      파일 리스트 : <br/>
-      <% development_result.result_files.each do |result_file| %>
-          <%= link_to result_file.path, "/data/" + result_file.path, :target => '_blank' %>
-          <br/>
-      <% end  %>
-
-
-      평가 리스트 : <%= development_result.evaluation_results.inspect %>
-      <br/>
-      전문분야 리스트 : <%= development_result.pro_fields %>
-      <br/>
-    </div>
-  <% end %>
+    <h4><%= development_result.name %></h4>
+    <ul class="developer_upload_list">
+      <li>고유 관리번호 : <%= development_result.id %></li>
+      
+      <li>전문분야 :
+        <% if development_result.pro_fields.empty? %>
+		<div class="small_msg">평가 대기 중입니다.</div>
+		<% else %>
+		<ul>
+        <% development_result.pro_fields.each do |pro_field| %>
+          <li>분야</li>
+        <% end #each %>
+        </ul>
+        <% end #if-else %>
+      </li>
+      
+      <li>첨부자료 :
+        <ul>
+        <% development_result.result_files.each do |result_file| %>
+          <li><%= link_to result_file.path, "/data/" + result_file.path, :target => '_blank' %></li>
+        <% end %>
+        </ul>
+      </li>
+      
+      <li>평가결과 :
+        <% if development_result.evaluation_results.empty? %>
+		<div class="small_msg">평가 대기 중입니다.</div>
+		<% else %>
+		<ul>
+        <% development_result.evaluation_results.each do |result| %>
+          <li>결과</li>
+        <% end #each %>
+        </ul>
+        <% end #if-else %>
+      </li>
+    </ul>
+    <hr />
+  <% end #each %>
+  <% end #if-else %>
 </div>
 

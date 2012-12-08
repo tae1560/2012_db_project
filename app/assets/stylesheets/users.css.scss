@@ -5,6 +5,41 @@
 $signup_box_padding : 10px;
 $signup_box_width : 400px;
 
+.user_box
+{
+}
+
+.signup_errors
+{
+	padding: 0;
+	margin: 0;
+}
+
+.signup_errors li
+{
+	padding: 0 !important;
+	line-height: 20px;
+}
+
+.user_box_roll
+{
+	font-size: 75%;
+}
+
+.user_box_info
+{
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.user_box_info li span
+{
+	position: absolute;
+	display: inline-block;
+	width: 820px;
+	right: 0;
+}
+
 #signup_box
 {
 	padding: $signup_box_padding;
@@ -15,14 +50,10 @@ $signup_box_width : 400px;
 
 #signup_box input, #signup_box button, #signup_box select
 {
+	top: 0;
 	position: absolute;
-	font-size: 14px;
-	right: 0px;
+	right: 0;
 	width: 200px;
-	color: #fff;
-	background: rgba(0, 0, 0, 0.4);
-	height: 20px;
-	border: 2px solid rgba(255,255,255,0.4);
 }
 
 #signup_box ul
@@ -31,13 +62,20 @@ $signup_box_width : 400px;
 	width: 100%;
 }
 
+#signup_box_buttons
+{
+	height: 30px;
+}
+
 #signup_box li
 {
+	position: relative;
 	padding: 5px 0;
 }
 
 #signup_box_buttons input, #signup_box button
 {
+	top: 0;
 	width: 188px;
 	position: absolute;
 	height: 30px;

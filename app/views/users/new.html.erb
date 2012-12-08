@@ -24,16 +24,15 @@
   <% end %>
 
   <% if notice %>
-      <ul class="Signup_Errors">
-        <%= notice %>
+      <ul class="signup_errors">
+        <li class="small_msg"><%= notice %></li>
       </ul>
   <% end %>
 
-
   <% if @user.errors.any? %>
-      <ul class="Signup_Errors">
+      <ul class="signup_errors">
         <% for message_error in @user.errors.full_messages %>
-            <li>* <%= message_error %></li>
+        <li class="small_msg"><%= message_error %></li>
         <% end %>
       </ul>
   <% end %>
