@@ -22,7 +22,7 @@ class AdministratorsController < ApplicationController
     param_development_result = params[:development_result]
     selected_development_result = nil
     if param_development_result
-      param_development_result = DevelopmentResult.find(params[:development_result][:id])
+      selected_development_result = DevelopmentResult.find(params[:development_result][:id])
     end
 
     if selected_evaluators_ids
