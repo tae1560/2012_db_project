@@ -11,8 +11,8 @@ class RequestorsController < ApplicationController
   end
 
   def proper_user
-    @sw_developer = @current_user.requestor
-    if @sw_developer == nil
+    @requestor = @current_user.requestor
+    if @requestor == nil
       redirect_to(:controller => 'sessions', :action => 'home')
       return false
     else

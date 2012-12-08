@@ -53,4 +53,24 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
+
+  def initialize_all_data
+    # initialize pro_fields
+    pro_fields = ["DB","네트워크","임베이드"]
+    pro_fields.each do |pro_field|
+      selected_pro_field = ProField.where(:name => pro_field).first
+
+      if selected_pro_field == nil
+        selected_pro_field = ProField.new
+        selected_pro_field.name = pro_field
+        selected_pro_field.save
+      end
+    end
+
+    @pro_fields = ProField.all
+
+    respond_to do |format|
+      format.json { render json: @pro_fields }
+    end
+  end
 end

@@ -10,6 +10,7 @@ DbProject::Application.routes.draw do
 
   match "administrators/home"
   match "administrators/profile"
+  match "administrators/evaluation_request"
 
   match "evaluators/home"
   match "evaluators/profile"
@@ -31,6 +32,8 @@ DbProject::Application.routes.draw do
 
   resources :users
   resources :development_results
+  resources :pro_fields
+  match "initialize_all_data", :to => "users#initialize_all_data"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

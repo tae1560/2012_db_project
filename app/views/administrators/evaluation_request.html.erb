@@ -1,0 +1,69 @@
+<%= render 'menu' %>
+
+<div>
+  <% @development_results.each do |development_result| %>
+      <div>
+        <h1>개발물 리스트</h1>
+        <div>
+        개발물 이름 : <%= development_result.name %>
+        </div>
+        <div>
+        개발자 : <%= link_to "#{development_result.sw_developer.user.name}(#{development_result.sw_developer.user.login_id})", "" %>
+        </div>
+
+        <div>
+        파일 리스트 :
+        <% development_result.result_files.each do |result_file| %>
+            <%= link_to result_file.path, "/data/" + result_file.path, :target => '_blank' %>
+        <% end  %>
+        </div>
+
+          <div>
+        평가 리스트 : <%= development_result.evaluation_results.inspect %>
+
+          </div>
+          <div>
+        전문분야 :
+            <% development_result.pro_fields.each do |pro_field| %>
+                <%= pro_field.name %>
+            <% end %>
+          </div>
+
+        <!-- 관리자가 전문분야 정하는 부분 -->
+        <h1> 전문분야 수정하기 </h1>
+        <% # 전문분야들을 체크해주기 위한 부분 %>
+        <% pro_field_ids = [] %>
+        <% development_result.pro_fields.each do |pro_field| %>
+            <% pro_field_ids.push pro_field.id %>
+        <% end %>
+
+        <%= form_for development_result, :format => :json do |f| %>
+            <% @pro_fields.each do |pro_field| %>
+                <%= check_box :pro_field, pro_field.id, :checked => pro_field_ids.include?(pro_field.id) %>
+                <%= pro_field.name %>
+            <% end %>
+            <%= f.submit "수정하기" %>
+        <% end %>
+
+
+        <!-- 평가자에게 평가요청 하는 부분 -->
+        <h1> 평가 요청하기 </h1>
+        <%= form_for :evaluator do |f| %>
+            <% @evaluators.each do |evaluator| %>
+                <% unless development_result.evaluators.exists?(evaluator) %>
+                    <%= f.check_box evaluator.user.id %>
+                    <%= "#{evaluator.user.name}(#{evaluator.user.login_id})" %>
+                <% end %>
+            <% end %>
+            <%= hidden_field :development_result, :id, :value => development_result.id %>
+            <%= f.submit "평가 요청하기" %>
+        <% end %>
+
+        <!-- 이미 평가요청된 평가자들 -->
+        <h1> 평가요청된 평가자들 </h1>
+        <% development_result.evaluators.each do |evaluator| %>
+            <%= "#{evaluator.user.name}(#{evaluator.user.login_id})" %>
+        <% end %>
+      </div>
+  <% end %>
+</div>

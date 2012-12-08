@@ -11,8 +11,8 @@ class EvaluatorsController < ApplicationController
   end
 
   def proper_user
-    @sw_developer = @current_user.evaluator
-    if @sw_developer == nil
+    @evaluator = @current_user.evaluator
+    if @evaluator == nil
       redirect_to(:controller => 'sessions', :action => 'home')
       return false
     else
