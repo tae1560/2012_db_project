@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c89fee7f-2237-4288-94c2-30eda02b9fef" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/administrators_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/administrators_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/administrators/evaluation_request.html.erb" afterPath="$PROJECT_DIR$/app/views/administrators/evaluation_request.html.erb" />
     </list>
     <ignored path="2012_db_project.iws" />
@@ -24,10 +23,10 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="evaluation_request.html.erb" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="evaluation_request.html.erb" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/views/administrators/evaluation_request.html.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="45" column="4" selection-start="1458" selection-end="1458" vertical-scroll-proportion="0.74870914">
+                <state line="44" column="34" selection-start="1453" selection-end="1453" vertical-scroll-proportion="0.74870914">
                   <folding />
                 </state>
               </provider>
@@ -37,7 +36,7 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="administrators_controller.rb" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="administrators_controller.rb" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/controllers/administrators_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
                 <state line="25" column="7" selection-start="645" selection-end="645" vertical-scroll-proportion="0.4300518">
@@ -84,8 +83,8 @@
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/development_result_pro_field.rb" />
         <option value="$PROJECT_DIR$/app/controllers/development_results_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/administrators/evaluation_request.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/administrators_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/administrators/evaluation_request.html.erb" />
       </list>
     </option>
   </component>
@@ -884,16 +883,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/administrators/evaluation_request.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/administrators_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="4" selection-start="1458" selection-end="1458" vertical-scroll-proportion="0.74870914">
+        <state line="25" column="7" selection-start="645" selection-end="645" vertical-scroll-proportion="0.4300518">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/administrators_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/administrators/evaluation_request.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="7" selection-start="645" selection-end="645" vertical-scroll-proportion="0.4300518">
+        <state line="44" column="34" selection-start="1453" selection-end="1453" vertical-scroll-proportion="0.74870914">
           <folding />
         </state>
       </provider>
