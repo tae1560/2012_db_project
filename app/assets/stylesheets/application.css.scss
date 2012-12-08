@@ -28,6 +28,7 @@ body
 {
 	font-family : "NanumGothic" "Malgun Gothic" sans-serif;
 	color : #fff;
+	background: #6c1023;
 }
 
 h1, h2, h3, h4, h5, h6, div, span, input
@@ -38,17 +39,19 @@ h1, h2, h3, h4, h5, h6, div, span, input
 
 ul
 {
+	margin: 0;
 	list-style: none;
-	padding: 10px 0;
+	padding: 0;
 }
 
-a
+a, .pseudo_link
 {
 	text-decoration: none;
 	color: $light_yellow;
+	cursor: pointer;
 }
 
-a:hover
+a:hover, .pseudo_link:hover
 {
 	color: #eee;
 	text-decoration: underline;
@@ -60,6 +63,15 @@ hr
 	border-top: 1px solid #ccc;
 }
 
+input, button, select
+{
+	font-size: 14px;
+	color: #fff;
+	background: rgba(0, 0, 0, 0.4);
+	height: 20px;
+	border: 2px solid rgba(255,255,255,0.4);
+}
+
 .box
 {
 	position: absolute;
@@ -69,25 +81,21 @@ hr
 	line-height: 24px;
 }
 
-.user_box
+.small_msg
+{
+	font-size: 14px;
+	padding: 10px 0;
+	color: #f66;
+	text-align: center;
+}
+
+.fullsize_box
 {
 	position: relative !important;
 	padding: $global_padding;
+	margin-bottom: 10px;
 	margin-top: 10px;
 	width: $global_width - $global_padding * 2;
-}
-
-.user_box_roll
-{
-	font-size: 60%;
-}
-
-.user_box_info li span
-{
-	position: absolute;
-	display: inline-block;
-	width: 820px;
-	right: 0;
 }
 
 .center_div
@@ -95,6 +103,20 @@ hr
 	margin: 0 auto;
 	width: 0;
 	height: 100%;
+}
+
+#content
+{
+	position: relative;
+	height: 100%;
+	overflow: hidden;
+}
+
+#main
+{
+	height: relative;
+	bottom: 0px;
+	overflow: scroll;
 }
 
 #background_holder
@@ -118,7 +140,7 @@ hr
 {
 	height: 80px;
 	width: 100%;
-	background: rgba(0, 0, 0, 0.4);
+	background: rgba(0, 0, 0, 0.7);
 }
 
 #heading_logo
