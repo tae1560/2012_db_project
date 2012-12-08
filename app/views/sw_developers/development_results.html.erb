@@ -52,7 +52,7 @@
 		<% else %>
 		<ul>
         <% development_result.pro_fields.each do |pro_field| %>
-          <li>분야</li>
+          <li><%= pro_field.name %></li>
         <% end #each %>
         </ul>
         <% end #if-else %>
