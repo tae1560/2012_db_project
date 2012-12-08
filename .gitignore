@@ -18,3 +18,5 @@ path
 .yardoc
 _yardoc
 doc/
+
+config/database.yml
