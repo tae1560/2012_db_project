@@ -9,5 +9,6 @@ class SwDeveloper < ActiveRecord::Base
   has_many :development_results
   has_many :teams, :foreign_key => :reader_sw_developer_id
 
+  has_many :sw_developer_pro_fields
   has_many :pro_fields, :through => :sw_developer_pro_fields
 end
