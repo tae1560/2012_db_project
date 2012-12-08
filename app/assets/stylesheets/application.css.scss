@@ -1,0 +1,151 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree
+ */
+
+$global_width : 960px;
+$global_padding : 10px;
+$light_yellow : #ee6;
+
+html, body
+{
+	padding : 0;
+	margin : 0;
+	width : 100%;
+	height : 100%;
+}
+
+body
+{
+	font-family : "NanumGothic" "Malgun Gothic" sans-serif;
+	color : #fff;
+}
+
+h1, h2, h3, h4, h5, h6, div, span, input
+{
+	margin: 0;
+	padding: 0;
+}
+
+ul
+{
+	list-style: none;
+	padding: 10px 0;
+}
+
+a
+{
+	text-decoration: none;
+	color: $light_yellow;
+}
+
+a:hover
+{
+	color: #eee;
+	text-decoration: underline;
+}
+
+hr
+{
+	border: none;
+	border-top: 1px solid #ccc;
+}
+
+.box
+{
+	position: absolute;
+	margin: 0 auto;
+	background:rgba(0, 0, 0, 0.4);
+	font-size: 16px;
+	line-height: 24px;
+}
+
+.user_box
+{
+	position: relative !important;
+	padding: $global_padding;
+	margin-top: 10px;
+	width: $global_width - $global_padding * 2;
+}
+
+.user_box_roll
+{
+	font-size: 70%;
+}
+
+.center_div
+{
+	margin: 0 auto;
+	width: 0;
+	height: 100%;
+}
+
+#background_holder
+{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	z-index: -1;
+}
+
+.background
+{
+	display: block;
+	width: 100%;
+	min-width: 960px;
+	overflow: hidden;
+}
+
+.heading
+{
+	height: 80px;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.4);
+}
+
+#heading_logo
+{
+	position: absolute;
+	background: image-url("EBSlogo.png") no-repeat center top;
+}
+
+#main
+{
+	position: absolute;
+	top: 80px;
+	bottom: 0px;
+	width: 100%;
+	z-index: 1;
+}
+
+#mainmenu
+{
+	color: #ff6;
+	background: rgba(0, 0, 0, 0.5);
+	text-align: center;
+	padding: 10px 0;
+	width: 100%;
+}
+
+#mainmenu ul
+{
+	list-style: none;
+	display: inline;
+	padding: 0;
+}
+
+#mainmenu ul li
+{
+	display: inline-block;
+	padding: 0 15px;
+}

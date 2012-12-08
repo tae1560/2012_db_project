@@ -1,3 +1,50 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$signup_box_padding : 10px;
+$signup_box_width : 400px;
+
+#signup_box
+{
+	padding: $signup_box_padding;
+	top: 10px;
+	width: $signup_box_width - $signup_box_padding * 2;
+	margin-left: - $signup_box_width / 2;
+}
+
+#signup_box input, #signup_box button, #signup_box select
+{
+	position: absolute;
+	font-size: 14px;
+	right: 0px;
+	width: 200px;
+	color: #fff;
+	background: rgba(0, 0, 0, 0.4);
+	height: 20px;
+	border: 2px solid rgba(255,255,255,0.4);
+}
+
+#signup_box ul
+{
+	position: relative;
+	width: 100%;
+}
+
+#signup_box li
+{
+	padding: 5px 0;
+}
+
+#signup_box_buttons input, #signup_box button
+{
+	width: 188px;
+	position: absolute;
+	height: 30px;
+}
+
+#signup_box button
+{
+	left: 0;
+	right: auto;
+}
