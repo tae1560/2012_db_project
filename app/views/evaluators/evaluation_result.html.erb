@@ -69,12 +69,22 @@
 
         </div>
 
-        <div><h4>세부응용분야</h4>
+
+        <div><h4>세부 응용분야</h4>
           <hr />
           <% if evaluation_result.sub_fields.empty? %>
               <div class="small_msg">결정되지 않았습니다.</div>
           <% end #if-else %>
-          <% # 전문분야들을 체크해주기 위한 부분 %>
+          <% # 세부분야들을 체크해주기 위한 부분 %>
+
+          <% evaluation_result.sub_fields.each do |sub_field| %>
+              <%= sub_field.name %>
+          <% end %>
+        </div>
+
+          <hr />
+
+          <% # 세부분야들을 체크해주기 위한 부분 %>
           <% sub_field_ids = [] %>
           <% evaluation_result.sub_fields.each do |sub_field| %>
               <% sub_field_ids.push sub_field.id %>

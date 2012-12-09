@@ -26,6 +26,8 @@ DbProject::Application.routes.draw do
 
   match "requestors/home"
   match "requestors/profile"
+  match "requestors/services"
+  match "requestors/new_service"
 
   #root :to => "sessions#login"
   #match "signup", :to => "users#new"
@@ -40,6 +42,7 @@ DbProject::Application.routes.draw do
   resources :pro_fields
   resources :sub_fields
   resources :evaluation_results
+  resources :services
   match "initialize_all_data", :to => "users#initialize_all_data"
 
   # The priority is based upon order of creation:

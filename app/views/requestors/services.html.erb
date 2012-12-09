@@ -1,0 +1,14 @@
+<%= render 'menu' %>
+
+<% @services.each do |service| %>
+    <ul>
+      <li>이름 : <%= service.name %></li>
+      <li>모집마감시간 : <%= service.due_date %></li>
+
+      <% if service.service_file_path %>
+          <li>제안서 : <%= link_to service.service_file_path, "/data/" + service.service_file_path, :target => '_blank' %></li>
+      <% end %>
+
+    </ul>
+
+<% end %>

@@ -1,5 +1,7 @@
 class Team < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :name
+
+  validate :name, :presence => true
 
   belongs_to :sw_developer, :foreign_key => :reader_sw_developer_id
   belongs_to :service

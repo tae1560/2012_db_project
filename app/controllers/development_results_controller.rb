@@ -27,8 +27,7 @@ class DevelopmentResultsController < ApplicationController
 
         uploaded_ios = params[:files]
 
-        #folder_path = "public/data"
-	folder_path = Rails.root.join('public', 'data')
+	      folder_path = Rails.root.join('public', 'data')
         FileUtils.mkdir_p(folder_path) unless File.exists?(folder_path)
 
         if uploaded_ios

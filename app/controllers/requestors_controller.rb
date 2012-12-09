@@ -19,4 +19,12 @@ class RequestorsController < ApplicationController
       return true
     end
   end
+
+  def services
+    @services = Service.all
+  end
+
+  def new_service
+    @service = Service.new
+  end
 end

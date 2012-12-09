@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121209113041) do
+ActiveRecord::Schema.define(:version => 20121209164610) do
 
   create_table "administrators", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(:version => 20121209113041) do
     t.integer  "requestor_id"
     t.integer  "administrator_id"
     t.integer  "team_id"
+    t.string   "name"
   end
 
   add_index "services", ["administrator_id"], :name => "services_administrator_id_fk"
@@ -199,6 +200,7 @@ ActiveRecord::Schema.define(:version => 20121209113041) do
     t.integer  "service_id"
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
+    t.string   "name"
   end
 
   add_index "teams", ["reader_sw_developer_id", "service_id"], :name => "index_teams_on_reader_sw_developer_id_and_service_id", :unique => true
