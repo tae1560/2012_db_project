@@ -1,24 +1,25 @@
-<h1>모든 유저 목록</h1>
-<ul>
-    <li><%= @users %></li>
-</ul>
-<h1>개발자 목록</h1>
-<ul>
-  <li><%= @sw_developers %></li>
-</ul>
-<h1>평가자 목록</h1>
-<ul>
-  <li><%= @evaluators %></li>
-</ul>
-<h1>관리자 목록</h1>
-<ul>
-  <li><%= @administrators %></li>
-</ul>
-<h1>용역의뢰자 목록</h1>
-<ul>
-  <li><%= @requestors %></li>
-</ul>
-
+<div class="fullsize_box box">
+<h2>모든 유저 목록</h2>
+<p>
+<%= @users %>
+</p>
+<h3>개발자 목록</h3>
+<p>
+<%= @sw_developers %>
+</p>
+<h3>평가자 목록</h3>
+<p>
+<%= @evaluators %>
+</p>
+<h3>관리자 목록</h3>
+<p>
+<%= @administrators %>
+</p>
+<h3>용역의뢰자 목록</h3>
+<p>
+<%= @requestors %>
+</p>
+</div>
 
 <%if notice%>
     <script>

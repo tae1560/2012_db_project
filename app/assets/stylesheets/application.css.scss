@@ -12,9 +12,11 @@
  *= require_tree
  */
 
-$global_width : 960px;
-$global_padding : 10px;
+$global_width : 90%;
+$global_padding : 1%;
 $light_yellow : #ee6;
+
+$half_width : 46%;
 
 html, body
 {
@@ -98,11 +100,51 @@ input, button, select
 	width: $global_width - $global_padding * 2;
 }
 
+.fitting_list
+{
+	position: relative;
+	overflow: scroll;
+	padding-bottom: 10px;
+	top: 0;
+	bottom: 10px;
+	height: 75%;
+}
+
 .center_div
 {
 	margin: 0 auto;
 	width: 0;
 	height: 100%;
+}
+
+.half_box
+{
+	background: rgba(0, 0, 0, 0.2);
+	width: $half_width;
+	padding: $global_padding;
+}
+
+.half_inner_box
+{
+	background: rgba(0, 0, 0, 0.1);
+	padding: $global_padding;
+}
+
+.left_box
+{
+	position: absolute;
+	left: $global_padding;
+}
+
+.right_box
+{
+	position: absolute;
+	right: $global_padding;
+}
+
+div.right
+{
+	text-align: right;
 }
 
 #content
@@ -112,20 +154,13 @@ input, button, select
 	overflow: hidden;
 }
 
-#main
-{
-	height: relative;
-	bottom: 0px;
-	overflow: scroll;
-}
-
 #background_holder
 {
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
-	z-index: -1;
+	z-index: -2;
 }
 
 .background
@@ -156,6 +191,7 @@ input, button, select
 	bottom: 0px;
 	width: 100%;
 	z-index: 1;
+	overflow: scroll;
 }
 
 #mainmenu
@@ -178,4 +214,23 @@ input, button, select
 {
 	display: inline-block;
 	padding: 0 15px;
+}
+
+
+// sass
+@mixin opacity($value) {
+  opacity: #{"." + $value};
+  filter: alpha(opacity=$value);
+  -ms-filter: "alpha(opacity=$value)";
+  -khtml-opacity: #{"." + $value};
+  -moz-opacity: #{"." + $value};
+}
+ 
+#gugugu {
+  z-index: -1;
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  height: 90%;
+  @include opacity(60);
 }
