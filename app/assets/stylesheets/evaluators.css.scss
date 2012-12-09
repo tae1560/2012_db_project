@@ -1,3 +1,30 @@
 // Place all the styles related to the Evaluators controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.eval_list
+{
+	padding-left: 10px;
+}
+
+.eval_list li
+{
+	padding-bottom: 5px;
+}
+
+.eval_list li input
+{
+	width: 28px;
+}
+
+.eval_list li span
+{
+	font-size: 75%;
+}
+
+.star
+{
+	margin-left: 10px;
+	display: inline-block;
+}

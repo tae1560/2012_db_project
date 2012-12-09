@@ -5,47 +5,101 @@
     <% notice = nil %>
 <%end%>
 
-<div>
+
+<div id="universe_prison" style="display:none">
+우주감옥ㅋ
+</div>
+
+<div class="fullsize_box box">
+<h2>평가한 개발물</h2>
+</div>
+
+<div class="fullsize_box box fitting_list">
+
+<div class="left_box half_box">
+  <h3>평가 대상</h3>
+  <hr />
   <% @development_results_to_evaluation_request.each do |development_result| %>
-      <div>
-        <h1>개발물 리스트</h1>
-        <div>
-        개발물 이름 : <%= development_result.name %>
-        </div>
-        <div>
+      <div class="half_inner_box">
+      <h3 class="pseudo_link ev_req_t" id="ev_req_<%= development_result.id %>"><%= development_result.name %></h3>
+      <div class="right"><%= link_to "#{development_result.sw_developer.user.name}(#{development_result.sw_developer.user.login_id})", "" %></div>
+      <hr />
+      </div>
+      
+      
+      <div class="ev_req_d" id="ev_req_<%= development_result.id %>_c" style="display:none">
+      <h3><%= development_result.name %></h3>
+      <p>
         개발자 : <%= link_to "#{development_result.sw_developer.user.name}(#{development_result.sw_developer.user.login_id})", "" %>
-        </div>
-
-        <div>
-        파일 리스트 :
+      </p>
+      
+      <div><h4>첨부자료</h4>
+      <hr />
+        <ul>
         <% development_result.result_files.each do |result_file| %>
-            <%= link_to result_file.path, "/data/" + result_file.path, :target => '_blank' %>
-        <% end  %>
-        </div>
-        <div>
-        전문분야 :
-        <% development_result.pro_fields.each do |pro_field| %>
-            <%= pro_field.name %>
+          <li><%= link_to result_file.path, "/data/" + result_file.path, :target => '_blank' %></li>
         <% end %>
-        </div>
+        </ul>
+      </div>
+      
+      <p></p>
+      
+      <div><h4>전문분야</h4>
+      <hr />
+        <% if development_result.pro_fields.empty? %>
+		<div class="small_msg">결정되지 않았습니다.</div>
+		<% end #if-else %>
+        <% # 전문분야들을 체크해주기 위한 부분 %>
 
-        <div>
+        <% development_result.pro_fields.each do |pro_field| %>
+          <%= pro_field.name %>
+        <% end %> 
+      </div>
+      
+      <p></p>
+
+      <div><h4>평가하기</h4>
+      <hr />
+      <ul class="eval_list">
           <%= form_for EvaluationResult.new do |f| %>
-              <h1>평가하기</h1>
+              
 
-              <%= f.text_field :creativity %>
-              <%= f.text_field :concentration %>
-              <%= f.text_field :skill %>
-              <%= f.text_field :will %>
+              <li>창의력 : <%= f.text_field :creativity, :class => "star_input", :value => "0" %><span> / 100 </span><div class="star"></div></li>
+              <li>몰입력 : <%= f.text_field :concentration, :class => "star_input", :value => "0" %><span> / 100 </span><div class="star"></div></li>
+              <li>기술력 : <%= f.text_field :skill, :class => "star_input", :value => "0" %><span> / 100 </span><div class="star"></div></li>
+              <li>의지력 : <%= f.text_field :will, :class => "star_input", :value => "0" %><span> / 100 </span><div class="star"></div></li>
 
               <%= f.hidden_field :development_result_id, :value => development_result.id %>
               <%= f.hidden_field :evaluator_id, :value => @evaluator.id %>
-              <%= f.submit %>
+              <%= f.submit "평가 등록" %>
+      </ul>
           <% end %>
-
-        </div>
-
-
       </div>
+      
+
+      </div><!--.half_inner_box-->
   <% end %>
+</div>
+
+<div id="ev_req_selected" class="right_box half_box">
+</div>
+
+<script type="text/javascript">
+$(".ev_req_t").click(function()
+{
+	$("#ev_req_selected .ev_req_d").hide();
+	$("#universe_prison").append($("#ev_req_selected  .ev_req_d"));
+	$("#ev_req_selected").html($("#"+this.id+"_c"));
+	$("#"+this.id+"_c").show();
+});
+$(".star").raty({
+	half : true,
+});
+$(".star_input").change(function(){
+	$(this).parent().find(".star").raty({value:
+});
+
+
+</script>
+
 </div>

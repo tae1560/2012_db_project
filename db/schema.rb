@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121209093322) do
+ActiveRecord::Schema.define(:version => 20121209101927) do
 
   create_table "administrators", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(:version => 20121209093322) do
   add_index "evaluation_requests", ["administrator_id"], :name => "evaluation_requests_administrator_id_fk"
   add_index "evaluation_requests", ["development_result_id"], :name => "evaluation_requests_development_result_id_fk"
   add_index "evaluation_requests", ["evaluator_id"], :name => "evaluation_requests_evaluator_id_fk"
+
+  create_table "evaluation_result_sub_fields", :force => true do |t|
+    t.integer  "sub_field_id"
+    t.integer  "evaluation_result_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "evaluation_result_sub_fields", ["evaluation_result_id"], :name => "evaluation_result_sub_fields_evaluation_result_id_fk"
+  add_index "evaluation_result_sub_fields", ["sub_field_id"], :name => "evaluation_result_sub_fields_sub_field_id_fk"
 
   create_table "evaluation_results", :force => true do |t|
     t.integer  "development_result_id"
@@ -219,6 +229,9 @@ ActiveRecord::Schema.define(:version => 20121209093322) do
   add_foreign_key "evaluation_requests", "administrators", :name => "evaluation_requests_administrator_id_fk"
   add_foreign_key "evaluation_requests", "development_results", :name => "evaluation_requests_development_result_id_fk"
   add_foreign_key "evaluation_requests", "evaluators", :name => "evaluation_requests_evaluator_id_fk"
+
+  add_foreign_key "evaluation_result_sub_fields", "evaluation_results", :name => "evaluation_result_sub_fields_evaluation_result_id_fk"
+  add_foreign_key "evaluation_result_sub_fields", "sub_fields", :name => "evaluation_result_sub_fields_sub_field_id_fk"
 
   add_foreign_key "evaluation_results", "development_results", :name => "evaluation_results_development_result_id_fk"
   add_foreign_key "evaluation_results", "evaluators", :name => "evaluation_results_evaluator_id_fk"
