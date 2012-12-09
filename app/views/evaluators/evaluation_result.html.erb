@@ -5,12 +5,24 @@
     <% notice = nil %>
 <%end%>
 
-<div>
+
+<div id="universe_prison" style="display:none">
+우주감옥ㅋ
+</div>
+
+<div class="fullsize_box box">
+<h2>평가한 개발물</h2>
+</div>
+
+<div class="fullsize_box box fitting_list">
+
+<div class="left_box half_box">
+  <h3>평가 완료 목록</h3>
+  <hr />
   <% @development_results_to_evaluation_request.each do |development_result| %>
       <div>
-        <h1>개발물 리스트</h1>
         <div>
-          개발물 이름 : <%= development_result.name %>
+        <h4><%= development_result.name %></h4>
         </div>
         <div>
           개발자 : <%= link_to "#{development_result.sw_developer.user.name}(#{development_result.sw_developer.user.login_id})", "" %>
@@ -48,4 +60,6 @@
 
       </div>
   <% end %>
+</div>
+
 </div>
