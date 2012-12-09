@@ -4,6 +4,7 @@ class Administrator < ActiveRecord::Base
   has_many :services
   has_many :sw_developers
 
-  has_and_belongs_to_many :development_results, :join_table => :evaluation_requests
-  has_and_belongs_to_many :evaluators, :join_table => :evaluation_requests
+  has_many :evaluation_requests
+  has_many :development_results, :through => :evaluation_requests
+  has_many :evaluators, :through => :evaluation_requests
 end

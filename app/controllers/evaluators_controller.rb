@@ -10,6 +10,28 @@ class EvaluatorsController < ApplicationController
 
   end
 
+  def evaluation_request
+    @development_results_to_evaluation_request = []
+    @evaluator.evaluation_requests.each do |evaluation_request|
+      development_result = evaluation_request.development_result
+      evaluation_result = development_result.evaluation_results.where(:evaluator_id => @evaluator.id).first
+      unless evaluation_result
+        @development_results_to_evaluation_request.push development_result
+      end
+    end
+  end
+
+  def evaluation_result
+    @development_results_to_evaluation_request = []
+    @evaluator.evaluation_requests.each do |evaluation_request|
+      development_result = evaluation_request.development_result
+      evaluation_result = development_result.evaluation_results.where(:evaluator_id => @evaluator.id).first
+      if evaluation_result
+        @development_results_to_evaluation_request.push development_result
+      end
+    end
+  end
+
   def proper_user
     @evaluator = @current_user.evaluator
     if @evaluator == nil

@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
   validates :password, :presence => true, :length => { :in => 3..20 }
   validates_confirmation_of :password
   validates :roll, :presence => true
+  validates :email, :presence => true
+  validates :address, :presence => true
+  validates :phone, :presence => true
 
   before_save :encrypt_password
 
@@ -31,6 +34,6 @@ class User < ActiveRecord::Base
   end
 
   def match_password(password="")
-    self.password = Digest::SHA1.hexdigest(password)
+    self.password == Digest::SHA1.hexdigest(password)
   end
 end

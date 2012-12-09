@@ -39,7 +39,11 @@ class AdministratorsController < ApplicationController
         end
 
         if selected == 1 and ! is_contains
-          selected_development_result.evaluators << Evaluator.find(id)
+          ins_evaluation_request =  EvaluationRequest.new
+          ins_evaluation_request.evaluator = Evaluator.find(id)
+          ins_evaluation_request.administrator = @administrator
+          ins_evaluation_request.development_result = selected_development_result
+          ins_evaluation_request.save
         end
       end
     end

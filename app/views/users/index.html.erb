@@ -1,18 +1,23 @@
-<h1>모든 유저 목록</h1> <br/>
-<%= @users %>
-<br/>
-<h1>개발자 목록</h1> <br/>
-<%= @sw_developers %>
-<br/>
-<h1>평가자 목록</h1> <br/>
-<%= @evaluators %>
-<br/>
-<h1>관리자 목록</h1> <br/>
-<%= @administrators %>
-<br/>
-<h1>용역의뢰자 목록</h1> <br/>
-<%= @requestors %>
-<br/>
+<h1>모든 유저 목록</h1>
+<ul>
+    <li><%= @users %></li>
+</ul>
+<h1>개발자 목록</h1>
+<ul>
+  <li><%= @sw_developers %></li>
+</ul>
+<h1>평가자 목록</h1>
+<ul>
+  <li><%= @evaluators %></li>
+</ul>
+<h1>관리자 목록</h1>
+<ul>
+  <li><%= @administrators %></li>
+</ul>
+<h1>용역의뢰자 목록</h1>
+<ul>
+  <li><%= @requestors %></li>
+</ul>
 
 
 <%if notice%>

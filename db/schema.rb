@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204075209) do
+ActiveRecord::Schema.define(:version => 20121209093509) do
 
   create_table "administrators", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(:version => 20121204075209) do
 
   add_index "development_result_pro_fields", ["development_result_id"], :name => "development_result_pro_fields_development_result_id_fk"
   add_index "development_result_pro_fields", ["pro_field_id"], :name => "development_result_pro_fields_pro_field_id_fk"
+
+  create_table "development_result_sub_fields", :force => true do |t|
+    t.integer  "sub_field_id"
+    t.integer  "development_result_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "development_result_sub_fields", ["development_result_id"], :name => "development_result_sub_fields_development_result_id_fk"
+  add_index "development_result_sub_fields", ["sub_field_id"], :name => "development_result_sub_fields_sub_field_id_fk"
 
   create_table "development_results", :force => true do |t|
     t.string   "name"
@@ -138,12 +148,9 @@ ActiveRecord::Schema.define(:version => 20121204075209) do
 
   create_table "sub_fields", :force => true do |t|
     t.string   "name"
-    t.integer  "pro_field_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
-
-  add_index "sub_fields", ["pro_field_id"], :name => "sub_fields_pro_field_id_fk"
 
   create_table "sw_developer_pro_fields", :force => true do |t|
     t.integer  "pro_field_id"
@@ -217,6 +224,9 @@ ActiveRecord::Schema.define(:version => 20121204075209) do
   add_foreign_key "development_result_pro_fields", "development_results", :name => "development_result_pro_fields_development_result_id_fk"
   add_foreign_key "development_result_pro_fields", "pro_fields", :name => "development_result_pro_fields_pro_field_id_fk"
 
+  add_foreign_key "development_result_sub_fields", "development_results", :name => "development_result_sub_fields_development_result_id_fk"
+  add_foreign_key "development_result_sub_fields", "sub_fields", :name => "development_result_sub_fields_sub_field_id_fk"
+
   add_foreign_key "development_results", "sw_developers", :name => "development_results_sw_developer_id_fk"
 
   add_foreign_key "evaluation_requests", "administrators", :name => "evaluation_requests_administrator_id_fk"
@@ -244,8 +254,6 @@ ActiveRecord::Schema.define(:version => 20121204075209) do
   add_foreign_key "services", "administrators", :name => "services_administrator_id_fk"
   add_foreign_key "services", "requestors", :name => "services_requestor_id_fk"
   add_foreign_key "services", "teams", :name => "services_team_id_fk"
-
-  add_foreign_key "sub_fields", "pro_fields", :name => "sub_fields_pro_field_id_fk"
 
   add_foreign_key "sw_developer_pro_fields", "pro_fields", :name => "sw_developer_pro_fields_pro_field_id_fk"
   add_foreign_key "sw_developer_pro_fields", "sw_developers", :name => "sw_developer_pro_fields_sw_developer_id_fk"

@@ -1,0 +1,51 @@
+<%= render 'menu' %>
+
+<%if notice%>
+    <%= "notice : #{notice}" %>
+    <% notice = nil %>
+<%end%>
+
+<div>
+  <% @development_results_to_evaluation_request.each do |development_result| %>
+      <div>
+        <h1>개발물 리스트</h1>
+        <div>
+        개발물 이름 : <%= development_result.name %>
+        </div>
+        <div>
+        개발자 : <%= link_to "#{development_result.sw_developer.user.name}(#{development_result.sw_developer.user.login_id})", "" %>
+        </div>
+
+        <div>
+        파일 리스트 :
+        <% development_result.result_files.each do |result_file| %>
+            <%= link_to result_file.path, "/data/" + result_file.path, :target => '_blank' %>
+        <% end  %>
+        </div>
+        <div>
+        전문분야 :
+        <% development_result.pro_fields.each do |pro_field| %>
+            <%= pro_field.name %>
+        <% end %>
+        </div>
+
+        <div>
+          <%= form_for EvaluationResult.new do |f| %>
+              <h1>평가하기</h1>
+
+              <%= f.text_field :creativity %>
+              <%= f.text_field :concentration %>
+              <%= f.text_field :skill %>
+              <%= f.text_field :will %>
+
+              <%= f.hidden_field :development_result_id, :value => development_result.id %>
+              <%= f.hidden_field :evaluator_id, :value => @evaluator.id %>
+              <%= f.submit %>
+          <% end %>
+
+        </div>
+
+
+      </div>
+  <% end %>
+</div>

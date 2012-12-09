@@ -1,4 +1,4 @@
-class CreateEvaluationRequest < ActiveRecord::Migration
+class CreateEvaluationRequests < ActiveRecord::Migration
   def change
     create_table :evaluation_requests do |t|
       t.integer :administrator_id, :index => true
