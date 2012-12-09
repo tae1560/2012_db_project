@@ -20,37 +20,12 @@ class ProFieldsController < ApplicationController
     @pro_field = ProField.new(params[:pro_field])
 
     respond_to do |format|
-      if @current_user.sw_developer
-        @pro_field.sw_developer = @current_user.sw_developer
-
-        uploaded_ios = params[:files]
-
-        folder_path = "public/data"
-        FileUtils.mkdir_p(folder_path) unless File.exists?(folder_path)
-
-        uploaded_ios.each do |uploaded_io|
-          uploaded_io.each do |uploaded_file|
-            if uploaded_file.class.name.include? ("UploadedFile")
-              filename = Time.now.to_formatted_s(:number) + "_" + uploaded_file.original_filename
-              path = File.join(folder_path, filename)
-              File.open(path, "wb") { |f| f.write(uploaded_file.read) }
-
-              result_file = ResultFile.new(:path => filename)
-              @pro_field.result_files << result_file
-            end
-          end
-        end
-
-
-
-        if @pro_field.save
-          format.json { redirect_to :back }
-        end
+      if @pro_field.save
+        format.html { redirect_to :back }
       else
-        format.json { render json: @pro_field.errors, status: :unprocessable_entity }
+        format.html { redirect_to :back }
       end
     end
-
   end
 
   def destroy

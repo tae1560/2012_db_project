@@ -1,0 +1,27 @@
+<%= render 'menu' %>
+
+<div class="user_box fullsize_box box">
+  <h1>세부응용분야 리스트</h1>
+
+  <hr />
+  <div>
+    <ul class="user_box_info">
+      <% @sub_fields.each do |sub_field| %>
+          <li>
+            <%= sub_field.name %>
+            <%= link_to "삭제하기", sub_field, :method => :delete, :data => {:confirm => "정말 삭제하시겠습니까?"} %>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <h1>세부응용분야 추가하기</h1>
+  <hr />
+  <div>
+    <%= form_for :sub_field, :url => "/sub_fields" do |f| %>
+        <%= f.text_field :name %>
+        <%= f.submit "세부분야 추가하기" %>
+    <% end %>
+
+  </div>
+</div>

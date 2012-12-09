@@ -1,0 +1,24 @@
+<%= render 'menu' %>
+
+<div class="user_box fullsize_box box">
+  <h1>전문분야 리스트</h1>
+
+  <hr />
+  <div>
+    <ul class="user_box_info">
+        <% @pro_fields.each do |pro_field| %>
+          <li><%= pro_field.name %></li>
+        <% end %>
+    </ul>
+  </div>
+
+  <h1>전문분야 추가하기</h1>
+  <hr />
+  <div>
+    <%= form_for :pro_field, :url => "/pro_fields" do |f| %>
+        <%= f.text_field :name %>
+        <%= f.submit "전문분야 추가하기" %>
+    <% end %>
+
+  </div>
+</div>

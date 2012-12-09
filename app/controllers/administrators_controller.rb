@@ -50,6 +50,24 @@ class AdministratorsController < ApplicationController
 
   end
 
+  def pro_field
+    @pro_fields = ProField.all
+
+    respond_to do |format|
+      format.html {}
+      #format.json { render json: @development_result }
+    end
+  end
+
+  def sub_field
+    @sub_fields = SubField.all
+
+    respond_to do |format|
+      format.html {}
+      #format.json { render json: @development_result }
+    end
+  end
+
   def proper_user
     @administrator = @current_user.administrator
     if @administrator == nil

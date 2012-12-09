@@ -11,11 +11,14 @@ DbProject::Application.routes.draw do
   match "administrators/home"
   match "administrators/profile"
   match "administrators/evaluation_request"
+  match "administrators/pro_field"
+  match "administrators/sub_field"
 
   match "evaluators/home"
   match "evaluators/profile"
   match "evaluators/evaluation_request"
   match "evaluators/evaluation_result"
+  match "evaluators/sub_field"
 
   match "sw_developers/home"
   match "sw_developers/profile"
@@ -35,6 +38,7 @@ DbProject::Application.routes.draw do
   resources :users
   resources :development_results
   resources :pro_fields
+  resources :sub_fields
   resources :evaluation_results
   match "initialize_all_data", :to => "users#initialize_all_data"
 

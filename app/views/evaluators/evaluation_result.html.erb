@@ -29,8 +29,20 @@
           <% end %>
         </div>
 
+
+        <% evaluation_result = @evaluator.evaluation_results.where(:development_result_id => development_result.id).first %>
         <div>
-          <%= form_for EvaluationResult.new do |f| %>
+          <h1>평가결과</h1>
+          <ul>
+            <li>창의력 : <%= evaluation_result.creativity %></li>
+            <li>몰입력 : <%= evaluation_result.concentration %></li>
+            <li>기술력 : <%= evaluation_result.skill %></li>
+            <li>의지력 : <%= evaluation_result.will %></li>
+          </ul>
+        </div>
+
+        <div>
+          <%= form_for evaluation_result do |f| %>
               <h1>평가하기</h1>
 
               <%= f.text_field :creativity %>
@@ -43,6 +55,31 @@
               <%= f.submit %>
           <% end %>
 
+        </div>
+
+        <div><h4>세부응용분야</h4>
+          <hr />
+          <% if evaluation_result.sub_fields.empty? %>
+              <div class="small_msg">결정되지 않았습니다.</div>
+          <% end #if-else %>
+          <% # 전문분야들을 체크해주기 위한 부분 %>
+          <% sub_field_ids = [] %>
+          <% evaluation_result.sub_fields.each do |sub_field| %>
+              <% sub_field_ids.push sub_field.id %>
+          <% end %>
+
+          <%= form_for evaluation_result, :format => :json do |f| %>
+              <% @sub_fields.each do |sub_field| %>
+                  <%= check_box :sub_field, sub_field.id, :checked => sub_field_ids.include?(sub_field.id) %>
+                  <%= sub_field.name %>
+              <% end %>
+              &nbsp;&nbsp;
+              <% if evaluation_result.sub_fields.empty? %>
+                  <%= f.submit "선정" %>
+              <% else %>
+                  <%= f.submit "수정" %>
+              <% end #if-else %>
+          <% end %>
         </div>
 
 

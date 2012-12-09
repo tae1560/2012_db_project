@@ -56,7 +56,7 @@ class UsersController < ApplicationController
 
   def initialize_all_data
     # initialize pro_fields
-    pro_fields = ["DB","네트워크","임베이드"]
+    pro_fields = ["DB","네트워크","임베디드"]
     pro_fields.each do |pro_field|
       selected_pro_field = ProField.where(:name => pro_field).first
 

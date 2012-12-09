@@ -30,6 +30,17 @@ class EvaluatorsController < ApplicationController
         @development_results_to_evaluation_request.push development_result
       end
     end
+
+    @sub_fields = SubField.all
+  end
+
+  def sub_field
+    @sub_fields = SubField.all
+
+    respond_to do |format|
+      format.html {}
+      #format.json { render json: @development_result }
+    end
   end
 
   def proper_user
