@@ -2,25 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c89fee7f-2237-4288-94c2-30eda02b9fef" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/administrators/pro_field.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/administrators/sub_field.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/evaluators/sub_field.html.erb" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/db/migrate/20121204075209_create_development_result_pro_fields.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/db/migrate/20121209101927_create_evaluation_result_sub_fields.rb" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/administrators_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/administrators_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/evaluation_results_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/evaluation_results_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/evaluators_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/evaluators_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/pro_fields_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/pro_fields_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/evaluation_result.rb" afterPath="$PROJECT_DIR$/app/models/evaluation_result.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/pro_field.rb" afterPath="$PROJECT_DIR$/app/models/pro_field.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/sub_field.rb" afterPath="$PROJECT_DIR$/app/models/sub_field.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/administrators/_menu.html.erb" afterPath="$PROJECT_DIR$/app/views/administrators/_menu.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/administrators/evaluation_request.html.erb" afterPath="$PROJECT_DIR$/app/views/administrators/evaluation_request.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/evaluators/_menu.html.erb" afterPath="$PROJECT_DIR$/app/views/evaluators/_menu.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/star/cancel-off.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/star/cancel-on.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/star/star-half.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/star/star-off.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/images/star/star-on.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/assets/javascripts/jquery.raty.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendor/assets/javascripts/jquery.raty.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/evaluators.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/evaluators.css.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/evaluators/evaluation_request.html.erb" afterPath="$PROJECT_DIR$/app/views/evaluators/evaluation_request.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/evaluators/evaluation_result.html.erb" afterPath="$PROJECT_DIR$/app/views/evaluators/evaluation_result.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.yml" afterPath="$PROJECT_DIR$/config/database.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
     </list>
     <ignored path="2012_db_project.iws" />
@@ -45,8 +38,10 @@
           <file leaf-file-name="evaluation_result.html.erb" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/views/evaluators/evaluation_result.html.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="74" column="23" selection-start="2517" selection-end="2517" vertical-scroll-proportion="0.5869191">
-                  <folding />
+                <state line="95" column="23" selection-start="2803" selection-end="2803" vertical-scroll-proportion="0.5869191">
+                  <folding>
+                    <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -64,10 +59,19 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="evaluation_results_controller.rb" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="evaluation_results_controller.rb" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/controllers/evaluation_results_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="77" column="45" selection-start="2964" selection-end="2964" vertical-scroll-proportion="0.47933885">
+                <state line="77" column="45" selection-start="2964" selection-end="2964" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="schema.rb" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/db/schema.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="12" column="0" selection-start="734" selection-end="734" vertical-scroll-proportion="0.30874786">
                   <folding />
                 </state>
               </provider>
@@ -88,7 +92,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/administrators/pro_field.html.erb" />
         <option value="$PROJECT_DIR$/app/views/administrators/sub_field.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/administrators_controller.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20121209101927_create_evaluation_result_sub_fields.rb" />
@@ -104,6 +107,7 @@
         <option value="$PROJECT_DIR$/app/models/evaluation_result.rb" />
         <option value="$PROJECT_DIR$/app/views/evaluators/evaluation_result.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/evaluation_results_controller.rb" />
+        <option value="$PROJECT_DIR$/db/schema.rb" />
       </list>
     </option>
   </component>
@@ -726,13 +730,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/models/evaluation_result_sub_field.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="86" selection-end="86" vertical-scroll-proportion="0.05033557">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/sub_fields_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="45" column="0" selection-start="937" selection-end="937" vertical-scroll-proportion="0.8679245">
@@ -826,14 +823,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/evaluators/evaluation_result.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="23" selection-start="2517" selection-end="2517" vertical-scroll-proportion="0.5869191">
-          <folding />
+        <state line="95" column="23" selection-start="2803" selection-end="2803" vertical-scroll-proportion="0.5869191">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/evaluation_results_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="45" selection-start="2964" selection-end="2964" vertical-scroll-proportion="0.47933885">
+        <state line="77" column="45" selection-start="2964" selection-end="2964" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/schema.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="734" selection-end="734" vertical-scroll-proportion="0.30874786">
           <folding />
         </state>
       </provider>
