@@ -94,9 +94,13 @@ $(".ev_req_t").click(function()
 });
 $(".star").raty({
 	half : true,
+	precision  : true,
+	click : function() {
+		$(this).parent().find(".star_input").get(0).value = parseInt($(this).raty('score') * 20);
+	}
 });
-$(".star_input").change(function(){
-	$(this).parent().find(".star").raty({value:
+$(".star_input").keyup(function(){
+	$(this).parent().find(".star").raty('score', this.value / 20.0);
 });
 
 

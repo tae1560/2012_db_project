@@ -1,24 +1,29 @@
 <%= render 'menu' %>
 
-<div class="user_box fullsize_box box">
-  <h1>전문분야 리스트</h1>
+<div class="fullsize_box box">
+  <h2>전문분야 관리</h2>
+</div>
 
-  <hr />
-  <div>
-    <ul class="user_box_info">
-        <% @pro_fields.each do |pro_field| %>
-          <li><%= pro_field.name %></li>
-        <% end %>
-    </ul>
-  </div>
-
-  <h1>전문분야 추가하기</h1>
-  <hr />
-  <div>
-    <%= form_for :pro_field, :url => "/pro_fields" do |f| %>
+<div class="fullsize_box box">
+  <h3>전문분야 추가</h3>
+  <p>
+    <%= form_for :sub_field, :url => "/pro_fields" do |f| %>
         <%= f.text_field :name %>
-        <%= f.submit "전문분야 추가하기" %>
+        <%= f.submit "추가" %>
     <% end %>
+  </p>
+</div>
 
-  </div>
+<div class="user_box fullsize_box box">
+  <h3>전문분야 목록</h3>
+  <hr />
+  <ul>
+      <% @pro_fields.each do |pro_field| %>
+          <li>
+            <%= pro_field.name %>
+            <div class="right"><%= link_to "삭제", pro_field, :method => :delete, :data => {:confirm => "정말 삭제하시겠습니까?"} %></div>
+            <hr />
+          </li>
+      <% end %>
+  </ul>
 </div>
