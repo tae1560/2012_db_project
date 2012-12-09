@@ -22,7 +22,7 @@
   <% @development_results_to_evaluation_request.each do |development_result| %>
       <div class="half_inner_box">
       <h3 class="pseudo_link ev_req_t" id="ev_req_<%= development_result.id %>"><%= development_result.name %></h3>
-      <div class="right"><%= link_to "#{development_result.sw_developer.user.name}(#{development_result.sw_developer.user.login_id})", "" %></div>
+      <div class="right"><%= render "users/user_link", :user => development_result.sw_developer.user %></div>
       <hr />
       </div>
       
@@ -30,7 +30,7 @@
       <div class="ev_req_d" id="ev_req_<%= development_result.id %>_c" style="display:none">
       <h3><%= development_result.name %></h3>
       <p>
-        개발자 : <%= link_to "#{development_result.sw_developer.user.name}(#{development_result.sw_developer.user.login_id})", "" %>
+        개발자 : <%= render "users/user_link", :user => development_result.sw_developer.user %>
       </p>
       
       <div><h4>첨부자료</h4>

@@ -1,6 +1,7 @@
 # coding: utf-8
 class UsersController < ApplicationController
   before_filter :save_login_state, :only => [:new, :create]
+  before_filter :authenticate_user, :only => [:show]
 
   def index
     @users = User.all
@@ -12,6 +13,22 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html {}
       format.json { render json: @users }
+    end
+  end
+
+  def show
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      if @user.sw_developer
+        format.html { render "/sw_developers/profile"}
+      elsif @user.requestor
+        format.html { render "/requestors/profile"}
+      elsif @user.evaluator
+        format.html { render "/evaluators/profile"}
+      elsif @user.administrator
+        format.html { render "/administrators/profile"}
+      end
     end
   end
 

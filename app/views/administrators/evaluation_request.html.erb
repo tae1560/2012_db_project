@@ -15,7 +15,7 @@
   <% @development_results.each do |development_result| %>
       <div class="half_inner_box">
         <h3 class="pseudo_link ev_req_t" id="ev_req_<%= development_result.id %>"><%= development_result.name %></h3>
-        <div class="right"><%= link_to "#{development_result.sw_developer.user.name}(#{development_result.sw_developer.user.login_id})", "" %></div>
+        <div class="right"><%= render "users/user_link", :user => development_result.sw_developer.user %></div>
       <hr />
       
       <div class="ev_req_d" id="ev_req_<%= development_result.id %>_c" style="display:none">
@@ -76,7 +76,8 @@
       <h5> 평가 요청한 평가자 : </h5>
       <ol>
       <% development_result.evaluators.each do |evaluator| %>
-      <li><%= "#{evaluator.user.name}(#{evaluator.user.login_id})" %></li>
+      <li><%= render "users/user_link", :user => evaluator.user %></li>
+
       <% end %>
       </ol>
       </div>
@@ -88,7 +89,8 @@
             <% @evaluators.each do |evaluator| %>
                 <% unless development_result.evaluators.exists?(evaluator) %>
                     <li><%= f.check_box evaluator.user.id %>
-                    <%= "#{evaluator.user.name}(#{evaluator.user.login_id})" %></li>
+                      <%= render "users/user_link", :user => evaluator.user %>
+                    </li>
                 <% end %>
             <% end %>
            </ol>

@@ -7,7 +7,7 @@ class AdministratorsController < ApplicationController
   end
 
   def profile
-
+    @user = @current_user
   end
 
   def evaluation_request

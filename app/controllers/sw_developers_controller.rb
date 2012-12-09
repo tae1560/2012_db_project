@@ -7,7 +7,7 @@ class SwDevelopersController < ApplicationController
   end
 
   def profile
-
+    @user = @current_user
   end
 
   def development_results

@@ -34,7 +34,7 @@ $("#star").raty({
         <h4><%= development_result.name %></h4>
         </div>
         <div>
-          개발자 : <%= link_to "#{development_result.sw_developer.user.name}(#{development_result.sw_developer.user.login_id})", "" %>
+          개발자 : <%= render "users/user_link", :user => development_result.sw_developer.user %>
         </div>
 
         <div>

@@ -1,15 +1,15 @@
 <div class="user_box fullsize_box box">
 <h3>
-<span class="user_box_roll"><%= @current_user.roll %></span>
-<strong><%= @current_user.name %> (<%= @current_user.login_id %>)</strong>
+<span class="user_box_roll"><%= @user.roll %></span>
+<strong><%= @user.name %> (<%= @user.login_id %>)</strong>
 </h3>
 <hr />
 <div>
 <ul class="user_box_info">
-<li>이메일 주소<span>: <a href="mailto://<%= @current_user.email %>"><%= @current_user.email %></a></span></li>
-<li>현재 집주소 <span>: <%= @current_user.address %></span></li>
-<li>전화번호 <span>: <%= @current_user.phone %></span></li>
-<li>사이트 가입 시기 <span>: <%= @current_user.created_at.localtime %></span></li>
+<li>이메일 주소<span>: <a href="mailto://<%= @user.email %>"><%= @user.email %></a></span></li>
+<li>현재 집주소 <span>: <%= @user.address %></span></li>
+<li>전화번호 <span>: <%= @user.phone %></span></li>
+<li>사이트 가입 시기 <span>: <%= @user.created_at.localtime %></span></li>
 </ul>
 </div>
 </div>
