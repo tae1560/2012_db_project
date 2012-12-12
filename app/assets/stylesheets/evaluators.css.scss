@@ -5,26 +5,26 @@
 
 .eval_list
 {
-	padding-left: 10px;
+	padding-left: 0.625em;
 }
 
 .eval_list li
 {
-	padding-bottom: 5px;
+	padding-bottom: 0.3125em;
 }
 
 .eval_list li input
 {
-	width: 28px;
+	width: 1.875em;
 }
 
-.eval_list li span
+.eval_list li span, span.underscore
 {
 	font-size: 75%;
 }
 
 .star
 {
-	margin-left: 10px;
+	margin-left: 0.625em;
 	display: inline-block;
 }

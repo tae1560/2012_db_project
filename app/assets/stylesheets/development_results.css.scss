@@ -10,7 +10,7 @@
 
 #developer_upload_view li
 {
-	padding: 5px;
+	padding: 0.3125em;
 }
 
 .input_fileupload input
@@ -21,23 +21,107 @@
 
 .input_submit input, .input_submit button
 {
-	height: 30px;
-	padding: 0 30px;
+	height: 1.875em;
+	padding: 0 1.875em;
 }
 
 .developer_upload_list, .developer_upload_list ul
 {
-	padding-left: 10px;
+	padding-left: 0.625em;
 }
 
 .developer_upload_list .small_msg
 {
 	padding: 0;
 	text-align: left;
-	padding-left: 10px;
+	padding-left: 0.625em;
 }
 
 .developer_upload_list li
 {
-	padding: 1px 0;
+	padding: 0.0625em 0;
+}
+
+.score_number
+{
+	display: inline-block;
+	width: 1.875em;
+	text-align: right;
+}
+
+@mixin gradient($x, $y) {
+	background: $x; /* Old browsers */
+	background: -moz-linear-gradient(top, $x 0%, $y 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$x), color-stop(100%,$y)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, $x 0%,$y 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, $x 0%,$y 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, $x 0%,$y 100%); /* IE10+ */
+	background: linear-gradient(to bottom, $x 0%,$y 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$x', endColorstr='$y',GradientType=0 ); /* IE6-8 */
+}
+
+.bar_score
+{
+	position: relative;
+	height: 1.875em;
+	width: 95%;
+	margin: auto;
+	background: rgba(0, 0, 0, 0.5);
+	border: 0.1875em solid rgba(0, 0, 0, 0.5);
+	overflow: hidden;
+}
+
+.bar_general
+{
+	float: left;
+	top: 0;
+	left: 0;
+	position: relative;
+	height: 1.875em;
+}
+
+.bar_creativity
+{
+	background: #E34616;
+}
+
+.font_creativity
+{
+	color: #E34616;
+}
+
+.bar_concentration
+{
+	background: #D8C10D;
+}
+
+.font_concentration
+{
+	color: #D8C10D;
+}
+
+.bar_skill
+{
+	background: #43811C;
+}
+
+.font_skill
+{
+	color: #43811C;
+}
+
+.bar_will
+{
+	background: #1250A9;
+}
+.font_will
+{
+	color: #1250A9;
+}
+
+.bar_index
+{
+	position: absolute;
+	bottom: 0.0625em;
+	right: 0.625em;
 }

@@ -7,9 +7,9 @@
 <div class="fullsize_box box">
   <h3>전문분야 추가</h3>
   <p>
-    <%= form_for :sub_field, :url => "/pro_fields" do |f| %>
+    <%= form_for :pro_field, :url => "/pro_fields" do |f| %>
         <%= f.text_field :name %>
-        <%= f.submit "추가" %>
+        <span class="input_submit"><%= f.submit "추가" %></span>
     <% end %>
   </p>
 </div>

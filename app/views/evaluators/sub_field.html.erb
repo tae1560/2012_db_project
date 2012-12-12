@@ -9,7 +9,7 @@
   <p>
     <%= form_for :sub_field, :url => "/sub_fields" do |f| %>
         <%= f.text_field :name %>
-        <%= f.submit "추가" %>
+        <span class="input_submit"><%= f.submit "추가" %></span>
     <% end %>
   </p>
 </div>

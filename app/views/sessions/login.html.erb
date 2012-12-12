@@ -19,9 +19,21 @@
       <li><hr /></li>
       <li id="login_box_buttons">
       <%= submit_tag "Log In", :class => "left_align" %>
-      <a href="<%= new_user_path %>"><%= button_tag "Join", :type => "button" %></a>
+      <%= button_tag "Join", :type => "button", :id => "join_button"%>
       </li>
     </ul>
 <% end %>
+<script type="text/javascript">
+//알고 싫어 ㅠㅠ
+function animate(target)
+{
+	target.delay(2000).animate({left:'+=8%', bottom:'-=2%',height:'+=5%'},8000)
+		.delay(2000).animate({left:'-=8%', bottom:'+=2%',height:'-=5%'},8000,function(){animate($(this));});
+}
+
+animate($("#gugugu"));
+
+$("#join_button").click(function(){location.href="<%= new_user_path %>";});
+</script>
 </div>
 </div>

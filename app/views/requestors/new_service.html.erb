@@ -1,11 +1,19 @@
 <%= render "menu" %>
 
+<div class="fullsize_box box">
+  <h2>용역 등록</h2>
+</div>
+
+<div class="fullsize_box box">
 <%= form_for @service, :html => {:multipart => true} do |f| %>
-    이름 : <%= f.text_field :name %>
-    모집마감시간 : <%= f.text_field :due_date %>
-    서비스 기획서 : <%= file_field :service_file, :file %>
-    <%= f.submit "등록" %>
+  <ul id="new_service">
+    <li>이름 : <%= f.text_field :name %></li>
+    <li>모집마감시간 : <%= f.text_field :due_date %></li>
+    <li class="input_fileupload">서비스 기획서 : <%= file_field :service_file, :file %></li>
+    <li class="input_submit right"><%= f.submit "등록" %></li>
+  </ul>
 <% end %>
+</div>
 
 <% if notice %>
     <%= notice %>

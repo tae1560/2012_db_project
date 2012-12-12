@@ -5,19 +5,20 @@
 </div>
 
 <div class="fullsize_box box">
-  <h3 id="developer_upload_button" class="pseudo_link">개발결과물 업로드</h3>
+  <h3 id="developer_upload_button" class="pseudo_link dropdown">개발결과물 업로드</h3>
   <div id="developer_upload_view">
   
   <hr />
   
   <%= form_for DevelopmentResult.new, :format => :json, :html => {:multipart => true} do |f| %>
     <ul>
-      <li>개발결과물 이름 <%= f.text_field :name %> </li>
+      <li>개발결과물 이름 : <%= f.text_field :name %> </li>
       <li><hr /></li>
       <li>개발결과물 첨부자료 </li>
       <li class="input_fileupload"> [1] <%= file_field :files, :file1 %> </li>
       <li class="input_fileupload"> [2] <%= file_field :files, :file2 %> </li>
       <li class="input_fileupload"> [3] <%= file_field :files, :file3 %> </li>
+      <li class="small_msg">개발물 첨부자료에는 본인 개발물에 대한 충분한 설명이 있어야 하며, 개발 기간과 총 참여자가 명시되어야 합니다.</li>
       <li><hr /></li>
       <li class="input_submit"><%= f.submit "개발결과물 올리기" %> </li>
     </ul>
@@ -35,15 +36,16 @@
 </div>
 
 <div class="fullsize_box box">
-  <h3>내 개발결과물</h3>
+  <h3>개발결과물 목록</h3>
   <hr />
   <% if @development_results.empty? %>
   <div class="small_msg">업로드한 개발결과물이 없습니다!</div>
   <hr />
   <% else %>
   <% @development_results.each do |development_result| %>
-    <h4><%= development_result.name %></h4>
-    <ul class="developer_upload_list">
+  <div>
+    <h4 class="developer_upload pseudo_link dropdown"><%= development_result.name %></h4>
+    <ul class="developer_upload_list" style="display:none">
       <li>고유 관리번호 : <%= development_result.id %></li>
       
       <li>전문분야 :
@@ -67,19 +69,90 @@
       </li>
       
       <li>평가결과 :
-        <% if development_result.evaluation_results.empty? %>
-		<div class="small_msg">평가 대기 중입니다.</div>
-		<% else %>
+      <% if development_result.evaluation_results.empty? %>
+      <div class="small_msg">평가 대기 중입니다.</div>
+      <% else %>
+      <div class="box fullsize_box">
+        
+		<%
+		_creativity = 0;
+		_concentration = 0;
+		_skill = 0;
+		_will = 0;
+		count = 0;
+		
+		development_result.evaluation_results.each do |result|
+	        _creativity += result.creativity;
+			_concentration += result.concentration;
+			_skill += result.skill;
+			_will += result.will;
+			count += 1;
+		end 
+		%>
+		
+        <div class="bar_score">
+        <div class="bar_container">
+        <div class="bar_general bar_creativity" style="width:<%= _creativity / count / 4 %>%"></div>
+        <div class="bar_general bar_concentration" style="width:<%= _concentration / count / 4 %>%"></div>
+        <div class="bar_general bar_skill" style="width:<%= _skill / count / 4 %>%"></div>
+        <div class="bar_general bar_will" style="width:<%= _will / count / 4 %>%"></div>
+        </div>
+        <div class="bar_index">
+	      <span class="score_number"><%= (_creativity + _concentration + _skill + _will) %></span>
+          <span class="underscore"> / 400 </span>
+        </div>
+        </div>
+        
+        <ul>
+		  <li class="font_creativity">창의력 : <span class="score_number"><%= _creativity %></span>
+          <span class="underscore"> / 100 </span><div class="star"></div></li>
+          <li class="font_concentration">몰입력 : <span class="score_number"><%= _concentration %></span>
+          <span class="underscore"> / 100 </span><div class="star"></div></li>
+          <li class="font_skill">기술력 : <span class="score_number"><%= _skill %></span>
+          <span class="underscore"> / 100 </span><div class="star"></div></li>
+          <li class="font_will">의지력 : <span class="score_number"><%= _will %></span>
+          <span class="underscore"> / 100 </span><div class="star"></div></li>
+        </ul>
+		
+		<!--
 		<ul>
-        <% development_result.evaluation_results.each do |result| %>
-          <li>결과</li>
+		<% development_result.evaluation_results.each do |result| %>
+		<li><%=result.inspect%></li>
         <% end #each %>
         </ul>
-        <% end #if-else %>
+        -->
+        
+      </div>
+      <% end #if-else %>
       </li>
     </ul>
     <hr />
+  </div>
   <% end #each %>
   <% end #if-else %>
 </div>
 
+<script type="text/javascript">
+$(".developer_upload").click(function(){
+	if ($(this).parent().find(".developer_upload_list").is(":hidden")) {
+		$(this).parent().find(".developer_upload_list").slideDown(350);
+		$(this).parent().find(".bar_general").width(0);
+		$(this).parent().find(".bar_creativity").animate({width:$(this).parent().find(".font_creativity .score_number").html() / 4 + "%"}, 1000);
+		$(this).parent().find(".bar_concentration").delay(200).animate({width:$(this).parent().find(".font_concentration .score_number").html() / 4 + "%"}, 1000);
+		$(this).parent().find(".bar_skill").delay(400).animate({width:$(this).parent().find(".font_skill .score_number").html() / 4 + "%"}, 1000);
+		$(this).parent().find(".bar_will").delay(600).animate({width:$(this).parent().find(".font_will .score_number").html() / 4 + "%"}, 1000);
+	}
+	else {$(this).parent().find(".developer_upload_list").slideUp(350);}
+});
+
+$(".star").raty({
+	half : true
+});
+
+$(".score_number").keyup(function(){
+	$(this).parent().find(".star").raty('score', this.innerHTML / 20.0).raty('readOnly', true);
+});
+
+$(".score_number").keyup();
+
+</script>

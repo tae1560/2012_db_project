@@ -48,9 +48,9 @@
             <% end %>
             &nbsp;&nbsp;
             <% if development_result.pro_fields.empty? %>
-            <%= f.submit "선정" %>
+            <div class="input_submit right"><%= f.submit "선정" %></div>
 			<% else %>
-            <%= f.submit "수정" %>
+            <div class="input_submit right"><%= f.submit "수정" %></div>
 			<% end #if-else %>
         <% end %>
       </div>
@@ -96,7 +96,7 @@
            </ol>
            <div>
             <%= hidden_field :development_result, :id, :value => development_result.id %>
-            <%= f.submit "선택한 평가자에게 요청하기" %>
+            <div class="input_submit right"><%= f.submit "선택한 평가자에게 요청하기" %></div>
            </div>
         <% end %>
       </div>
