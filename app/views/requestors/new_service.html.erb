@@ -4,24 +4,18 @@
   <h2>용역 등록</h2>
 </div>
 
-<div class="fullsize_box box">
 <%= form_for @service, :html => {:multipart => true} do |f| %>
+
+<div class="fullsize_box box">
   <ul id="new_service">
     <li>이름 : <%= f.text_field :name %></li>
     <li>모집마감시간 : <%= f.text_field :due_date %></li>
     <li class="input_fileupload">서비스 기획서 : <%= file_field :service_file, :file %></li>
-
-    <li>창의력 : <%= f.text_field :creativity, :class => "star_input", :value => "0" %><span> / 100 </span><div class="star"></div></li>
-    <li>몰입력 : <%= f.text_field :concentration, :class => "star_input", :value => "0" %><span> / 100 </span><div class="star"></div></li>
-    <li>기술력 : <%= f.text_field :skill, :class => "star_input", :value => "0" %><span> / 100 </span><div class="star"></div></li>
-    <li>의지력 : <%= f.text_field :will, :class => "star_input", :value => "0" %><span> / 100 </span><div class="star"></div></li>
-
-    <li class="input_submit right"><%= f.submit "등록" %></li>
   </ul>
-<% end %>
 </div>
 
 <div class="fullsize_box box">
+<div class="small_msg">슬라이더 조절을 통해 각 분야의 개발자의 평가 가치를 제시할 수 있습니다.</div>
 <div class="bar_score">
     <div class="bar_container">
         <div class="bar_general bar_scroll bar_creativity" style="width:25%;left:0%;"></div>
@@ -34,34 +28,115 @@
         <div class="bar_controller" id="control_ski_wil" style="left:75%;"></div>
     </div>
 </div>
+</div>
+
+<div class="fullsize_box box">
+  <ul id="new_service_num" class="eval_list">
+    <li class="font_creativity">창의력 : <%= f.text_field :creativity, :class => "input", :value => "25" %><span> % </span></li>
+    <li class="font_concentration">몰입력 : <%= f.text_field :concentration, :class => "input", :value => "25" %><span> % </span></li>
+    <li class="font_skill">기술력 : <%= f.text_field :skill, :class => "input", :value => "25" %><span> % </span></li>
+    <li class="font_will">의지력 : <%= f.text_field :will, :class => "input", :value => "25", :readonly => "readonly" %><span> % </span></li>
+    <li class="small_msg">의지력 항목은 총합이 100이 되도록 자동 수정됩니다.</li>
+  </ul>
+  <div class="input_submit right"><%= f.submit "등록" %></div>
+</div>
+
+<% end %>
+
+<script type="text/javascript">
+	$(".input").keyup(function(){
+		sum = a = isNaN(parseInt($(".font_creativity input").get(0).value))? 0 : parseInt($(".font_creativity input").get(0).value);
+		sum += b = isNaN(parseInt($(".font_concentration input").get(0).value))? 0 : parseInt($(".font_concentration input").get(0).value);
+		sum += c = isNaN(parseInt($(".font_skill input").get(0).value))? 0 : parseInt($(".font_skill input").get(0).value);
+		$(".font_will input").get(0).value = parseInt(100 - sum);
+		
+		$(".bar_creativity").css("width", a + "%");
+		$(".bar_concentration").css({"width" : b + "%", "left" : a + "%"});
+		$(".bar_skill").css({"width" : c + "%", "left" : (a + b) + "%"});
+		$(".bar_will").css({"width" : (100 - sum) + "%", "left" : sum + "%"});
+		
+		$("#control_cre_con").css("left", $(".bar_concentration").position().left);
+		$("#control_con_ski").css("left", $(".bar_skill").position().left);
+		$("#control_ski_wil").css("left", $(".bar_will").position().left);	
+	});
+</script>
 
 <script type="text/javascript">
 	var mouse_event = false;
-	var mouse_x = 0, left_x = 0, x = 0;
+	var mouse_x = 0;
+	
+	var sleft = new Array();
+	var sw = new Array();
+	var w = new Array();
 	
 	function check_item(item) {
 		if (item == $("#control_cre_con").get(0)) {
-			return [[".bar_creativity"], [".bar_concentration", ".bar_skill", "bar_will"]];
+			return 1;
 		}
 		else if (item == $("#control_con_ski").get(0)) {
-			return [[".bar_creativity", ".bar_concentration"], [".bar_skill", "bar_will"]];
+			return 2;
 		}
-		return [[".bar_creativity", ".bar_concentration", ".bar_skill"], ["bar_will"]];
+		return 3;
 	}
+	
 	$(".bar_controller").mousedown(function(e){
 		mouse_event = this;
 		mouse_x = e.clientX;
-		left_x = $(".bar_creativity").offset().left;
-		x = $(".bar_will").offset().left + $(".bar_will").width();
+		sleft[0] = 0;
+		sleft[1] = $("#control_cre_con").position().left;
+		sleft[2] = $("#control_con_ski").position().left;
+		sleft[3] = $("#control_ski_wil").position().left;
+		
+		sw[0] = $(".bar_creativity").width();
+		sw[1] = $(".bar_concentration").width();
+		sw[2] = $(".bar_skill").width();
+		sw[3] = $(".bar_will").width();
+		
+		w[0] = w[1] = w[2] = w[3] = 0;
 	}).mouseup(function(){
 		mouse_event = false;
 	});
+	
 	$(".bar_container").mousemove(function(e){
 		if (mouse_event != false){
-			that = mouse_event;
-			cmouse_x = e.clientX;
-			$(that).css("left", "+=" + (cmouse_x - mouse_x).toString());
-			mouse_x = cmouse_x;
+			var that = mouse_event;
+			var llen = check_item(that);
+			var set = [".bar_creativity", ".bar_concentration", ".bar_skill", ".bar_will"];
+			var diff = e.clientX - mouse_x;
+			mouse_x += diff;
+			
+			var x = sw[0] + sw[1] + sw[2] + sw[3];
+			var lx = 0, rx = 0;
+			for (var i = 0; i < llen; i++){
+				lx += sw[i] + w[i];
+			}
+			rx = x - lx;
+			
+			var stack_width = 0;
+			
+			for (var i = 0; i < llen; i++){
+				w[i] += diff * ((sw[i] + w[i]) / lx);
+				
+				$(set[i]).css("left", sleft[i] + stack_width).css("width", sw[i] + w[i]);
+				stack_width += w[i];
+			}
+			
+			for (var i = llen; i < 4; i++){
+				w[i] -= diff * ((sw[i] + w[i]) / rx);
+				
+				$(set[i]).css("left", sleft[i] + stack_width).css("width", sw[i] + w[i]);
+				stack_width += w[i];
+			}
+			
+			$("#control_cre_con").css("left", $(".bar_concentration").position().left);
+			$("#control_con_ski").css("left", $(".bar_skill").position().left);
+			$("#control_ski_wil").css("left", $(".bar_will").position().left);
+			
+			var sum = 100;
+			sum -= $(".font_creativity input").get(0).value = Math.round((sw[0] + w[0]) / x * 100);
+			sum -= $(".font_concentration input").get(0).value = Math.round((sw[1] + w[1]) / x * 100);
+			sum -= $(".font_skill input").get(0).value = Math.round((sw[2] + w[2]) / x * 100);
+			$(".font_will input").get(0).value = sum;
 		}
 	}).mouseup(function(){
 		mouse_event = false;

@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c89fee7f-2237-4288-94c2-30eda02b9fef" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/sw_developers/services.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/sw_developers_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/sw_developers_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/development_result.rb" afterPath="$PROJECT_DIR$/app/models/development_result.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/pro_field.rb" afterPath="$PROJECT_DIR$/app/models/pro_field.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/sw_developer.rb" afterPath="$PROJECT_DIR$/app/models/sw_developer.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/team.rb" afterPath="$PROJECT_DIR$/app/models/team.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/team_person.rb" afterPath="$PROJECT_DIR$/app/models/team_person.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/development_results.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/development_results.css.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/requestors.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/requestors.css.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/administrators/manage_services.html.erb" afterPath="$PROJECT_DIR$/app/views/administrators/manage_services.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/sw_developers/_menu.html.erb" afterPath="$PROJECT_DIR$/app/views/sw_developers/_menu.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/administrators/pro_field.html.erb" afterPath="$PROJECT_DIR$/app/views/administrators/pro_field.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/requestors/new_service.html.erb" afterPath="$PROJECT_DIR$/app/views/requestors/new_service.html.erb" />
     </list>
     <ignored path="2012_db_project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,10 +53,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="services.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="services.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/sw_developers/services.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="13" selection-start="1676" selection-end="1676" vertical-scroll-proportion="0.6385542">
+            <state line="35" column="8" selection-start="1013" selection-end="1013" vertical-scroll-proportion="-5.4583335">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="manage_services.html.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/administrators/manage_services.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="34" selection-start="174" selection-end="174" vertical-scroll-proportion="0.21466905">
               <folding />
             </state>
           </provider>
@@ -85,7 +88,6 @@
         <option value="$PROJECT_DIR$/app/models/service_pro_field.rb" />
         <option value="$PROJECT_DIR$/app/controllers/services_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/administrators_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/administrators/manage_services.html.erb" />
         <option value="$PROJECT_DIR$/app/views/sw_developers/_menu.html.erb" />
         <option value="$PROJECT_DIR$/app/models/sw_developer.rb" />
         <option value="$PROJECT_DIR$/app/models/team.rb" />
@@ -97,6 +99,7 @@
         <option value="$PROJECT_DIR$/app/models/development_result.rb" />
         <option value="$PROJECT_DIR$/app/controllers/sw_developers_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/sw_developers/services.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/administrators/manage_services.html.erb" />
       </list>
     </option>
   </component>
@@ -853,13 +856,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/administrators/manage_services.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="1309" selection-end="1309" vertical-scroll-proportion="0.80500895">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/teams_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="22" selection-start="738" selection-end="738" vertical-scroll-proportion="0.0">
@@ -883,7 +879,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/sw_developers/services.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="13" selection-start="1676" selection-end="1676" vertical-scroll-proportion="0.6385542">
+        <state line="35" column="8" selection-start="1013" selection-end="1013" vertical-scroll-proportion="-5.4583335">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/administrators/manage_services.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="34" selection-start="174" selection-end="174" vertical-scroll-proportion="0.21466905">
           <folding />
         </state>
       </provider>
