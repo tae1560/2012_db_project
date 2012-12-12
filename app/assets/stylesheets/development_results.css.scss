@@ -80,6 +80,11 @@
 	height: 1.875em;
 }
 
+.bar_scroll
+{
+	position: absolute !important;
+}
+
 .bar_creativity
 {
 	background: #E34616;
@@ -124,4 +129,14 @@
 	position: absolute;
 	bottom: 0.0625em;
 	right: 0.625em;
+}
+
+.bar_controller
+{
+	position: absolute;
+	background: rgba(255, 255, 255, 0.6);
+	width: 0.4em;
+	margin-left: -0.2em;
+	height: 100%;
+	cursor: col-resize;
 }

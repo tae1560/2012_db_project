@@ -21,6 +21,54 @@
 <% end %>
 </div>
 
+<div class="fullsize_box box">
+<div class="bar_score">
+    <div class="bar_container">
+        <div class="bar_general bar_scroll bar_creativity" style="width:25%;left:0%;"></div>
+        <div class="bar_general bar_scroll bar_concentration" style="width:25%;left:25%;"></div>
+        <div class="bar_general bar_scroll bar_skill" style="width:25%;left:50%;"></div>
+        <div class="bar_general bar_scroll bar_will" style="width:25%;left:75%;"></div>
+        
+        <div class="bar_controller" id="control_cre_con" style="left:25%;"></div>
+        <div class="bar_controller" id="control_con_ski" style="left:50%;"></div>
+        <div class="bar_controller" id="control_ski_wil" style="left:75%;"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+	var mouse_event = false;
+	var mouse_x = 0, left_x = 0, x = 0;
+	
+	function check_item(item) {
+		if (item == $("#control_cre_con").get(0)) {
+			return [[".bar_creativity"], [".bar_concentration", ".bar_skill", "bar_will"]];
+		}
+		else if (item == $("#control_con_ski").get(0)) {
+			return [[".bar_creativity", ".bar_concentration"], [".bar_skill", "bar_will"]];
+		}
+		return [[".bar_creativity", ".bar_concentration", ".bar_skill"], ["bar_will"]];
+	}
+	$(".bar_controller").mousedown(function(e){
+		mouse_event = this;
+		mouse_x = e.clientX;
+		left_x = $(".bar_creativity").offset().left;
+		x = $(".bar_will").offset().left + $(".bar_will").width();
+	}).mouseup(function(){
+		mouse_event = false;
+	});
+	$(".bar_container").mousemove(function(e){
+		if (mouse_event != false){
+			that = mouse_event;
+			cmouse_x = e.clientX;
+			$(that).css("left", "+=" + (cmouse_x - mouse_x).toString());
+			mouse_x = cmouse_x;
+		}
+	}).mouseup(function(){
+		mouse_event = false;
+	});
+	//$("#control_cre_con").
+</script>
+
 <% if notice %>
     <%= notice %>
     <% notice = nil %>
