@@ -9,6 +9,11 @@
           <li>제안서 : <%= link_to service.service_file_path, "/data/" + service.service_file_path, :target => '_blank' %></li>
       <% end %>
 
+      <li>창의력 : <%= service.creativity %></li>
+      <li>몰입력 : <%= service.concentration %></li>
+      <li>기술력 : <%= service.skill %></li>
+      <li>의지력 : <%= service.will %></li>
+
     </ul>
 
 <% end %>

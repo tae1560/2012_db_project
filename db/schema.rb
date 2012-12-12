@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121209164610) do
+ActiveRecord::Schema.define(:version => 20121212120115) do
 
   create_table "administrators", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -141,6 +141,10 @@ ActiveRecord::Schema.define(:version => 20121209164610) do
     t.integer  "administrator_id"
     t.integer  "team_id"
     t.string   "name"
+    t.integer  "creativity"
+    t.integer  "concentration"
+    t.integer  "skill"
+    t.integer  "will"
   end
 
   add_index "services", ["administrator_id"], :name => "services_administrator_id_fk"

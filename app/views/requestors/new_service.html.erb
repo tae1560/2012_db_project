@@ -10,6 +10,12 @@
     <li>이름 : <%= f.text_field :name %></li>
     <li>모집마감시간 : <%= f.text_field :due_date %></li>
     <li class="input_fileupload">서비스 기획서 : <%= file_field :service_file, :file %></li>
+
+    <li>창의력 : <%= f.text_field :creativity, :class => "star_input", :value => "0" %><span> / 100 </span><div class="star"></div></li>
+    <li>몰입력 : <%= f.text_field :concentration, :class => "star_input", :value => "0" %><span> / 100 </span><div class="star"></div></li>
+    <li>기술력 : <%= f.text_field :skill, :class => "star_input", :value => "0" %><span> / 100 </span><div class="star"></div></li>
+    <li>의지력 : <%= f.text_field :will, :class => "star_input", :value => "0" %><span> / 100 </span><div class="star"></div></li>
+
     <li class="input_submit right"><%= f.submit "등록" %></li>
   </ul>
 <% end %>
