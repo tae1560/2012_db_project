@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121212124740) do
+ActiveRecord::Schema.define(:version => 20121212182019) do
 
   create_table "administrators", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -181,20 +181,11 @@ ActiveRecord::Schema.define(:version => 20121212124740) do
     t.integer  "personal_pay"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "pro_field_id"
   end
 
   add_index "team_people", ["sw_developer_id"], :name => "team_people_sw_developer_id_fk"
   add_index "team_people", ["team_id"], :name => "team_people_team_id_fk"
-
-  create_table "team_person_pro_fields", :force => true do |t|
-    t.integer  "pro_field_id"
-    t.integer  "team_person_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
-
-  add_index "team_person_pro_fields", ["pro_field_id"], :name => "team_person_pro_fields_pro_field_id_fk"
-  add_index "team_person_pro_fields", ["team_person_id"], :name => "team_person_pro_fields_team_person_id_fk"
 
   create_table "teams", :force => true do |t|
     t.integer  "reader_sw_developer_id"
@@ -266,9 +257,6 @@ ActiveRecord::Schema.define(:version => 20121212124740) do
 
   add_foreign_key "team_people", "sw_developers", :name => "team_people_sw_developer_id_fk"
   add_foreign_key "team_people", "teams", :name => "team_people_team_id_fk"
-
-  add_foreign_key "team_person_pro_fields", "pro_fields", :name => "team_person_pro_fields_pro_field_id_fk"
-  add_foreign_key "team_person_pro_fields", "team_people", :name => "team_person_pro_fields_team_person_id_fk"
 
   add_foreign_key "teams", "services", :name => "teams_service_id_fk"
   add_foreign_key "teams", "sw_developers", :name => "teams_reader_sw_developer_id_fk", :column => "reader_sw_developer_id"

@@ -1,0 +1,61 @@
+<%= render "menu" %>
+
+<% @service_data.each do |service_datum| %>
+    <% service = service_datum["service"] %>
+    <ul>
+      <li>이름 : <%= service.name %></li>
+      <li>모집마감시간 : <%= service.due_date %></li>
+
+      <% if service.service_file_path %>
+          <li>제안서 : <%= link_to service.service_file_path, "/data/" + service.service_file_path, :target => '_blank' %></li>
+      <% end %>
+
+      <li>창의력 : <%= service.creativity %></li>
+      <li>몰입력 : <%= service.concentration %></li>
+      <li>기술력 : <%= service.skill %></li>
+      <li>의지력 : <%= service.will %></li>
+    </ul>
+
+    <div>
+      <h1>완성된 팀</h1>
+    </div>
+    <div>
+      <h1>불완성 팀</h1>
+
+    </div>
+    <div>
+      <h1>내가 만든 팀</h1>
+
+      <% # 자신의 팀이 없을 경우 만들기 %>
+      <% if service_datum["own_team"] == nil %>
+          <%= form_for Team.new do |f| %>
+            이름 : <%= f.text_field :name %>
+            나의 단가 : <%= text_field :team_person, :personal_pay %>
+            나의 전공 :
+              <% @pro_fields.each do |pro_field|  %>
+                  <%= radio_button :team_person, :pro_field, pro_field.id %>
+                  <%= pro_field.name %>
+              <% end %>
+              <%= hidden_field :sw_developer, :id, :value => @sw_developer.id %>
+              <%= hidden_field :service, :id, :value => service.id %>
+              <%= f.submit "팀만들기" %>
+          <% end %>
+
+      <% else # 팀이 있을 경우 %>
+          <%= form_for service_datum["own_team"]["team"] do |f| %>
+              이름 : <%= f.text_field :name %>
+              <%= f.submit "수정하기" %>
+          <% end %>
+
+          팀장 : <%= render "users/user_link", :user => service_datum["own_team"]["team"].sw_developer.user %>
+
+          필요 전문분야 :
+         <% service_datum["own_team"]["need_pro_fields"].each do |pro_field_id| %>
+          <% pro_field = ProField.find(pro_field_id) %>
+              <%= pro_field.name %>
+         <% end %>
+
+      <% end %>
+    </div>
+    <hr/>
+<% end %>

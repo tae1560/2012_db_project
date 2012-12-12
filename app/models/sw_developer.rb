@@ -5,6 +5,8 @@ class SwDeveloper < ActiveRecord::Base
   belongs_to :administrator
 
   has_many :pre_chosen_developers
+  has_many :services, :through => :pre_chosen_developers
+
   has_many :team_people
   has_many :development_results
   has_many :teams, :foreign_key => :reader_sw_developer_id

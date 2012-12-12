@@ -2,8 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c89fee7f-2237-4288-94c2-30eda02b9fef" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/sw_developers/services.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/sw_developers_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/sw_developers_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/development_result.rb" afterPath="$PROJECT_DIR$/app/models/development_result.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/pro_field.rb" afterPath="$PROJECT_DIR$/app/models/pro_field.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/sw_developer.rb" afterPath="$PROJECT_DIR$/app/models/sw_developer.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/team.rb" afterPath="$PROJECT_DIR$/app/models/team.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/team_person.rb" afterPath="$PROJECT_DIR$/app/models/team_person.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/administrators/manage_services.html.erb" afterPath="$PROJECT_DIR$/app/views/administrators/manage_services.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/sw_developers/_menu.html.erb" afterPath="$PROJECT_DIR$/app/views/sw_developers/_menu.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
     </list>
     <ignored path="2012_db_project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -22,28 +32,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="manage_services.html.erb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/administrators/manage_services.html.erb">
+      <file leaf-file-name="sw_developers_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/sw_developers_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="21" selection-start="21" selection-end="21" vertical-scroll-proportion="0.0">
+            <state line="113" column="23" selection-start="3301" selection-end="3314" vertical-scroll-proportion="-9.730769">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="services_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/services_controller.rb">
+      <file leaf-file-name="team.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/team.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="0" selection-start="1339" selection-end="1339" vertical-scroll-proportion="0.0">
+            <state line="11" column="52" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="administrators_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/administrators_controller.rb">
+      <file leaf-file-name="teams_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/teams_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="21" selection-start="2255" selection-end="2255" vertical-scroll-proportion="0.0">
+            <state line="21" column="22" selection-start="738" selection-end="738" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="services.html.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/sw_developers/services.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="51" column="13" selection-start="1676" selection-end="1676" vertical-scroll-proportion="0.6385542">
               <folding />
             </state>
           </provider>
@@ -62,22 +81,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/models/team.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/development_results_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/evaluators/evaluation_request.html.erb" />
-        <option value="$PROJECT_DIR$/config/database.yml" />
-        <option value="$PROJECT_DIR$/app/views/requestors/new_service.html.erb" />
-        <option value="$PROJECT_DIR$/db/migrate/20121212120115_add_scores_to_service.rb" />
-        <option value="$PROJECT_DIR$/app/models/service.rb" />
-        <option value="$PROJECT_DIR$/app/views/requestors/services.html.erb" />
-        <option value="$PROJECT_DIR$/db/migrate/20121212124740_remove_score_from_service_pro_fields.rb" />
         <option value="$PROJECT_DIR$/app/views/administrators/_menu.html.erb" />
         <option value="$PROJECT_DIR$/app/models/service_pro_field.rb" />
         <option value="$PROJECT_DIR$/app/controllers/services_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/sw_developers_controller.rb" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/controllers/administrators_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/administrators/manage_services.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/sw_developers/_menu.html.erb" />
+        <option value="$PROJECT_DIR$/app/models/sw_developer.rb" />
+        <option value="$PROJECT_DIR$/app/models/team.rb" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20121212182019_modify_team_person_pro_fields_to_has_one.rb" />
+        <option value="$PROJECT_DIR$/app/models/team_person.rb" />
+        <option value="$PROJECT_DIR$/app/models/pro_field.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/teams_controller.rb" />
+        <option value="$PROJECT_DIR$/app/models/development_result.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/sw_developers_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/sw_developers/services.html.erb" />
       </list>
     </option>
   </component>
@@ -158,6 +177,38 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="2012_db_project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="2012_db_project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="migrate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="2012_db_project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="2012_db_project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -220,7 +271,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="evaluators" />
+              <option name="myItemId" value="requestors" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -655,18 +706,18 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17575757" sideWeight="0.6713178" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33939394" sideWeight="0.6713178" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32868218" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32868218" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32868218" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -725,114 +776,114 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/evaluators/evaluation_result.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/models/team_person_pro_field.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="14" selection-start="2597" selection-end="2597" vertical-scroll-proportion="0.70246476">
+        <state line="3" column="2" selection-start="108" selection-end="108" vertical-scroll-proportion="0.07281554">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/evaluation_result.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121203151015_create_team_person_pro_fields.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="47" selection-start="496" selection-end="496" vertical-scroll-proportion="0.2669903">
+        <state line="2" column="5" selection-start="76" selection-end="76" vertical-scroll-proportion="0.05033557">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/evaluation_results_controller.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121212182019_modify_team_person_pro_fields_to_has_one.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="20" selection-start="78" selection-end="94" vertical-scroll-proportion="-0.14527027">
+        <state line="11" column="45" selection-start="369" selection-end="369" vertical-scroll-proportion="0.27684563">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/development_results_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/team_person.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="24" selection-start="1775" selection-end="1781" vertical-scroll-proportion="0.26013514">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/service_pro_field.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="39" selection-start="62" selection-end="82" vertical-scroll-proportion="0.024271844">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/service.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="33" selection-start="405" selection-end="426" vertical-scroll-proportion="0.2787162">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/pre_chosen_developer.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/administrators/evaluation_request.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="105" selection-start="481" selection-end="559" vertical-scroll-proportion="0.403169">
+        <state line="6" column="20" selection-start="146" selection-end="146" vertical-scroll-proportion="0.14563107">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/sw_developer.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="33" selection-start="174" selection-end="195" vertical-scroll-proportion="-3.4615386">
+        <state line="12" column="0" selection-start="369" selection-end="369" vertical-scroll-proportion="0.29126215">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/administrator.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/development_result_pro_field.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="195" selection-end="195" vertical-scroll-proportion="0.1699029">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/sw_developers_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/pro_field.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="52" selection-start="391" selection-end="391" vertical-scroll-proportion="0.2669903">
+        <state line="3" column="36" selection-start="97" selection-end="97" vertical-scroll-proportion="0.07550336">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/development_result.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="42" selection-start="476" selection-end="476" vertical-scroll-proportion="0.2184466">
+        <state line="16" column="3" selection-start="496" selection-end="496" vertical-scroll-proportion="0.40268457">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/services_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/sw_developers/development_results.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="0" selection-start="1339" selection-end="1339" vertical-scroll-proportion="0.0">
+        <state line="0" column="4" selection-start="4" selection-end="4" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/administrators_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/requestors/services.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="21" selection-start="2255" selection-end="2255" vertical-scroll-proportion="0.0">
+        <state line="0" column="4" selection-start="4" selection-end="4" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/database.yml">
+    <entry file="file://$PROJECT_DIR$/app/views/requestors/new_service.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="26" selection-start="513" selection-end="513" vertical-scroll-proportion="0.50970876">
+        <state line="0" column="4" selection-start="4" selection-end="4" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/administrators/manage_services.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="21" selection-start="21" selection-end="21" vertical-scroll-proportion="0.0">
+        <state line="30" column="0" selection-start="1309" selection-end="1309" vertical-scroll-proportion="0.80500895">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/teams_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="22" selection-start="738" selection-end="738" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/team.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="52" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/sw_developers_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="113" column="23" selection-start="3301" selection-end="3314" vertical-scroll-proportion="-9.730769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/sw_developers/services.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="13" selection-start="1676" selection-end="1676" vertical-scroll-proportion="0.6385542">
           <folding />
         </state>
       </provider>

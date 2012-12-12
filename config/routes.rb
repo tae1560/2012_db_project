@@ -25,6 +25,7 @@ DbProject::Application.routes.draw do
   match "sw_developers/home"
   match "sw_developers/profile"
   match "sw_developers/development_results"
+  match "sw_developers/services"
 
   match "requestors/home"
   match "requestors/profile"
@@ -52,6 +53,7 @@ DbProject::Application.routes.draw do
   resources :sub_fields
   resources :evaluation_results
   resources :services
+  resources :teams
 
   match "initialize_all_data", :to => "users#initialize_all_data"
 
