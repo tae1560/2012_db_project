@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121212120115) do
+ActiveRecord::Schema.define(:version => 20121212124740) do
 
   create_table "administrators", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -119,14 +119,11 @@ ActiveRecord::Schema.define(:version => 20121212120115) do
   add_index "result_files", ["development_result_id"], :name => "result_files_development_result_id_fk"
 
   create_table "service_pro_fields", :force => true do |t|
-    t.float    "creativity_weight"
-    t.float    "concentration_weight"
-    t.float    "skill_weight"
-    t.float    "will_weight"
     t.integer  "pro_field_id"
     t.integer  "service_id"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+    t.integer  "number_of_developers"
   end
 
   add_index "service_pro_fields", ["pro_field_id"], :name => "service_pro_fields_pro_field_id_fk"

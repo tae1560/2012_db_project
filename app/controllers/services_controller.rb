@@ -39,4 +39,29 @@ class ServicesController < ApplicationController
 
     end
   end
+
+  def add_service_pro_field
+    @pro_field_fields = params[:pro_field_fields]
+    @service = Service.find(params[:service][:id])
+
+    @pro_field_fields.each do |pro_field_field|
+      pro_field_id = pro_field_field[0].to_i
+      number_of_developers = pro_field_field[1].to_i
+
+      pro_field = ProField.find(pro_field_id)
+
+      if number_of_developers > 0
+        service_pro_field = @service.service_pro_fields.where(:pro_field_id => pro_field.id).first
+        unless service_pro_field
+          service_pro_field = @service.service_pro_fields.new
+          service_pro_field.pro_field = pro_field
+        end
+
+        service_pro_field.number_of_developers = number_of_developers
+        service_pro_field.save
+      end
+    end
+
+    redirect_to :back
+  end
 end

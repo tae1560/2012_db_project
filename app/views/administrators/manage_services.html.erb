@@ -1,0 +1,44 @@
+<%= render "menu" %>
+
+<% @services.each do |service| %>
+    <div>
+      용역이름 : <%= service.name %>
+
+      <!-- 전문분야별 인원 리스트 -->
+      <div>
+        <%= form_for :pro_field_fields, :url => "/services/add_service_pro_field" do |f| %>
+            <% @pro_fields.each do |pro_field| %>
+                <%= pro_field.name %>
+                <% if service.service_pro_fields.where(:pro_field_id => pro_field.id).exists? %>
+                    <%= f.text_field pro_field.id, :size => 5, :value => service.service_pro_fields.where(:pro_field_id => pro_field.id).first.number_of_developers %>
+                <% else %>
+                    <%= f.text_field pro_field.id, :size => 5, :value => 0 %>
+                <% end %>
+            <% end %>
+            <%= hidden_field :service, :id, :value => service.id %>
+            <%= f.submit "개발인원 정하기" %>
+        <% end %>
+      </div>
+
+      <!-- 모든 개발자 리스트 -->
+      <%= form_for :select_developers, :url => "select_developers" do |f| %>
+          <% @sw_developers.each do |sw_developer| %>
+              <!-- 각 개발자별 선택 버튼 -->
+              <% if sw_developer.pre_chosen_developers.where(:service_id => service.id).exists? %>
+                <% # 이미 선택되어 있는 경우 %>
+              <% else %>
+                  <%= render "users/user_link", :user => sw_developer.user %>
+                  <% sw_developer.pro_fields.each do |sw_developer_pro_field| %>
+                      <%= sw_developer_pro_field.name %>
+                  <% end %>
+                  <%= f.check_box sw_developer.id %>
+              <% end %>
+
+          <% end %>
+
+          <%= hidden_field :service, :id, :value => service.id %>
+          <%= f.submit "개발자 선정" %>
+      <% end %>
+
+    </div>
+<% end %>

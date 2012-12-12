@@ -50,6 +50,33 @@ class AdministratorsController < ApplicationController
 
   end
 
+  def manage_services
+    @services = Service.all
+    @pro_fields = ProField.all
+    @sw_developers = SwDeveloper.all
+  end
+
+  def select_developers
+    select_developers_params = params[:select_developers]
+    @service = Service.find(params[:service][:id])
+
+    select_developers_params.each do |select_developers_param|
+      selected_developers_id = select_developers_param[0].to_i
+      selected = (select_developers_param[1].to_i == 1)
+
+      if selected
+        selected_developer = SwDeveloper.find(selected_developers_id)
+        pre_chosen_developer = selected_developer.pre_chosen_developers.new
+        pre_chosen_developer.service = @service
+        pre_chosen_developer.save
+      end
+    end
+    #respond_to do |format|
+    #  format.json { render json: params }
+    #end
+    redirect_to :back
+  end
+
   def pro_field
     @pro_fields = ProField.all
 

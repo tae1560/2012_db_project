@@ -11,8 +11,10 @@ DbProject::Application.routes.draw do
   match "administrators/home"
   match "administrators/profile"
   match "administrators/evaluation_request"
+  match "administrators/manage_services"
   match "administrators/pro_field"
   match "administrators/sub_field"
+  match "administrators/select_developers"
 
   match "evaluators/home"
   match "evaluators/profile"
@@ -29,6 +31,8 @@ DbProject::Application.routes.draw do
   match "requestors/services"
   match "requestors/new_service"
 
+  match "services/add_service_pro_field"
+
   #root :to => "sessions#login"
   #match "signup", :to => "users#new"
   #match "login", :to => "sessions#login"
@@ -38,11 +42,17 @@ DbProject::Application.routes.draw do
   #match "setting", :to => "sessions#setting"
 
   resources :users
+  resources :sw_developers
+  resources :administrators
+  resources :requestors
+  resources :evaluators
+
   resources :development_results
   resources :pro_fields
   resources :sub_fields
   resources :evaluation_results
   resources :services
+
   match "initialize_all_data", :to => "users#initialize_all_data"
 
   # The priority is based upon order of creation:
