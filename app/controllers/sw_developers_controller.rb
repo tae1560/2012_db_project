@@ -43,7 +43,7 @@ class SwDevelopersController < ApplicationController
 
   def services
     @pro_fields = ProField.all
-    @services = @sw_developer.services
+    @services = @sw_developer.services.where("due_date > ?", Time.now)
 
     # 자신이 만든 팀
 

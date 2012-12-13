@@ -21,7 +21,7 @@ class RequestorsController < ApplicationController
   end
 
   def services
-    @services = Service.all
+    @services = Service.where(:team_id => nil).all
   end
 
   def new_service

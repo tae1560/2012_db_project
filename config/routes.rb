@@ -33,6 +33,7 @@ DbProject::Application.routes.draw do
   match "requestors/new_service"
 
   match "services/add_service_pro_field"
+  match "services/select_team"
 
   #root :to => "sessions#login"
   #match "signup", :to => "users#new"

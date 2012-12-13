@@ -72,4 +72,22 @@ class ServicesController < ApplicationController
 
     redirect_to :back
   end
+
+  def select_team
+    service_id = params[:service][:id].to_i
+    team_id = params[:team][:id].to_i
+
+    if service_id and team_id
+      service = Service.find(service_id)
+      team = Team.find(team_id)
+
+      service.selected_team = team
+      service.save
+    end
+
+    respond_to do |format|
+      format.html { redirect_to :back }
+    end
+
+  end
 end

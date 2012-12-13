@@ -29,7 +29,22 @@
       </ul>
 
       <!-- 참여중인 팀정보 (완성된 팀) 시작 -->
+          <% total_number_of_developers = 0 %>
+          <% service.service_pro_fields.each do |service_pro_field| %>
+              <% total_number_of_developers += service_pro_field.number_of_developers %>
+          <% end %>
 
+          <% service.teams.each do |team| %>
+              <% if team.team_people.size < total_number_of_developers %>
+                  <%= render "/sw_developers/team_information", :team => team %>
+
+                  <%= form_for service, :url => "/services/select_team.json" do |f| %>
+                      <%= f.hidden_field :id, :value => service.id %>
+                      <%= hidden_field :team, :id, :value => team.id %>
+                      <%= f.submit "선택하기" %>
+                  <% end %>
+              <% end %>
+          <% end %>
       <!-- 참여중인 팀정보 (완성된 팀) 끝  -->
     <hr />
 <% end %>
