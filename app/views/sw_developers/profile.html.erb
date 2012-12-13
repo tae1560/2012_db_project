@@ -40,6 +40,10 @@
            count += 1;
          end
        end
+
+       if count == 0
+         count = 1
+       end
     %>
     창의력 : <%= _creativity/count %>
     몰입력 : <%= _concentration/count %>
