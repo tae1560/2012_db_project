@@ -1,5 +1,13 @@
 class ServicesController < ApplicationController
 
+  def index
+    @services = Service.all
+
+    respond_to do |format|
+      format.json { render :json => @services }
+    end
+  end
+
   def create
     @service = Service.new(params[:service])
 

@@ -10,6 +10,7 @@ class Service < ActiveRecord::Base
   belongs_to :administrator
 
   has_many :pre_chosen_developers
+  has_many :sw_developers, :through => :pre_chosen_developers
   has_many :teams
 
   has_many :pro_fields, :through => :service_pro_fields

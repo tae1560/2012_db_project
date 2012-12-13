@@ -31,23 +31,7 @@
       <h1>완성된 팀</h1>
       <div>
         <% service_datum[:complete_team].each do |team_data| %>
-            <ul>
-              <li>팀이름 : <%= team_data[:team].name %></li>
-              <li>팀장 : <%= render "users/user_link", :user => team_data[:team].sw_developer.user %></li>
-              <li>
-                <ul>
-                  <li>팀원들</li>
-                  <% team_data[:team_people].each do |team_person| %>
-                      <li>
-                        <%= render "users/user_link", :user => team_person.sw_developer.user %>
-                        수당 : <%= team_person.personal_pay %>
-                        전문분야 : <%= team_person.pro_field.name %>
-                      </li>
-                  <% end %>
-                </ul>
-              </li>
-              <li>총 수당 : <%= team_data[:total_pay] %></li>
-            </ul>
+            <%= render "team_information", :team => team_data[:team] %></li>
         <% end %>
       </div>
     </div>
@@ -55,23 +39,7 @@
       <h1>불완성 팀</h1>
       <div>
         <% service_datum[:incomplete_team].each do |team_data| %>
-            <ul>
-              <li>팀이름 : <%= team_data[:team].name %></li>
-              <li>팀장 : <%= render "users/user_link", :user => team_data[:team].sw_developer.user %></li>
-              <li>
-                <ul>
-                  <li>팀원들</li>
-                  <% team_data[:team_people].each do |team_person| %>
-                      <li>
-                        <%= render "users/user_link", :user => team_person.sw_developer.user %>
-                        수당 : <%= team_person.personal_pay %>
-                        전문분야 : <%= team_person.pro_field.name %>
-                      </li>
-                  <% end %>
-                </ul>
-              </li>
-              <li>총 수당 : <%= team_data[:total_pay] %></li>
-            </ul>
+            <%= render "team_information", :team => team_data[:team] %></li>
         <% end %>
       </div>
     </div>
@@ -95,23 +63,12 @@
           <% end %>
 
       <% else # 팀이 있을 경우 팀 관리 %>
+          <%= render "team_information", :team => service_datum[:own_team][:team] %></li>
+
           <%= form_for service_datum[:own_team][:team] do |f| %>
-              팀이름 : <%= f.text_field :name %>
+              팀이름 변경 : <%= f.text_field :name %>
               <%= f.submit "수정하기" %>
           <% end %>
-
-          팀장 : <%= render "users/user_link", :user => service_datum[:own_team][:team].sw_developer.user %>
-
-          <ul>
-            <li>팀원들</li>
-            <% service_datum[:own_team][:team_people].each do |team_person| %>
-                <li>
-                  <%= render "users/user_link", :user => team_person.sw_developer.user %>
-                  수당 : <%= team_person.personal_pay %>
-                  전문분야 : <%= team_person.pro_field.name %>
-                </li>
-            <% end %>
-          </ul>
 
           필요 전문분야 :
           <ul>
@@ -146,6 +103,26 @@
     </div>
     <div>
       <h1>내가 속한 팀 관리 : TODO 초대 수락 및 거절 및 수당 조절</h1>
+      <% service_datum[:my_team_people].each do |my_team_person| %>
+        <%= render "team_information", :team => my_team_person.team %></li>
+
+        <%= form_for my_team_person do |f| %>
+              <% if my_team_person.state == 0   # 0은 아직 답장 안한 상태 %>
+                  수당 : <%= f.text_field :personal_pay %>
+                  <%= f.radio_button :state, 1 %> 수락하기
+                  <%= f.radio_button :state, 2 %> 거절하기
+                  <%= f.submit "확인" %>
+              <% elsif my_team_person.state == 1 # 1은 수락한 상태 %>
+                  수당 : <%= f.text_field :personal_pay %>
+                  <%= f.submit "수당 변경하기" %>
+              <% end %>
+
+        <% end %>
+
+      <% end %>
+
+
+
     </div>
     <hr/>
 <% end %>

@@ -54,6 +54,7 @@ DbProject::Application.routes.draw do
   resources :evaluation_results
   resources :services
   resources :teams
+  resources :team_people
 
   match "initialize_all_data", :to => "users#initialize_all_data"
 

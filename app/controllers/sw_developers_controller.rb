@@ -44,6 +44,7 @@ class SwDevelopersController < ApplicationController
   def services
     @pro_fields = ProField.all
     @services = @sw_developer.services
+
     # 자신이 만든 팀
 
     @service_data = []
@@ -58,6 +59,8 @@ class SwDevelopersController < ApplicationController
       service_datum[:complete_team] = []
       service_datum[:incomplete_team] = []
       service_datum[:own_team] = nil
+      service_datum[:participated_team] = []
+      service_datum[:my_team_people] = []
 
       # pro_field 별 횟수 받아오기
       number_of_developers_in_service = {}
@@ -78,6 +81,11 @@ class SwDevelopersController < ApplicationController
       service.teams.each do |team|
         team_reader = team.sw_developer
         team_people = team.team_people
+
+        # 자신이 속한 팀원
+        if team.team_people.where(:sw_developer_id => @sw_developer.id).exists?
+          service_datum[:my_team_people].push team.team_people.where(:sw_developer_id => @sw_developer.id).first
+        end
 
         # 팀에 해당되는 용역의 개발자 수와 현재 결성된 개발자 수를 비교하여 완성인지 불완성인지 확인
         total_pay = 0
@@ -108,7 +116,8 @@ class SwDevelopersController < ApplicationController
 
         need_pro_field_id_and_developers.each do |pro_field_id, sw_developers|
           # 해당 전문분야의 모든 개발자 검색  TODO 아직 개발자가 적어서 전체 개발자로 #pro_field.sw_developers.inspect
-          SwDeveloper.find_each do |sw_developer|
+          service.sw_developers.find_each do |sw_developer|
+            # 아직 팀에 참여하고 있지 않다면
             unless sw_developer.team_people.where(:team_id => team.id).exists?
               sw_developers.push sw_developer
             end
@@ -131,6 +140,10 @@ class SwDevelopersController < ApplicationController
           service_datum[:complete_team].push team_data
         else
           service_datum[:incomplete_team].push team_data
+        end
+
+        if team_people.where(:sw_developer_id => @sw_developer.id).exists?
+          service_datum[:participated_team].push team_data
         end
 
         # 완성된 경우 수당 합계 계산

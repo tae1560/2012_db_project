@@ -1,0 +1,29 @@
+<!-- 각팀에 대한 정보 시작 -->
+<% total_pay = 0 %>
+<ul>
+  <li>팀이름 : <%= team.name %></li>
+  <li>팀장 : <%= render "users/user_link", :user => team.sw_developer.user %></li>
+  <li>
+    <ul>
+      <li>팀원들</li>
+      <% team.team_people.each do |team_person| %>
+          <% total_pay += team_person.personal_pay %>
+          <li>
+            <%= render "users/user_link", :user => team_person.sw_developer.user %>
+            수당 : <%= team_person.personal_pay %>
+            전문분야 : <%= team_person.pro_field.name %>
+            상태 :
+            <% if team_person.state == 0 %>
+                미응답
+            <% elsif team_person.state == 1 %>
+                수락
+            <% else %>
+                거절
+            <% end %>
+          </li>
+      <% end %>
+    </ul>
+  </li>
+  <li>총 수당 : <%= total_pay %></li>
+</ul>
+<!-- 각팀에 대한 정보 끝 -->
