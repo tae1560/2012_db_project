@@ -1,8 +1,9 @@
 <%= render "menu" %>
 
 <% @service_data.each do |service_datum| %>
-    <% service = service_datum["service"] %>
+    <% service = service_datum[:service] %>
     <ul>
+      <h1>용역 정보</h1>
       <li>이름 : <%= service.name %></li>
       <li>모집마감시간 : <%= service.due_date %></li>
 
@@ -14,25 +15,77 @@
       <li>몰입력 : <%= service.concentration %></li>
       <li>기술력 : <%= service.skill %></li>
       <li>의지력 : <%= service.will %></li>
+
+      <li>전문분야별 필요 개발자 수</li>
+      <ul>
+        <% service_datum[:number_of_developers_in_service].each do |pro_field_id, number_of_developer|  %>
+            <% pro_field = ProField.find(pro_field_id) %>
+            <li>
+              <%= pro_field.name %> : <%= number_of_developer %> 명
+            </li>
+        <% end %>
+      </ul>
     </ul>
 
     <div>
       <h1>완성된 팀</h1>
+      <div>
+        <% service_datum[:complete_team].each do |team_data| %>
+            <ul>
+              <li>팀이름 : <%= team_data[:team].name %></li>
+              <li>팀장 : <%= render "users/user_link", :user => team_data[:team].sw_developer.user %></li>
+              <li>
+                <ul>
+                  <li>팀원들</li>
+                  <% team_data[:team_people].each do |team_person| %>
+                      <li>
+                        <%= render "users/user_link", :user => team_person.sw_developer.user %>
+                        수당 : <%= team_person.personal_pay %>
+                        전문분야 : <%= team_person.pro_field.name %>
+                      </li>
+                  <% end %>
+                </ul>
+              </li>
+              <li>총 수당 : <%= team_data[:total_pay] %></li>
+            </ul>
+        <% end %>
+      </div>
     </div>
     <div>
       <h1>불완성 팀</h1>
-
+      <div>
+        <% service_datum[:incomplete_team].each do |team_data| %>
+            <ul>
+              <li>팀이름 : <%= team_data[:team].name %></li>
+              <li>팀장 : <%= render "users/user_link", :user => team_data[:team].sw_developer.user %></li>
+              <li>
+                <ul>
+                  <li>팀원들</li>
+                  <% team_data[:team_people].each do |team_person| %>
+                      <li>
+                        <%= render "users/user_link", :user => team_person.sw_developer.user %>
+                        수당 : <%= team_person.personal_pay %>
+                        전문분야 : <%= team_person.pro_field.name %>
+                      </li>
+                  <% end %>
+                </ul>
+              </li>
+              <li>총 수당 : <%= team_data[:total_pay] %></li>
+            </ul>
+        <% end %>
+      </div>
     </div>
     <div>
-      <h1>내가 만든 팀</h1>
+      <h1>내가 만든 팀 관리</h1>
 
       <% # 자신의 팀이 없을 경우 만들기 %>
-      <% if service_datum["own_team"] == nil %>
+      <% if service_datum[:own_team] == nil %>
           <%= form_for Team.new do |f| %>
-            이름 : <%= f.text_field :name %>
+            팀이름 : <%= f.text_field :name %>
             나의 단가 : <%= text_field :team_person, :personal_pay %>
             나의 전공 :
-              <% @pro_fields.each do |pro_field|  %>
+              <% service_datum[:need_pro_field_ids].each do |pro_field_id|  %>
+                  <% pro_field = ProField.find(pro_field_id) %>
                   <%= radio_button :team_person, :pro_field, pro_field.id %>
                   <%= pro_field.name %>
               <% end %>
@@ -41,21 +94,58 @@
               <%= f.submit "팀만들기" %>
           <% end %>
 
-      <% else # 팀이 있을 경우 %>
-          <%= form_for service_datum["own_team"]["team"] do |f| %>
-              이름 : <%= f.text_field :name %>
+      <% else # 팀이 있을 경우 팀 관리 %>
+          <%= form_for service_datum[:own_team][:team] do |f| %>
+              팀이름 : <%= f.text_field :name %>
               <%= f.submit "수정하기" %>
           <% end %>
 
-          팀장 : <%= render "users/user_link", :user => service_datum["own_team"]["team"].sw_developer.user %>
+          팀장 : <%= render "users/user_link", :user => service_datum[:own_team][:team].sw_developer.user %>
+
+          <ul>
+            <li>팀원들</li>
+            <% service_datum[:own_team][:team_people].each do |team_person| %>
+                <li>
+                  <%= render "users/user_link", :user => team_person.sw_developer.user %>
+                  수당 : <%= team_person.personal_pay %>
+                  전문분야 : <%= team_person.pro_field.name %>
+                </li>
+            <% end %>
+          </ul>
 
           필요 전문분야 :
-         <% service_datum["own_team"]["need_pro_fields"].each do |pro_field_id| %>
-          <% pro_field = ProField.find(pro_field_id) %>
-              <%= pro_field.name %>
-         <% end %>
+          <ul>
+            <% service_datum[:own_team][:need_pro_field_id_and_developers].each do |pro_field_id, sw_developers| %>
 
-      <% end %>
+                <%= form_for service_datum[:own_team][:team] do |f| %>
+
+                    <% pro_field = ProField.find(pro_field_id) %>
+                    <%= hidden_field :pro_field, :id, :value => pro_field_id %>
+
+                    <li>
+                      <%= pro_field.name %>
+                    </li>
+
+                    <li>
+                      <ul>
+                        <% sw_developers.each do |sw_developer| %>
+                            <li>
+                              <%= radio_button :team_person, :sw_developer_id, sw_developer.id %>
+                              <%= render "users/user_link", :user => sw_developer.user %>
+                            </li>
+                        <% end %>
+                      </ul>
+                    </li>
+
+                    <%= f.submit "팀원 선택하기" %>
+                <% end # end of form %>
+
+            <% end # end of pro_field_id_iter %>
+          </ul>
+      <% end # end of service_datum[:own_team] %>
+    </div>
+    <div>
+      <h1>내가 속한 팀 관리 : TODO 초대 수락 및 거절 및 수당 조절</h1>
     </div>
     <hr/>
 <% end %>

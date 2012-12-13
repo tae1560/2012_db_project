@@ -4,5 +4,8 @@ class TeamPerson < ActiveRecord::Base
   belongs_to :sw_developer
   belongs_to :team
 
-  has_one :pro_field
+  belongs_to :pro_field
+
+  validate :state, :presence => true
+  validate :personal_pay, :presence => true
 end

@@ -13,8 +13,9 @@ class TeamsController < ApplicationController
     respond_to do |format|
       if @team.save
         # 자신을 team member로 추가
-        team_person = TeamPerson.new(:personal_pay => personal_pay)
+        team_person = TeamPerson.new(:personal_pay => personal_pay, :state => 1)
         team_person.pro_field = ProField.find(pro_field_id)
+        team_person.sw_developer = SwDeveloper.find(sw_developer_id)
         @team.team_people << team_person
 
         format.html { redirect_to :back}
@@ -27,6 +28,18 @@ class TeamsController < ApplicationController
 
   def update
     @team = Team.find(params[:id])
+    pro_field_id = params[:team_person][:pro_field].to_i
+
+    team_person = params[:team_person]
+    if team_person
+      sw_developer_id = team_person[:sw_developer_id]
+      pro_field_id = params[:pro_field][:id].to_i
+
+      team_person = TeamPerson.new(:personal_pay => 0, :state => 0)
+      team_person.pro_field = ProField.find(pro_field_id)
+      team_person.sw_developer = SwDeveloper.find(sw_developer_id)
+      @team.team_people << team_person
+    end
 
     respond_to do |format|
       if @team.update_attributes(params[:team])
@@ -37,5 +50,7 @@ class TeamsController < ApplicationController
       end
     end
   end
+
+
 
 end
