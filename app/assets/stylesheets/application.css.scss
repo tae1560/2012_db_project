@@ -29,7 +29,7 @@ html, body
 body
 {
 	font-family : "NanumGothic" "Malgun Gothic" sans-serif;
-	color : #fff;
+	color: #fff;
 	background: #6c1023;
 }
 
@@ -62,7 +62,7 @@ a:hover, .pseudo_link:hover
 hr
 {
 	border: none;
-	border-top: 0.125em solid #ccc;
+	border-top: 0.125em solid rgba(255, 255, 255, 0.4);
 }
 
 input, button, select
