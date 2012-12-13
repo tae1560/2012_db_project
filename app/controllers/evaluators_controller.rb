@@ -2,12 +2,45 @@ class EvaluatorsController < ApplicationController
   before_filter :authenticate_user
   before_filter :proper_user
 
+  def update
+    @evaluator = Evaluator.find(params[:id])
+    pro_field_params = params[:pro_field]
+
+    # 모두 삭제
+    @evaluator.evaluator_pro_fields.each do |evaluator_pro_field|
+      evaluator_pro_field.destroy
+    end
+
+    pro_field_params.each do |pro_field_param|
+      pro_field_id = pro_field_param[0].to_i
+      is_selected = (pro_field_param[1].to_i == 1)
+      pro_field = ProField.find(pro_field_id)
+
+      if is_selected
+        @evaluator.pro_fields << pro_field
+      end
+    end
+
+    respond_to do |format|
+      if @evaluator.update_attributes(params[:evaluator])
+        format.html { redirect_to :back }
+      else
+        format.html { redirect_to :back, :notice => @evaluator.errors.full_messages  }
+      end
+    end
+  end
+
   def home
 
   end
 
   def profile
     @user = @current_user
+  end
+
+  def edit_profile
+    @user = @current_user
+    @pro_fields = ProField.all
   end
 
   def evaluation_request

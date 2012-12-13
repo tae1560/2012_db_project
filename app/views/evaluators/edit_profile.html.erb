@@ -1,0 +1,25 @@
+<%= render "menu" %>
+
+<%= render "users/edit_profile_form" %>
+
+<%= form_for @evaluator do |f| %>
+    <div><h4>전문분야</h4>
+      <% # 전문분야들을 체크해주기 위한 부분 %>
+      <% pro_field_ids = [] %>
+      <% @evaluator.pro_fields.each do |pro_field| %>
+          <% pro_field_ids.push pro_field.id %>
+      <% end %>
+
+      <% @pro_fields.each do |pro_field| %>
+          <%= check_box :pro_field, pro_field.id, :checked => pro_field_ids.include?(pro_field.id) %>
+          <%= pro_field.name %>
+      <% end %>
+      &nbsp;&nbsp;
+      <% if @evaluator.pro_fields.empty? %>
+          <div class="input_submit right"><%= f.submit "선정" %></div>
+      <% else %>
+          <div class="input_submit right"><%= f.submit "수정" %></div>
+      <% end #if-else %>
+    </div>
+
+<% end %>
