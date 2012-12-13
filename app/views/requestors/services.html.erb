@@ -1,19 +1,32 @@
 <%= render 'menu' %>
 
+<div class="fullsize_box box">
+<h2>용역 보기</h2>
+</div>
+<div class="fullsize_box box">
+
 <% @services.each do |service| %>
-    <ul>
-      <li>이름 : <%= service.name %></li>
-      <li>모집마감시간 : <%= service.due_date %></li>
-
-      <% if service.service_file_path %>
-          <li>제안서 : <%= link_to service.service_file_path, "/data/" + service.service_file_path, :target => '_blank' %></li>
-      <% end %>
-
-      <li>창의력 : <%= service.creativity %></li>
-      <li>몰입력 : <%= service.concentration %></li>
-      <li>기술력 : <%= service.skill %></li>
-      <li>의지력 : <%= service.will %></li>
-
-    </ul>
-
+    <div>
+      <h3 style="margin-bottom:1.0em"><%= service.name %></h3>
+      <ul>
+      <li>용역 정보 : <%= link_to service.service_file_path, "/data/" + service.service_file_path, :target => '_blank' %></li>
+      <li>모집 마감 시간 : <%= service.due_date %></li>
+      <li>개발자 평가 가치 : </li>
+      </ul>
+      <div class="bar_score" style="margin:1.0em auto 0.75em">
+      <div class="bar_container">
+        <div class="bar_general bar_creativity" style="width:<%= service.creativity %>%;"></div>
+        <div class="bar_general bar_concentration" style="width:<%= service.concentration %>%;"></div>
+        <div class="bar_general bar_skill" style="width:<%= service.skill %>%;"></div>
+        <div class="bar_general bar_will" style="width:<%= service.will %>%;"></div>
+      </div>
+      </div>
+      <ul class="service_points">
+<li class="font_creativity">창의력 : <%= service.creativity %>%</li>
+<li class="font_concentration">몰입력 : <%= service.concentration %>%</li>
+<li class="font_skill">기술력 : <%= service.skill %>%</li>
+<li class="font_will">의지력 : <%= service.will %>%</li>
+      </ul>
+    <hr />
 <% end %>
+</div>
