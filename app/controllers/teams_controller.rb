@@ -28,10 +28,10 @@ class TeamsController < ApplicationController
 
   def update
     @team = Team.find(params[:id])
-    pro_field_id = params[:team_person][:pro_field].to_i
 
     team_person = params[:team_person]
     if team_person
+      pro_field_id = team_person[:pro_field].to_i
       sw_developer_id = team_person[:sw_developer_id]
       pro_field_id = params[:pro_field][:id].to_i
 
