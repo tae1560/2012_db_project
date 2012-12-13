@@ -6,10 +6,10 @@
 <hr />
 <div>
 <ul class="user_box_info">
-<li>이메일 주소<span>: <a href="mailto://<%= @user.email %>"><%= @user.email %></a></span></li>
-<li>현재 집주소 <span>: <%= @user.address %></span></li>
-<li>전화번호 <span>: <%= @user.phone %></span></li>
-<li>사이트 가입 시기 <span>: <%= @user.created_at.localtime %></span></li>
+<li>이메일 주소<span class="left_tab">: <a href="mailto://<%= @user.email %>"><%= @user.email %></a></span></li>
+<li>현재 집주소 <span class="left_tab">: <%= @user.address %></span></li>
+<li>전화번호 <span class="left_tab">: <%= @user.phone %></span></li>
+<li>사이트 가입 시기 <span class="left_tab">: <%= @user.created_at.localtime %></span></li>
 </ul>
 </div>
 </div>

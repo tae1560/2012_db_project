@@ -2,6 +2,9 @@
 
 <%= render "users/edit_profile_form" %>
 
+<div class="center_div">
+<div id= "signup_box" style="top:29em;" class="box">
+  
 개발자용 프로필 수정
 <%= form_for @sw_developer do |f| %>
     단가 : <%= f.text_field :developer_pay %>
@@ -28,3 +31,5 @@
     </div>
 
 <% end %>
+</div>
+</div>
