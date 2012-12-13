@@ -1,3 +1,42 @@
 // Place all the styles related to the SwDevelopers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.team_info
+{
+	width: 100%;
+}
+
+.team_info_inner
+{
+	width: 100%;
+}
+
+.team_info td, .team_info th
+{
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	line-height: 1.2em;
+	font-size: 0.9em;
+	padding-top: 0.25em;
+	padding-bottom: 0.25em;
+	vertical-align: middle;
+}
+
+.team_state_icon
+{
+	display: inline;
+}
+
+.padded_li li
+{
+	padding-top: 0.25em;
+	padding-bottom: 0.25em;
+}
+
+.team_options
+{
+	margin: 2px;
+	margin-top: 0.5em;
+	padding: 0.625em;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+}

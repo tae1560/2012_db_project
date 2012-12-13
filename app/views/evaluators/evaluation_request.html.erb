@@ -91,6 +91,7 @@ $(".ev_req_t").click(function()
 	$("#universe_prison").append($("#ev_req_selected  .ev_req_d"));
 	$("#ev_req_selected").html($("#"+this.id+"_c"));
 	$("#"+this.id+"_c").show();
+	$(".fitting_list").scrollTop(0);
 });
 $(".star").raty({
 	half : true,

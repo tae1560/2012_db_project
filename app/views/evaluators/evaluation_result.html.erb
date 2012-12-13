@@ -99,6 +99,7 @@ $(".ev_req_t").click(function()
 	$("#universe_prison").append($("#ev_req_selected  .ev_req_d"));
 	$("#ev_req_selected").html($("#"+this.id+"_c"));
 	$("#"+this.id+"_c").show();
+	$(".fitting_list").scrollTop(0);
 });
 $(".star").raty({
 	half : true,
@@ -114,98 +115,3 @@ $(".star_input").keyup(function(){
 $(".star_input").keyup();
 
 </script>
-
-<!--
-<div class="left_box half_box">
-  <h3>평가 완료 목록</h3>
-  <hr />
-  <% @development_results_to_evaluation_request.each do |development_result| %>
-      <div>
-        <div>
-        <h4><%= development_result.name %></h4>
-        </div>
-        <div>
-          개발자 : <%= render "users/user_link", :user => development_result.sw_developer.user %>
-        </div>
-
-        <div>
-          파일 리스트 :
-          <% development_result.result_files.each do |result_file| %>
-              <%= link_to result_file.path, "/data/" + result_file.path, :target => '_blank' %>
-          <% end  %>
-        </div>
-        <div>
-          전문분야 :
-          <% development_result.pro_fields.each do |pro_field| %>
-              <%= pro_field.name %>
-          <% end %>
-        </div>
-
-
-        <% evaluation_result = @evaluator.evaluation_results.where(:development_result_id => development_result.id).first %>
-        <div>
-          <h1>평가결과</h1>
-          <ul>
-            <li>창의력 : <%= evaluation_result.creativity %></li>
-            <li>몰입력 : <%= evaluation_result.concentration %></li>
-            <li>기술력 : <%= evaluation_result.skill %></li>
-            <li>의지력 : <%= evaluation_result.will %></li>
-          </ul>
-        </div>
-
-        <div>
-          <%= form_for evaluation_result do |f| %>
-              <h1>평가하기</h1>
-
-              <%= f.text_field :creativity %>
-              <%= f.text_field :concentration %>
-              <%= f.text_field :skill %>
-              <%= f.text_field :will %>
-
-              <%= f.hidden_field :development_result_id, :value => development_result.id %>
-              <%= f.hidden_field :evaluator_id, :value => @evaluator.id %>
-              <%= f.submit %>
-          <% end %>
-
-        </div>
-
-
-        <div><h4>세부 응용분야</h4>
-          <hr />
-          <% if evaluation_result.sub_fields.empty? %>
-              <div class="small_msg">결정되지 않았습니다.</div>
-          <% end #if-else %>
-          <% # 세부분야들을 체크해주기 위한 부분 %>
-
-          <% evaluation_result.sub_fields.each do |sub_field| %>
-              <%= sub_field.name %>
-          <% end %>
-        </div>
-
-          <hr />
-         <div>
-          <% # 세부분야들을 체크해주기 위한 부분 %>
-          <% sub_field_ids = [] %>
-          <% evaluation_result.sub_fields.each do |sub_field| %>
-              <% sub_field_ids.push sub_field.id %>
-          <% end %>
-
-          <%= form_for evaluation_result, :format => :json do |f| %>
-              <% @sub_fields.each do |sub_field| %>
-                  <%= check_box :sub_field, sub_field.id, :checked => sub_field_ids.include?(sub_field.id) %>
-                  <%= sub_field.name %>
-              <% end %>
-              &nbsp;&nbsp;
-              <% if evaluation_result.sub_fields.empty? %>
-                  <%= f.submit "선정" %>
-              <% else %>
-                  <%= f.submit "수정" %>
-              <% end #if-else %>
-          <% end %>
-        </div>
-
-
-      </div>
-  <% end %>
-</div>
--->
