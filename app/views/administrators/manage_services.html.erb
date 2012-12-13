@@ -10,7 +10,11 @@
 
 <% @services.each do |service| %>
     <div>
-      용역이름 : <%= service.name %>
+      <li>용역이름 : <%= service.name %></li>
+      <li>창의력 : <%= service.creativity %></li>
+      <li>몰입력 : <%= service.concentration %></li>
+      <li>기술력 : <%= service.skill %></li>
+      <li>의지력 : <%= service.will %></li>
 
       <!-- 전문분야별 인원 리스트 -->
       <div>
