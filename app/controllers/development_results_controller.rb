@@ -80,11 +80,30 @@ class DevelopmentResultsController < ApplicationController
 
   def destroy
     @development_result = DevelopmentResult.find(params[:id])
+
+    @development_result.development_result_pro_fields.each do |development_result_pro_field|
+      development_result_pro_field.destroy
+    end
+
+    @development_result.evaluation_requests.each do |evaluation_request|
+      evaluation_request.destroy
+    end
+
+    @development_result.evaluation_results.each do |evaluation_result|
+      evaluation_result.destroy
+    end
+
+    @development_result.result_files.each do |result_file|
+      result_file.destroy
+    end
+
     @development_result.destroy
 
     respond_to do |format|
       #format.html { redirect_to development_results_url }
-      format.json { head :no_content }
+      #format.json { head :no_content }
+      format.html { redirect_to :back }
+      format.json { redirect_to :back }
     end
   end
 
