@@ -1,7 +1,4 @@
 <%= render "menu" %>
-<div id="universe_prison" style="display:none">
-우주감옥ㅋ
-</div>
 
 <div class="fullsize_box box">
 <h2>용역 개발자 요청 목록</h2>
@@ -9,14 +6,16 @@
 <div class="fullsize_box box">
 
 <% @services.each do |service| %>
-	<%= service.inspect %>
     <div>
-      <h3 class="pseudo_link dropdown"><%= service.name %></h3>
-      <div class="service_content">
+      <h3 class="service_name_t pseudo_link dropdown"><%= service.name %></h3>
+      <div class="service_content" style="display:none">
       <hr />
       
-      <div class="service_full_spec box"><h4>개발자 평가 가치</h4>
+      <div class="service_full_spec box">
+      <h4>용역 정보 : <%= link_to service.service_file_path, "/data/" + service.service_file_path, :target => '_blank' %></h4>
+      <h4>모집 마감 시간 : <%= service.due_date %></h4>
       <hr />
+      <h4>개발자 평가 가치</h4>
       <div class="bar_score" style="margin:1.0em auto 0.75em">
       <div class="bar_container">
         <div class="bar_general bar_creativity" style="width:<%= service.creativity %>%;"></div>
@@ -35,7 +34,7 @@
       
       <div class="service_col">
       <!-- 전문분야별 인원 리스트 -->
-      <div class="service_col_needed box"><h4>전문분야 별 필요 인원</h4>
+      <div class="service_col_needed box" style="display:none"><h4>전문분야 별 필요 인원</h4>
       <hr />
       <%= form_for :pro_field_fields, :url => "/services/add_service_pro_field" do |f| %>
       <ul>
@@ -65,7 +64,7 @@
           <tbody>
           <th style="width:5%">선택</th>
           <th style="width:25%">이름(아이디)</th>
-          <th style="width:70%">전문분야</th>
+          <th>전문분야</th>
           </thead>
           <% @sw_developers.each do |sw_developer| %>
           <tr>
@@ -75,9 +74,9 @@
               <% else %>
               <td><%= f.check_box sw_developer.id %></td>
               <td><%= render "users/user_link", :user => sw_developer.user %></td>
-              <td>
+              <td style="text-align:left;">
               <% sw_developer.pro_fields.each do |sw_developer_pro_field| %>
-                      <%= sw_developer_pro_field.name %>
+                      <span class="table_inner_list"><%= sw_developer_pro_field.name %></span>
               <% end %>
               </td>
               <% end %>
@@ -93,5 +92,20 @@
       
       </div>
     </div>
+    <hr />
 <% end %>
 </div>
+
+<script type="text/javascript">
+  $(".service_name_t").click(function(){
+	if ($(this).parent().find(".service_content").is(":hidden")) {
+		$(this).parent().find(".service_content").slideDown(350, function(){
+			$(this).find(".service_col_needed").fadeIn(300);
+		});
+	}
+	else {
+		$(this).parent().find(".service_col_needed").fadeOut(300);
+		$(this).parent().find(".service_content").slideUp(350);
+	}
+  });
+</script>

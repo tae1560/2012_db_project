@@ -11,7 +11,7 @@
 .service_points li
 {
 	display: inline-block;
-	padding:0.125em 1.0em 0.125em;
+	padding: 0.125em 1.0em 0.125em;
 	margin: 0 0 0.25em;
 }
 
@@ -25,7 +25,7 @@
 
 .service_col
 {
-	min-height: 20em;
+	min-height: 21em;
 }
 
 .service_col_needed
@@ -40,6 +40,8 @@
 .service_col_needed ul
 {
 	margin-bottom: 1.0em;
+	height: 14em;
+	overflow-y: scroll;
 }
 
 .service_col_needed li 
@@ -70,6 +72,14 @@ table.people_list
 
 table.people_list th, table.people_list td
 {
+	vertical-align: middle;
+	height: 2.0em;
 	background: rgba(0, 0, 0, 0.4);
 	text-align: center;
+}
+
+.table_inner_list
+{
+	display: inline-block;
+	margin-right: 1.0em;
 }
