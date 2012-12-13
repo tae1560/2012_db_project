@@ -10,7 +10,6 @@
     <div>
       <h3 class="service_data_t pseudo_link dropdown" style="margin-bottom:1.0em"><%= service.name %></h3>
       <div class="service_data" style="display:none">
-      <hr />
       <div class="service_full_spec box">
 	      <ul>
 		      <li>용역 정보 : <%= link_to service.service_file_path, "/data/" + service.service_file_path, :target => '_blank' %></li>
@@ -176,12 +175,9 @@
       </div>
 
       <% end %>
-
-
-
+    </div>
     </div>
     <hr />
-    </div>
 <% end %>
 </div>
 

@@ -7,11 +7,12 @@
 <%= render 'users/profile' %>
 
 <!-- 개발자용 프로필 -->
-
-단가, 전문분야, 점수평점
-<ul>
-  <li>단가 : <%= @user.sw_developer.developer_pay %></li>
-  <li>전문분야 :
+<div class="fullsize_box box">
+<h3>단가, 전문분야, 점수평점</h3>
+<hr />
+<ul class="user_box_info">
+  <li>단가 <span>: <%= @user.sw_developer.developer_pay %></span></li>
+  <li>전문분야 <span>:
     <% if @user.sw_developer.pro_fields.empty? %>
         아직 선택하지 않았습니다.
     <% else %>
@@ -21,9 +22,8 @@
           <% end #each %>
         </ul>
     <% end #if-else %>
-  </li>
-  <li>
-    점수평점 :
+  </span></li>
+  <li>점수평점 <span>:
     <%
        _creativity = 0;
        _concentration = 0;
@@ -45,16 +45,18 @@
          count = 1
        end
     %>
+    <ul class="">
+		<li class="font_creativity">창의력 : <%= _creativity/count %>%</li>
+		<li class="font_concentration">몰입력 : <%= _concentration/count %>%</li>
+		<li class="font_skill">기술력 : <%= _skill/count %>%</li>
+		<li class="font_will">의지력 : <%= _will/count %>%</li>
+	</ul>
     창의력 : <%= _creativity/count %>
     몰입력 : <%= _concentration/count %>
     기술력 : <%= _skill/count %>
     의지력 : <%= _will/count %>
-  </li>
+  </span></li>
 </ul>
-
-
-<div class="fullsize_box box">
-  <h2>개발결과물</h2>
 </div>
 
 <div class="fullsize_box box">
