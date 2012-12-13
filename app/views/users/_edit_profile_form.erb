@@ -1,7 +1,9 @@
 <% @page_title = "UserAuth | Signup" %>
 
+<%= image_tag "gugugu.png", :id => "gugugu" %>
+
 <div class="center_div">
-  <div id= "signup_box" class="box">
+  <div id= "signup_box" style="top:2.875em;" class="box">
     <h2>프로필 수정</h2>
     <%= form_for(@user, :url => {:controller => 'users', :action => :create}) do |f| %>
         <ul>
