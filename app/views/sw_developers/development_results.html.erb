@@ -47,8 +47,6 @@
     <h4 class="developer_upload pseudo_link dropdown"><%= development_result.name %> </h4>
     <ul class="developer_upload_list" style="display:none">
       <li>고유 관리번호 : <%= development_result.id %></li>
-      <li>삭제하기 : <%= link_to '삭제하기', development_result, method: :delete, data: { confirm: '정말로 삭제하시겠습니까?' } %></li>
-      
       <li>전문분야 :
         <% if development_result.pro_fields.empty? %>
 		<div class="small_msg">평가 대기 중입니다.</div>
@@ -126,6 +124,7 @@
       </div>
       <% end #if-else %>
       </li>
+      <li><small><%= link_to '삭제하기', development_result, method: :delete, data: { confirm: '정말로 삭제하시겠습니까?' } %></small></li>
     </ul>
     <hr />
   </div>
