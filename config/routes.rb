@@ -10,6 +10,7 @@ DbProject::Application.routes.draw do
 
   match "administrators/home"
   match "administrators/profile"
+  match "administrators/edit_profile"
   match "administrators/evaluation_request"
   match "administrators/manage_services"
   match "administrators/pro_field"
@@ -18,17 +19,20 @@ DbProject::Application.routes.draw do
 
   match "evaluators/home"
   match "evaluators/profile"
+  match "evaluators/edit_profile"
   match "evaluators/evaluation_request"
   match "evaluators/evaluation_result"
   match "evaluators/sub_field"
 
   match "sw_developers/home"
   match "sw_developers/profile"
+  match "sw_developers/edit_profile"
   match "sw_developers/development_results"
   match "sw_developers/services"
 
   match "requestors/home"
   match "requestors/profile"
+  match "requestors/edit_profile"
   match "requestors/services"
   match "requestors/new_service"
 

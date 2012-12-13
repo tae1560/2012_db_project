@@ -24,12 +24,46 @@ class SwDevelopersController < ApplicationController
     end
   end
 
+  def update
+    @sw_developer = SwDeveloper.find(params[:id])
+    pro_field_params = params[:pro_field]
+
+    # 모두 삭제
+    @sw_developer.sw_developer_pro_fields.each do |sw_developer_pro_field|
+      sw_developer_pro_field.destroy
+    end
+
+    pro_field_params.each do |pro_field_param|
+      pro_field_id = pro_field_param[0].to_i
+      is_selected = (pro_field_param[1].to_i == 1)
+      pro_field = ProField.find(pro_field_id)
+
+      if is_selected
+        @sw_developer.pro_fields << pro_field
+      end
+    end
+
+    respond_to do |format|
+      if @sw_developer.update_attributes(params[:sw_developer])
+        format.html { redirect_to :back }
+      else
+        format.html { redirect_to :back, :notice => @sw_developer.errors.full_messages  }
+      end
+    end
+  end
+
   def home
 
   end
 
   def profile
     @user = @current_user
+    @development_results = @sw_developer.development_results
+  end
+
+  def edit_profile
+    @user = @current_user
+    @pro_fields = ProField.all
   end
 
   def development_results

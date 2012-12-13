@@ -21,6 +21,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.sw_developer
+        @development_results = @user.sw_developer.development_results
         format.html { render "/sw_developers/profile"}
       elsif @user.requestor
         format.html { render "/requestors/profile"}

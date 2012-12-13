@@ -7,9 +7,9 @@
 <div class="fullsize_box box">
   <h3 id="developer_upload_button" class="pseudo_link dropdown">개발결과물 업로드</h3>
   <div id="developer_upload_view">
-  
+
   <hr />
-  
+
   <%= form_for DevelopmentResult.new, :format => :json, :html => {:multipart => true} do |f| %>
     <ul>
       <li>개발결과물 이름 : <%= f.text_field :name %> </li>
@@ -23,9 +23,9 @@
       <li class="input_submit"><%= f.submit "개발결과물 올리기" %> </li>
     </ul>
   <% end %>
-  
+
   </div>
-  
+
   <script type="text/javascript">
   $("#developer_upload_button").click(function(){
 	if ($("#developer_upload_view").is(":hidden")) {$("#developer_upload_view").slideDown(350);}
@@ -112,7 +112,7 @@
           <li class="font_will">의지력 : <span class="score_number"><%= _will %></span>
           <span class="underscore"> / 100 </span><div class="star"></div></li>
         </ul>
-		
+
 		<!--
 		<ul>
 		<% development_result.evaluation_results.each do |result| %>
@@ -120,7 +120,7 @@
         <% end #each %>
         </ul>
         -->
-        
+
       </div>
       <% end #if-else %>
       </li>

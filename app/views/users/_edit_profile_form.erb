@@ -1,0 +1,39 @@
+<% @page_title = "UserAuth | Signup" %>
+
+<div class="center_div">
+  <div id= "signup_box" class="box">
+    <h2>프로필 수정</h2>
+    <%= form_for(@user, :url => {:controller => 'users', :action => :create}) do |f| %>
+        <ul>
+          <li><hr /></li>
+          <li><span>아이디</span> <%= @user.login_id %></li>
+          <li><span>비밀번호</span><%= f.password_field :password%></li>
+          <li><span>비밀번호 확인</span><%= f.password_field :password_confirmation%></li>
+          <li><hr /></li>
+          <li><span>이름</span><%= f.text_field :name%></li>
+          <li><span>이메일</span><%= f.text_field :email%></li>
+          <li><span>주소</span><%= f.text_field :address%></li>
+          <li><span>전화번호</span><%= f.text_field :phone%></li>
+          <li><hr /></li>
+          <li id="signup_box_buttons">
+            <%= f.submit :Modify, :class => "left_align" %>
+            <%= button_tag "Cancel", :type => "button", :id => "cancel_button" %>
+          </li>
+        </ul>
+    <% end %>
+
+    <% if notice %>
+        <ul class="signup_errors">
+          <li class="small_msg"><%= notice %></li>
+        </ul>
+    <% end %>
+
+    <% if @user.errors.any? %>
+        <ul class="signup_errors">
+          <% for message_error in @user.errors.full_messages %>
+              <li class="small_msg"><%= message_error %></li>
+          <% end %>
+        </ul>
+    <% end %>
+  </div>
+</div>
