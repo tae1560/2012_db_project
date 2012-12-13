@@ -1,6 +1,6 @@
 <% 
 total_pay = 0
-team.team_people.each do |team_person|
+team.team_people.where(:state => 1).each do |team_person|
 	total_pay += team_person.personal_pay
 end
 %>

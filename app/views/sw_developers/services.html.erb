@@ -39,9 +39,9 @@
 			<li class="font_will">의지력 : <%= service.will %>%</li>
 	      </ul>
 	  </div>
-    
+
     <hr />
-    
+
     <div class="service_full_spec box">
       <h4>완성 팀</h4>
       <div>
@@ -52,7 +52,7 @@
         <% end %>
       </div>
     </div>
-    
+
     <div class="service_full_spec box">
        <h4>불완성 팀</h4>
       <div>
@@ -63,9 +63,9 @@
         <% end %>
       </div>
     </div>
-    
+
     <hr />
-    
+
     <div class="service_full_spec box">
       <h4>팀장 설정</h4>
       <div class="service_full_spec box" style="margin-top:0.5em;">
@@ -86,9 +86,9 @@
           </ul>
           <%= hidden_field :sw_developer, :id, :value => @sw_developer.id %>
           <%= hidden_field :service, :id, :value => service.id %>
-           
+
           <div class="right input_submit"><%= f.submit "팀 만들기" %></div>
-          
+
           <% end %>
 	      </div>
 
@@ -101,7 +101,7 @@
               <%= f.submit "수정하기" %>
           <% end %>
           -->
-          
+
           <table class="team_info">
            <% if service_datum[:own_team][:need_pro_field_id_and_developers].empty? %>
            <tr>
@@ -117,7 +117,7 @@
             <%= form_for service_datum[:own_team][:team] do |f| %>
             <% pro_field = ProField.find(pro_field_id) %>
             <%= hidden_field :pro_field, :id, :value => pro_field_id %>
-            
+
             <tr>
              <td rowspan="<%= sw_developers.length %>" style="text-align:center"><%= pro_field.name %></td>
              <td>
@@ -126,7 +126,7 @@
              </td>
              <td class="input_submit" rowspan="<%= sw_developers.length %>" style="text-align:center"><%= f.submit "팀원 선택하기" %></td>
             </tr>
-            
+
             <% sw_developers[1..-1].each do |sw_developer| %>
             <tr>
              <td>
@@ -135,24 +135,24 @@
              </td>
             </tr>
             <% end # end of sw_developers.each %>
-            
+
             <% end # end of form %>
            <% end # end if %>
            <% end # end of pro_field_id_iter %>
           </table>
-          
+
       <% end # end of service_datum[:own_team] %>
       </div>
     </div>
-    
+
     <hr />
-    
+
     <div class="service_full_spec box">
       <h4>팀원 설정</h4>
       <% service_datum[:my_team_people].each do |my_team_person| %>
-      
+
       <div class="service_full_spec box" style="margin-top:0.5em;">
-	  
+
         <%= render "team_information", :team => my_team_person.team %>
         <div class="team_options">
         <%= form_for my_team_person do |f| %>

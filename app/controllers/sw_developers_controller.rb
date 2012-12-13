@@ -124,7 +124,8 @@ class SwDevelopersController < ApplicationController
         # 팀에 해당되는 용역의 개발자 수와 현재 결성된 개발자 수를 비교하여 완성인지 불완성인지 확인
         total_pay = 0
         number_of_developers_in_team = {}
-        team_people.each do |team_person|
+        is_all_team_people_agreed = true
+         team_people.each do |team_person|
           # state 0 means not yet agreed, 1 means agreed, 2 means disagreed
           if team_person.state == 1 or team_person.state == 0
             team_person_pro_field = team_person.pro_field
@@ -137,6 +138,10 @@ class SwDevelopersController < ApplicationController
 
             total_pay += team_person.personal_pay
           end
+
+           unless team_person.state == 1
+             is_all_team_people_agreed = false
+           end
         end
 
         # 모두 참가했는지 체크
@@ -153,7 +158,10 @@ class SwDevelopersController < ApplicationController
           service.sw_developers.find_each do |sw_developer|
             # 아직 팀에 참여하고 있지 않다면
             unless sw_developer.team_people.where(:team_id => team.id).exists?
-              sw_developers.push sw_developer
+              # pro_field
+               if sw_developer.pro_fields.include? ProField.find(pro_field_id)
+                 sw_developers.push sw_developer
+               end
             end
           end
         end
@@ -170,7 +178,7 @@ class SwDevelopersController < ApplicationController
           service_datum[:own_team] = team_data
         end
 
-        if need_pro_field_id_and_developers.size == 0
+        if need_pro_field_id_and_developers.size == 0 and is_all_team_people_agreed
           service_datum[:complete_team].push team_data
         else
           service_datum[:incomplete_team].push team_data
