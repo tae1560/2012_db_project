@@ -2,3 +2,74 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.service_points
+{
+	text-align: center;
+	display:block;
+}
+
+.service_points li
+{
+	display: inline-block;
+	padding:0.125em 1.0em 0.125em;
+	margin: 0 0 0.25em;
+}
+
+.service_full_spec
+{
+	width: 98%;
+	padding: 1%;
+	margin-bottom: 0.5em;
+	position: relative;
+}
+
+.service_col
+{
+	min-height: 20em;
+}
+
+.service_col_needed
+{
+	position: absolute;
+	width: 26%;
+	display: inline-block;
+	float: left;
+	padding: 1%;
+}
+
+.service_col_needed ul
+{
+	margin-bottom: 1.0em;
+}
+
+.service_col_needed li 
+{
+	padding: 0.125em 0 0.125em;
+}
+
+.service_col_needed li span
+{
+	float: right;
+}
+
+.service_col_people_list
+{
+
+	display: inline-block;
+	position: relative;
+	width: 69%;
+	margin-left: 29%;
+	padding: 1%;
+}
+
+table.people_list
+{
+	margin: 1.0em auto 0.125em;
+	width: 100%;
+}
+
+table.people_list th, table.people_list td
+{
+	background: rgba(0, 0, 0, 0.4);
+	text-align: center;
+}

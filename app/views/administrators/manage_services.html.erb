@@ -4,54 +4,94 @@
 </div>
 
 <div class="fullsize_box box">
-<h2>용역 개발자 요청</h2>
+<h2>용역 개발자 요청 목록</h2>
 </div>
-<div class="fullsize_box box fitting_list">
+<div class="fullsize_box box">
 
 <% @services.each do |service| %>
+	<%= service.inspect %>
     <div>
-      <li>용역이름 : <%= service.name %></li>
-      <li>창의력 : <%= service.creativity %></li>
-      <li>몰입력 : <%= service.concentration %></li>
-      <li>기술력 : <%= service.skill %></li>
-      <li>의지력 : <%= service.will %></li>
-
+      <h3 class="pseudo_link dropdown"><%= service.name %></h3>
+      <div class="service_content">
+      <hr />
+      
+      <div class="service_full_spec box"><h4>개발자 평가 가치</h4>
+      <hr />
+      <div class="bar_score" style="margin:1.0em auto 0.75em">
+      <div class="bar_container">
+        <div class="bar_general bar_creativity" style="width:<%= service.creativity %>%;"></div>
+        <div class="bar_general bar_concentration" style="width:<%= service.concentration %>%;"></div>
+        <div class="bar_general bar_skill" style="width:<%= service.skill %>%;"></div>
+        <div class="bar_general bar_will" style="width:<%= service.will %>%;"></div>
+      </div>
+      </div>
+      <ul class="service_points">
+<li class="font_creativity">창의력 : <%= service.creativity %>%</li>
+<li class="font_concentration">몰입력 : <%= service.concentration %>%</li>
+<li class="font_skill">기술력 : <%= service.skill %>%</li>
+<li class="font_will">의지력 : <%= service.will %>%</li>
+      </ul>
+      </div>
+      
+      <div class="service_col">
       <!-- 전문분야별 인원 리스트 -->
-      <div>
-        <%= form_for :pro_field_fields, :url => "/services/add_service_pro_field" do |f| %>
+      <div class="service_col_needed box"><h4>전문분야 별 필요 인원</h4>
+      <hr />
+      <%= form_for :pro_field_fields, :url => "/services/add_service_pro_field" do |f| %>
+      <ul>
             <% @pro_fields.each do |pro_field| %>
-                <%= pro_field.name %>
+                <li>
+                <%= pro_field.name %><span>
                 <% if service.service_pro_fields.where(:pro_field_id => pro_field.id).exists? %>
                     <%= f.text_field pro_field.id, :size => 5, :value => service.service_pro_fields.where(:pro_field_id => pro_field.id).first.number_of_developers %>
                 <% else %>
                     <%= f.text_field pro_field.id, :size => 5, :value => 0 %>
-                <% end %>
+                <% end %>명</span>
+                </li>
             <% end %>
-            <%= hidden_field :service, :id, :value => service.id %>
-            <%= f.submit "개발인원 정하기" %>
-        <% end %>
+      </ul>
+      <%= hidden_field :service, :id, :value => service.id %>
+      <div class="right input_submit"><%= f.submit "개발인원 정하기" %></div>
+      <% end %>
       </div>
 
       <!-- 모든 개발자 리스트 -->
+      <div class="service_col_people_list box"><h4>개발자 선정</h4>
+      <hr />
       <%= form_for :select_developers, :url => "select_developers" do |f| %>
+          <%= hidden_field :service, :id, :value => service.id %>
+          <div class="right input_submit"><%= f.submit "개발자 선정" %></div>
+          <table class="people_list">
+          <tbody>
+          <th style="width:5%">선택</th>
+          <th style="width:25%">이름(아이디)</th>
+          <th style="width:70%">전문분야</th>
+          </thead>
           <% @sw_developers.each do |sw_developer| %>
+          <tr>
               <!-- 각 개발자별 선택 버튼 -->
               <% if sw_developer.pre_chosen_developers.where(:service_id => service.id).exists? %>
                 <% # 이미 선택되어 있는 경우 %>
               <% else %>
-                  <%= render "users/user_link", :user => sw_developer.user %>
-                  <% sw_developer.pro_fields.each do |sw_developer_pro_field| %>
+              <td><%= f.check_box sw_developer.id %></td>
+              <td><%= render "users/user_link", :user => sw_developer.user %></td>
+              <td>
+              <% sw_developer.pro_fields.each do |sw_developer_pro_field| %>
                       <%= sw_developer_pro_field.name %>
-                  <% end %>
-                  <%= f.check_box sw_developer.id %>
               <% end %>
-
+              </td>
+              <% end %>
+          </tr>
           <% end %>
+          </tbody>
+          </table>
 
-          <%= hidden_field :service, :id, :value => service.id %>
-          <%= f.submit "개발자 선정" %>
       <% end %>
-
+      </div>
+      
+      </div>
+      
+      </div>
     </div>
 <% end %>
 </div>
