@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c89fee7f-2237-4288-94c2-30eda02b9fef" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/_edit_profile_form.erb" afterPath="$PROJECT_DIR$/app/views/users/_edit_profile_form.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.yml" afterPath="$PROJECT_DIR$/config/database.yml" />
     </list>
     <ignored path="2012_db_project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,19 +21,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="_edit_profile_form.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="_edit_profile_form.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/users/_edit_profile_form.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="22" selection-start="214" selection-end="214" vertical-scroll-proportion="-4.375">
+            <state line="5" column="57" selection-start="171" selection-end="171" vertical-scroll-proportion="-0.01010101">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="users_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="users_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="19" selection-start="2173" selection-end="2173" vertical-scroll-proportion="0.5744337">
+            <state line="84" column="19" selection-start="2173" selection-end="2173" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -775,16 +771,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/users/_edit_profile_form.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="22" selection-start="214" selection-end="214" vertical-scroll-proportion="-4.375">
+        <state line="84" column="19" selection-start="2173" selection-end="2173" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/users/_edit_profile_form.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="19" selection-start="2173" selection-end="2173" vertical-scroll-proportion="0.5744337">
+        <state line="5" column="57" selection-start="171" selection-end="171" vertical-scroll-proportion="-0.01010101">
           <folding />
         </state>
       </provider>

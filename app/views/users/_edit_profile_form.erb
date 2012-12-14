@@ -4,11 +4,10 @@
 
 <div class="center_div">
   <div id= "signup_box" style="top:2.875em;" class="box">
-    <h2>프로필 수정</h2>
-    <%= form_for(@user) do |f| %>
+    <h2><%= @user.roll %> 프로필 수정 <small>(<%= @user.login_id %>)</small></h2>
+        <%= form_for(@user) do |f| %>
         <ul>
           <li><hr /></li>
-          <li><%= @user.login_id %></li>
           <li><span>비밀번호</span><%= f.password_field :password%></li>
           <li><span>비밀번호 확인</span><%= f.password_field :password_confirmation%></li>
           <li><hr /></li>
