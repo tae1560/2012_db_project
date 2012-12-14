@@ -45,6 +45,7 @@ class EvaluatorsController < ApplicationController
 
   def evaluation_request
     @development_results_to_evaluation_request = []
+    @sub_fields = SubField.all
     @evaluator.evaluation_requests.each do |evaluation_request|
       development_result = evaluation_request.development_result
       evaluation_result = development_result.evaluation_results.where(:evaluator_id => @evaluator.id).first

@@ -58,6 +58,7 @@ class DevelopmentResultsController < ApplicationController
   def update
     @development_result = DevelopmentResult.find(params[:id])
     @pro_fields = params[:pro_field]
+    @sub_fields = params[:sub_field]
 
     if @pro_fields
       @pro_fields.each do |pro_field|
@@ -71,6 +72,22 @@ class DevelopmentResultsController < ApplicationController
         elsif selected == 0 and is_contains
           ins_pro_field = ProField.find(id)
           @development_result.pro_fields.delete(ins_pro_field)
+        end
+      end
+    end
+
+    if @sub_fields
+      @sub_fields.each do |sub_field|
+        id = sub_field[0].to_i
+        selected = sub_field[1].to_i
+        is_contains = @development_result.sub_fields.exists?(:id => id)
+
+        if selected == 1 and !is_contains
+          ins_sub_field = SubField.find(id)
+          @development_result.sub_fields << ins_sub_field
+        elsif selected == 0 and is_contains
+          ins_sub_field = SubField.find(id)
+          @development_result.sub_fields.delete(ins_pro_field)
         end
       end
     end
