@@ -8,10 +8,50 @@
 
 <!-- 개발자용 프로필 -->
 <div class="fullsize_box box">
-<h3>개발자 정보 <span class="user_box_roll">(단가, 전문분야, 점수평점)</span></h3>
+<h3>개발자 정보 <span class="user_box_roll">(단가, 전문분야, 점수평점, 과거 용역 단가 평균 및 분산)</span></h3>
 <hr />
 <ul class="user_box_info">
-  <li>단가 <span class="left_tab">: <%= @user.sw_developer.developer_pay %></span></li>
+  <% if @user.sw_developer.developer_pay %>
+    <li>희망 단가 <span class="left_tab">: <%= @user.sw_developer.developer_pay %></span></li>
+  <% else %>
+    <li>희망 단가 <span class="left_tab">: 0</span></li>
+  <% end %>
+
+  <!-- 현재까지 선정된 용역들의 평균 단가 및 편차 -->
+  <!-- 자신의 팀중에서 선택된 팀의 평균 단가 -->
+  <%
+    pay_array = []
+    @user.sw_developer.teams.each do |team|
+        if team.selected_service
+          # 선택된 팀이 있는것
+          team.team_people.where(:sw_developer_id => @user.sw_developer.id).each do |team_person|
+            pay_array.push team_person.personal_pay
+          end
+        end
+    end
+
+     # 평균
+     pay_means = 0
+     pay_array.each do |pay|
+       pay_means += pay
+     end
+     if pay_array.size > 0
+       pay_means /= pay_array.size
+     end
+
+     # 분산
+     pay_deviation = 0
+     pay_array.each do |pay|
+       pay_deviation += ((pay - pay_means) * (pay - pay_means))
+     end
+     if pay_array.size > 0
+       pay_deviation /= pay_array.size
+     end
+  %>
+  <li>과거 용역 단가 평균 <span class="left_tab">: <%= pay_means %></span></li>
+  <li>과거 용역 단가 분산 <span class="left_tab">: <%= pay_deviation %></span></li>
+
+
   <li>전문분야 <span class="left_tab">:
     <% if @user.sw_developer.pro_fields.empty? %>
         아직 선택하지 않았습니다.
