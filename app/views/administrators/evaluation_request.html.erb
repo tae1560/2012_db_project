@@ -66,47 +66,53 @@
       
       <div><h4>평가결과</h4>
       <hr />
-        <% if development_result.evaluation_results.empty? %>
-		<div class="small_msg">평가 대기 중입니다.</div>
-		<% else %>
-		<ul>
-        <% development_result.evaluation_results.each do |result| %>
-          <li>결과</li>
-        <% end #each %>
-        </ul>
-        <% end #if-else %>
-      </div>
       
-      <p></p>
-      
-      <div>
-      <h5> 평가 요청한 평가자 : </h5>
-      <ol>
-        <%
-           is_all_evaluated = true
-        %>
+      <% is_all_evaluated = true %>
       <% development_result.evaluators.each do |evaluator| %>
-      <li>
-        <%= render "users/user_link", :user => evaluator.user %>
+        <% if not development_result.evaluation_results.where(:evaluator_id => evaluator.id).exists? %>
+            <% is_all_evaluated = false %>
+        <% end %>
+      <% end %>
+      
+      <% if is_all_evaluated and development_result.evaluation_results.size >= 3 %>
+        <%= form_for development_result do |f| %>
+          <%= f.hidden_field :state, :value => 1 %>
+          <div class="input_submit right"><%= f.submit "평가 완료하기" %></div>
+        <% end %>
+      <% elsif development_result.evaluation_requests.size < 3 %>
+        <div class="small_msg">3명 이상 평가요청을 해야 합니다.</div>
+      <% else %>
+        <div class="small_msg">현재 평가 중입니다.</div>
+      <% end %>
+      
+      <% if not development_result.evaluation_results.empty? %>
+      <ol>
+       <% development_result.evaluators.each do |evaluator| %>
+       <li>
+        <%= render "users/user_link", :user => evaluator.user %> : 
         <% if development_result.evaluation_results.where(:evaluator_id => evaluator.id).exists? %>
             <% evaluation_result = development_result.evaluation_results.where(:evaluator_id => evaluator.id).first %>
-            평가결과 :
-            창의력 : <%= evaluation_result.creativity %>
-            몰입력 : <%= evaluation_result.concentration %>
-            기술력 : <%= evaluation_result.skill %>
-            의지력 : <%= evaluation_result.will %>
+            <span>평가 완료</span>
+            <div>
+            <ul class="left_inline_ul">
+              <li class="font_creativity">창의력 : <%= evaluation_result.creativity %></li>
+              <li class="font_concentration">몰입력 : <%= evaluation_result.concentration %></li>
+              <li class="font_skill">기술력 : <%= evaluation_result.skill %></li>
+              <li class="font_will">의지력 : <%= evaluation_result.will %></li>
+            </ul>
+            </div>
         <% else %>
-            <% is_all_evaluated = false %>
-            평가중입니다.
+            <span>평가 대기</span>
         <% end %>
-      </li>
-
-      <% end %>
+       </li>
+       <% end #each %>
       </ol>
+      <% end #if %>
+
       </div>
 
-      <div>
-      <h5> 평가 요청 : </h5>
+      <div><h4> 평가 요청 </h4>
+      <hr />
         <%= form_for :evaluator do |f| %>
            <ol>
             <% @evaluators.each do |evaluator| %>
@@ -125,16 +131,8 @@
       </div>
 
         <!-- 평가 요청 완료하기 -->
-        <% if is_all_evaluated and development_result.evaluation_results.size >= 3 %>
-            <%= form_for development_result do |f| %>
-                <%= f.hidden_field :state, :value => 1 %>
-                <%= f.submit "평가 완료하기" %>
-            <% end %>
-        <% elsif development_result.evaluation_requests.size < 3 %>
-            3명 이상 평가요청을 해야 합니다.
-        <% else %>
-            현재 평가 중입니다.
-        <% end %>
+        <hr />
+        
 
 
         

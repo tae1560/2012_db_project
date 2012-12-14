@@ -10,177 +10,178 @@
     <div>
       <h3 class="service_data_t pseudo_link dropdown" style="margin-bottom:1.0em"><%= service.name %></h3>
       <div class="service_data" style="display:none">
-      <div class="service_full_spec box">
-	      <ul>
-		      <li>용역 정보 : <%= link_to service.service_file_path, "/data/" + service.service_file_path, :target => '_blank' %></li>
-		      <li>모집 마감 시간 : <%= service.due_date %></li>
-		      <li>필요 인원 :
-			     <ul style="display:inline-block;">
-		         <% service_datum[:number_of_developers_in_service].each do |pro_field_id, number_of_developer|  %>
-		            <% pro_field = ProField.find(pro_field_id) %>
-		            <li style="display:inline-block;margin-right:0.25em;"><%= pro_field.name %> 분야 <%= number_of_developer %>명. </li>
-		         <% end %>
-		         </ul>
-		      </li>
-		      <li>개발자 평가 가치 : </li>
-	      </ul>
-	      <div class="bar_score" style="margin:1.0em auto 0.75em">
-		      <div class="bar_container">
-		        <div class="bar_general bar_creativity" style="width:<%= service.creativity %>%;"></div>
-		        <div class="bar_general bar_concentration" style="width:<%= service.concentration %>%;"></div>
-		        <div class="bar_general bar_skill" style="width:<%= service.skill %>%;"></div>
-		        <div class="bar_general bar_will" style="width:<%= service.will %>%;"></div>
+	      <div class="service_full_spec box">
+		      <ul>
+			      <li>용역 정보 : <%= link_to service.service_file_path, "/data/" + service.service_file_path, :target => '_blank' %></li>
+			      <li>모집 마감 시간 : <%= service.due_date %></li>
+			      <li>필요 인원 :
+				     <ul style="display:inline-block;">
+			         <% service_datum[:number_of_developers_in_service].each do |pro_field_id, number_of_developer|  %>
+			            <% pro_field = ProField.find(pro_field_id) %>
+			            <li style="display:inline-block;margin-right:0.25em;"><%= pro_field.name %> 분야 <%= number_of_developer %>명. </li>
+			         <% end %>
+			         </ul>
+			      </li>
+			      <li>개발자 평가 가치 : </li>
+		      </ul>
+		      <div class="bar_score" style="margin:1.0em auto 0.75em">
+			      <div class="bar_container">
+			        <div class="bar_general bar_creativity" style="width:<%= service.creativity %>%;"></div>
+			        <div class="bar_general bar_concentration" style="width:<%= service.concentration %>%;"></div>
+			        <div class="bar_general bar_skill" style="width:<%= service.skill %>%;"></div>
+			        <div class="bar_general bar_will" style="width:<%= service.will %>%;"></div>
+			      </div>
 		      </div>
+		      <ul class="service_points">
+				<li class="font_creativity">창의력 : <%= service.creativity %>%</li>
+				<li class="font_concentration">몰입력 : <%= service.concentration %>%</li>
+				<li class="font_skill">기술력 : <%= service.skill %>%</li>
+				<li class="font_will">의지력 : <%= service.will %>%</li>
+		      </ul>
+		</div>
+	
+	    <hr />
+	
+	    <div class="service_full_spec box">
+	      <h4>완성 팀</h4>
+	      <div>
+	        <% service_datum[:complete_team].each do |team_data| %>
+	            <div class="service_full_spec box" style="margin-top:0.5em;">
+		            <%= render "team_information", :team => team_data[:team] %>
+		        </div>
+	        <% end %>
 	      </div>
-	      <ul class="service_points">
-			<li class="font_creativity">창의력 : <%= service.creativity %>%</li>
-			<li class="font_concentration">몰입력 : <%= service.concentration %>%</li>
-			<li class="font_skill">기술력 : <%= service.skill %>%</li>
-			<li class="font_will">의지력 : <%= service.will %>%</li>
-	      </ul>
-	  </div>
-
-    <hr />
-
-    <div class="service_full_spec box">
-      <h4>완성 팀</h4>
-      <div>
-        <% service_datum[:complete_team].each do |team_data| %>
-            <div class="service_full_spec box" style="margin-top:0.5em;">
-	            <%= render "team_information", :team => team_data[:team] %>
-	        </div>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="service_full_spec box">
-       <h4>불완성 팀</h4>
-      <div>
-        <% service_datum[:incomplete_team].each do |team_data| %>
-            <div class="service_full_spec box" style="margin-top:0.5em;">
-	            <%= render "team_information", :team => team_data[:team] %>
-	        </div>
-        <% end %>
-      </div>
-    </div>
-
-    <hr />
-
-    <div class="service_full_spec box">
-      <h4>팀장 설정</h4>
-      <div class="service_full_spec box" style="margin-top:0.5em;">
-	  <% if service_datum[:own_team] == nil %>
-	      <div class="team_options">
-          <% # 자신의 팀이 없을 경우 만들기 %>
-	      <%= form_for Team.new do |f| %>
-          <ul class="padded_li">
-            <li>팀 이름 : <%= f.text_field :name %></li>
-            <li>나의 수당 : <%= text_field :team_person, :personal_pay, :style => "width:3em" %>만 원</li>
-            <li>나의 역할(전공분야) :
-              <% service_datum[:need_pro_field_ids].each do |pro_field_id|  %>
-                  <% pro_field = ProField.find(pro_field_id) %>
-                  <span style="display:inline-block;margin-right:0.5em;"><%= radio_button :team_person, :pro_field, pro_field.id %>
-                  <%= pro_field.name %></span>
-              <% end %>
-            </li>
-          </ul>
-          <%= hidden_field :sw_developer, :id, :value => @sw_developer.id %>
-          <%= hidden_field :service, :id, :value => service.id %>
-
-          <div class="right input_submit"><%= f.submit "팀 만들기" %></div>
-
-          <% end %>
+	    </div>
+	
+	    <div class="service_full_spec box">
+	       <h4>불완성 팀</h4>
+	      <div>
+	        <% service_datum[:incomplete_team].each do |team_data| %>
+	            <div class="service_full_spec box" style="margin-top:0.5em;">
+		            <%= render "team_information", :team => team_data[:team] %>
+		        </div>
+	        <% end %>
 	      </div>
-
-      <% else # 팀이 있을 경우 팀 관리 %>
-          <%= render "team_information", :team => service_datum[:own_team][:team] %></li>
-
-          <!--
-          <%= form_for service_datum[:own_team][:team] do |f| %>
-              팀이름 변경 : <%= f.text_field :name %>
-              <%= f.submit "수정하기" %>
-          <% end %>
-          -->
-
-          <table class="team_info">
-           <% if service_datum[:own_team][:need_pro_field_id_and_developers].empty? %>
-           <tr>
-           <th><div class="small_msg">팀이 완성되었거나 요청 수락 대기 중입니다.</div></th>
-           </tr>
-           <% else %>
-           <tr>
-            <th style="width:15em">필요 전문분야</th>
-            <th>이름(아이디)</th>
-            <th style="width:10em">선택</th>
-           </tr>
-           <% service_datum[:own_team][:need_pro_field_id_and_developers].each do |pro_field_id, sw_developers| %>
-            <%= form_for service_datum[:own_team][:team] do |f| %>
-            <% pro_field = ProField.find(pro_field_id) %>
-            <%= hidden_field :pro_field, :id, :value => pro_field_id %>
-             <tr>
-              <% if not sw_developers.empty? %>
-              <td rowspan="<%= sw_developers.length %>" style="text-align:center"><%= pro_field.name %></td>
-              <td>
-               <%= radio_button :team_person, :sw_developer_id, sw_developers[0].id %>
-               <%= render "users/user_link", :user => sw_developers[0].user %>
-              </td>
-              <td class="input_submit" rowspan="<%= sw_developers.length %>" style="text-align:center"><%= f.submit "팀원 선택하기" %></td>
-              <% else %>
-              <td style="text-align:center"><%= pro_field.name %></td>
-              <td><div class="small_msg">분야에 맞는 개발자가 없습니다! 관리자에게 문의 바랍니다.</div></td>
-              <td></td>
-              <% end # end if %>
-              </td>
-             </tr>
-             <% if not sw_developers.empty? %>
-              <% sw_developers[1..-1].each do |sw_developer| %>
-               <tr>
-                <td>
-	             <%= radio_button :team_person, :sw_developer_id, sw_developer.id %>
-                 <%= render "users/user_link", :user => sw_developer.user %>
-                </td>
-               </tr>
-              <% end # end of each %>
-             <% end # end of if %>
-            <% end # end of form %>
-           <% end # end of pro_field_id_iter %>
-           <% end # end if %>
-          </table>
-
-      <% end # end of service_datum[:own_team] %>
-      </div>
-    </div>
-
-    <hr />
-
-    <div class="service_full_spec box">
-      <h4>팀원 설정</h4>
-      <% service_datum[:my_team_people].each do |my_team_person| %>
-
-      <div class="service_full_spec box" style="margin-top:0.5em;">
-
-        <%= render "team_information", :team => my_team_person.team %>
-        <div class="team_options">
-        <%= form_for my_team_person do |f| %>
-              <% if my_team_person.state == 0   # 0은 아직 답장 안한 상태 %>
-                  <span>요청 수락 : </span><ul style="display:inline">
-                  <li style="display:inline-block;margin-right:0.25em;"><%= f.radio_button :state, 1 %> 수락</li>
-                  <li style="display:inline-block;margin-right:0.25em;"><%= f.radio_button :state, 2 %> 거절</li>
-                  <div>나의 수당 : <%= f.text_field :personal_pay, :style => "width:3em" %>만 원</div>
-                  </ul>
-                  <div class="input_submit right"><%= f.submit "확인" %></div>
-              <% elsif my_team_person.state == 1 # 1은 수락한 상태 %>
-                  나의 수당 : <%= f.text_field :personal_pay, :style => "width:3em" %>만 원
-                  <span class="input_submit"><%= f.submit "수당 변경하기" %></span>
-              <% elsif my_team_person.state == 2 # 1은 수락한 상태 %>
-                  <div class="small_msg">요청을 거절하셨습니다.</div>
-              <% end %>
-
-        <% end %>
-        </div>
-      </div>
-
-      <% end %>
+	    </div>
+	
+	    <hr />
+	
+	    <div class="service_full_spec box">
+	      <h4>팀장 설정</h4>
+	      <div class="service_full_spec box" style="margin-top:0.5em;">
+		  <% if service_datum[:own_team] == nil %>
+		      <div class="team_options">
+	          <% # 자신의 팀이 없을 경우 만들기 %>
+		      <%= form_for Team.new do |f| %>
+	          <ul class="padded_li">
+	            <li>팀 이름 : <%= f.text_field :name %></li>
+	            <li>나의 수당 : <%= text_field :team_person, :personal_pay, :style => "width:3em" %>만 원</li>
+	            <li>나의 역할(전공분야) :
+	              <% service_datum[:need_pro_field_ids].each do |pro_field_id|  %>
+	                  <% pro_field = ProField.find(pro_field_id) %>
+	                  <span style="display:inline-block;margin-right:0.5em;"><%= radio_button :team_person, :pro_field, pro_field.id %>
+	                  <%= pro_field.name %></span>
+	              <% end %>
+	            </li>
+	          </ul>
+	          <%= hidden_field :sw_developer, :id, :value => @sw_developer.id %>
+	          <%= hidden_field :service, :id, :value => service.id %>
+	
+	          <div class="right input_submit"><%= f.submit "팀 만들기" %></div>
+	
+	          <% end %>
+		      </div>
+	
+	      <% else # 팀이 있을 경우 팀 관리 %>
+	          <%= render "team_information", :team => service_datum[:own_team][:team] %></li>
+	
+	          <!--
+	          <%= form_for service_datum[:own_team][:team] do |f| %>
+	              팀이름 변경 : <%= f.text_field :name %>
+	              <%= f.submit "수정하기" %>
+	          <% end %>
+	          -->
+	
+	          <table class="team_info">
+	           <% if service_datum[:own_team][:need_pro_field_id_and_developers].empty? %>
+	           <tr>
+	           <th><div class="small_msg">팀이 완성되었거나 요청 수락 대기 중입니다.</div></th>
+	           </tr>
+	           <% else %>
+	           <tr>
+	            <th style="width:15em">필요 전문분야</th>
+	            <th>이름(아이디)</th>
+	            <th style="width:10em">선택</th>
+	           </tr>
+	           <% service_datum[:own_team][:need_pro_field_id_and_developers].each do |pro_field_id, sw_developers| %>
+	            <%= form_for service_datum[:own_team][:team] do |f| %>
+	            <% pro_field = ProField.find(pro_field_id) %>
+	            <%= hidden_field :pro_field, :id, :value => pro_field_id %>
+	             <tr>
+	              <% if not sw_developers.empty? %>
+	              <td rowspan="<%= sw_developers.length %>" style="text-align:center"><%= pro_field.name %></td>
+	              <td>
+	               <%= radio_button :team_person, :sw_developer_id, sw_developers[0].id %>
+	               <%= render "users/user_link", :user => sw_developers[0].user %>
+	              </td>
+	              <td class="input_submit" rowspan="<%= sw_developers.length %>" style="text-align:center"><%= f.submit "팀원 선택하기" %></td>
+	              <% else %>
+	              <td style="text-align:center"><%= pro_field.name %></td>
+	              <td><div class="small_msg">분야에 맞는 개발자가 없습니다! 관리자에게 문의 바랍니다.</div></td>
+	              <td></td>
+	              <% end # end if %>
+	              </td>
+	             </tr>
+	             <% if not sw_developers.empty? %>
+	              <% sw_developers[1..-1].each do |sw_developer| %>
+	               <tr>
+	                <td>
+		             <%= radio_button :team_person, :sw_developer_id, sw_developer.id %>
+	                 <%= render "users/user_link", :user => sw_developer.user %>
+	                </td>
+	               </tr>
+	              <% end # end of each %>
+	             <% end # end of if %>
+	            <% end # end of form %>
+	           <% end # end of pro_field_id_iter %>
+	           <% end # end if %>
+	          </table>
+	
+	      <% end # end of service_datum[:own_team] %>
+	      </div>
+	    </div>
+	
+	    <hr />
+	
+	    <div class="service_full_spec box">
+	      <h4>팀원 설정</h4>
+	      <% service_datum[:my_team_people].each do |my_team_person| %>
+	
+	      <div class="service_full_spec box" style="margin-top:0.5em;">
+	
+	        <%= render "team_information", :team => my_team_person.team %>
+	        <div class="team_options">
+	        <%= form_for my_team_person do |f| %>
+	              <% if my_team_person.state == 0   # 0은 아직 답장 안한 상태 %>
+	                  <span>요청 수락 : </span><ul style="display:inline">
+	                  <li style="display:inline-block;margin-right:0.25em;"><%= f.radio_button :state, 1 %> 수락</li>
+	                  <li style="display:inline-block;margin-right:0.25em;"><%= f.radio_button :state, 2 %> 거절</li>
+	                  <div>나의 수당 : <%= f.text_field :personal_pay, :style => "width:3em" %>만 원</div>
+	                  </ul>
+	                  <div class="input_submit right"><%= f.submit "확인" %></div>
+	              <% elsif my_team_person.state == 1 # 1은 수락한 상태 %>
+	                  나의 수당 : <%= f.text_field :personal_pay, :style => "width:3em" %>만 원
+	                  <span class="input_submit"><%= f.submit "수당 변경하기" %></span>
+	              <% elsif my_team_person.state == 2 # 1은 수락한 상태 %>
+	                  <div class="small_msg">요청을 거절하셨습니다.</div>
+	              <% end %>
+	
+	        <% end %>
+	        </div>
+	      </div>
+	
+	      <% end %>
+	    </div>
     </div>
     </div>
     <hr />

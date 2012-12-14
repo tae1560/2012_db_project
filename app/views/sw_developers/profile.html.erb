@@ -16,9 +16,9 @@
     <% if @user.sw_developer.pro_fields.empty? %>
         아직 선택하지 않았습니다.
     <% else %>
-        <ul style="display:inline">
+        <ul class="right_inline_ul">
           <% @user.sw_developer.pro_fields.each do |pro_field| %>
-              <li style="display: inline-block;margin-right: 5px;"><%= pro_field.name %></li>
+              <li><%= pro_field.name %></li>
           <% end #each %>
         </ul>
     <% end #if-else %>
@@ -90,11 +90,13 @@
                 <% if development_result.pro_fields.empty? %>
                     <div class="small_msg">평가 대기 중입니다.</div>
                 <% else %>
-                    <ul>
+                	<div>
+                    <ul class="right_inline_ul">
                       <% development_result.pro_fields.each do |pro_field| %>
-                          <li style="display: inline-block;margin-right: 5px;"><%= pro_field.name %></li>
+                          <li><%= pro_field.name %></li>
                       <% end #each %>
                     </ul>
+                	</div>
                 <% end #if-else %>
               </li>
 

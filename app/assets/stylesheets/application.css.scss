@@ -115,7 +115,6 @@ input, button, select
 {
 	margin: 0 auto;
 	width: 0;
-	height: 100%;
 }
 
 .half_box
@@ -187,6 +186,23 @@ img.dropdown
 	height: 5em;
 	width: 100%;
 	background: rgba(0, 0, 0, 0.7);
+}
+
+.left_inline_ul, .right_inline_ul
+{
+	display: inline;
+}
+
+.left_inline_ul li
+{
+	display: inline-block;
+	margin-left: 0.5em;
+}
+
+.right_inline_ul li
+{
+	display: inline-block;
+	margin-right: 0.5em;
 }
 
 #heading_logo
