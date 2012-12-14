@@ -3,20 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c89fee7f-2237-4288-94c2-30eda02b9fef" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/administrators_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/administrators_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/evaluators_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/evaluators_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/requestors_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/requestors_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/services_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/services_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/sw_developers_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/sw_developers_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/administrators/_menu.html.erb" afterPath="$PROJECT_DIR$/app/views/administrators/_menu.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/evaluators/_menu.html.erb" afterPath="$PROJECT_DIR$/app/views/evaluators/_menu.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/requestors/home.html.erb" afterPath="$PROJECT_DIR$/app/views/requestors/home.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/requestors/new_service.html.erb" afterPath="$PROJECT_DIR$/app/views/requestors/new_service.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/sw_developers/development_results.html.erb" afterPath="$PROJECT_DIR$/app/views/sw_developers/development_results.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/sw_developers/profile.html.erb" afterPath="$PROJECT_DIR$/app/views/sw_developers/profile.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.yml" afterPath="$PROJECT_DIR$/config/database.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
     </list>
     <ignored path="2012_db_project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,10 +32,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sw_developers_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="sw_developers_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/sw_developers_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="4" selection-start="1434" selection-end="1434" vertical-scroll-proportion="0.2669903">
+            <state line="56" column="16" selection-start="1468" selection-end="1468" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile.html.erb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/sw_developers/profile.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="101" column="0" selection-start="4067" selection-end="4067" vertical-scroll-proportion="0.07745267">
               <folding />
             </state>
           </provider>
@@ -68,7 +65,6 @@
       <list>
         <option value="$PROJECT_DIR$/app/views/evaluators/evaluation_request.html.erb" />
         <option value="$PROJECT_DIR$/app/views/administrators/evaluation_request.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/sw_developers/profile.html.erb" />
         <option value="$PROJECT_DIR$/app/views/administrators/_menu.html.erb" />
         <option value="$PROJECT_DIR$/app/views/evaluators/_menu.html.erb" />
         <option value="$PROJECT_DIR$/db/migrate/20121214082759_add_users_last_login.rb" />
@@ -82,6 +78,7 @@
         <option value="$PROJECT_DIR$/app/controllers/administrators_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/sw_developers_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/evaluators_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/sw_developers/profile.html.erb" />
       </list>
     </option>
   </component>
@@ -195,6 +192,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="2012_db_project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="2012_db_project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sw_developers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -699,13 +718,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/sw_developers/profile.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="0" selection-start="4067" selection-end="4067" vertical-scroll-proportion="0.025817556">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20121214082759_add_users_last_login.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="34" selection-start="93" selection-end="93" vertical-scroll-proportion="0.048543688">
@@ -806,7 +818,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/sw_developers_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="4" selection-start="1434" selection-end="1434" vertical-scroll-proportion="0.2669903">
+        <state line="56" column="16" selection-start="1468" selection-end="1468" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/sw_developers/profile.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="101" column="0" selection-start="4067" selection-end="4067" vertical-scroll-proportion="0.07745267">
           <folding />
         </state>
       </provider>
