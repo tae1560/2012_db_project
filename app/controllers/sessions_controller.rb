@@ -20,6 +20,15 @@ class SessionsController < ApplicationController
     end
   end
 
+  def login_test
+    authorized_user = User.authenticate(params[:login_id],params[:password])
+    if authorized_user
+      render(:json => "success")
+    else
+      render(:json => "failed")
+    end
+  end
+
   def logout
     session[:user_id] = nil
     flash[:notice] = "Logout successfully"
