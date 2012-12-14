@@ -82,8 +82,24 @@
       <div>
       <h5> 평가 요청한 평가자 : </h5>
       <ol>
+        <%
+           is_all_evaluated = true
+        %>
       <% development_result.evaluators.each do |evaluator| %>
-      <li><%= render "users/user_link", :user => evaluator.user %></li>
+      <li>
+        <%= render "users/user_link", :user => evaluator.user %>
+        <% if development_result.evaluation_results.where(:evaluator_id => evaluator.id).exists? %>
+            <% evaluation_result = development_result.evaluation_results.where(:evaluator_id => evaluator.id).first %>
+            평가결과 :
+            창의력 : <%= evaluation_result.creativity %>
+            몰입력 : <%= evaluation_result.concentration %>
+            기술력 : <%= evaluation_result.skill %>
+            의지력 : <%= evaluation_result.will %>
+        <% else %>
+            <% is_all_evaluated = false %>
+            평가중입니다.
+        <% end %>
+      </li>
 
       <% end %>
       </ol>
@@ -107,6 +123,19 @@
            </div>
         <% end %>
       </div>
+
+        <!-- 평가 요청 완료하기 -->
+        <% if is_all_evaluated and development_result.evaluation_results.size >= 3 %>
+            <%= form_for development_result do |f| %>
+                <%= f.hidden_field :state, :value => 1 %>
+                <%= f.submit "평가 완료하기" %>
+            <% end %>
+        <% elsif development_result.evaluation_requests.size < 3 %>
+            3명 이상 평가요청을 해야 합니다.
+        <% else %>
+            현재 평가 중입니다.
+        <% end %>
+
 
         
       </div>

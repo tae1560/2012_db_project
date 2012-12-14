@@ -59,21 +59,26 @@ class DevelopmentResultsController < ApplicationController
     @development_result = DevelopmentResult.find(params[:id])
     @pro_fields = params[:pro_field]
 
-    @pro_fields.each do |pro_field|
-      id = pro_field[0].to_i
-      selected = pro_field[1].to_i
-      is_contains = @development_result.pro_fields.exists?(:id => id)
+    if @pro_fields
+      @pro_fields.each do |pro_field|
+        id = pro_field[0].to_i
+        selected = pro_field[1].to_i
+        is_contains = @development_result.pro_fields.exists?(:id => id)
 
-      if selected == 1 and !is_contains
-        ins_pro_field = ProField.find(id)
-        @development_result.pro_fields << ins_pro_field
-      elsif selected == 0 and is_contains
-        ins_pro_field = ProField.find(id)
-        @development_result.pro_fields.delete(ins_pro_field)
+        if selected == 1 and !is_contains
+          ins_pro_field = ProField.find(id)
+          @development_result.pro_fields << ins_pro_field
+        elsif selected == 0 and is_contains
+          ins_pro_field = ProField.find(id)
+          @development_result.pro_fields.delete(ins_pro_field)
+        end
       end
     end
 
+    @development_result.update_attributes(params[:development_result])
+
     respond_to do |format|
+      format.html { redirect_to :back }
       format.json { redirect_to :back }
     end
   end

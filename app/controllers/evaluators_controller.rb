@@ -25,7 +25,7 @@ class EvaluatorsController < ApplicationController
       if @evaluator.update_attributes(params[:evaluator])
         format.html { redirect_to :back }
       else
-        format.html { redirect_to :back, :notice => @evaluator.errors.full_messages  }
+        format.html { redirect_to :back, :notice => @sw_developer.errors.full_messages  }
       end
     end
   end

@@ -1,8 +1,9 @@
 class DevelopmentResult < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :state
   #attr_readonly :create_at, :updated_at
 
   validates :name, :presence => true
+  validates :state, :presence => true
 
   belongs_to :sw_developer
   has_many :result_files

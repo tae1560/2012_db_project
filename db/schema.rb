@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121212182019) do
+ActiveRecord::Schema.define(:version => 20121213181652) do
 
   create_table "administrators", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -30,9 +30,10 @@ ActiveRecord::Schema.define(:version => 20121212182019) do
 
   create_table "development_results", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.integer  "sw_developer_id"
+    t.integer  "state",           :default => 0
   end
 
   add_index "development_results", ["sw_developer_id"], :name => "development_results_sw_developer_id_fk"

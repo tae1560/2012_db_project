@@ -11,9 +11,13 @@ class AdministratorsController < ApplicationController
     @user = @current_user
   end
 
+  def edit_profile
+    @user = @current_user
+  end
+
   def evaluation_request
     @sw_developers = SwDeveloper.all
-    @development_results = DevelopmentResult.all
+    @development_results = DevelopmentResult.where(:state => 0).all
     @pro_fields = ProField.all
     @evaluators = Evaluator.all
 

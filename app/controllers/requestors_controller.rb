@@ -10,6 +10,10 @@ class RequestorsController < ApplicationController
     @user = @current_user
   end
 
+  def edit_profile
+    @user = @current_user
+  end
+
   def proper_user
     @requestor = @current_user.requestor
     if @requestor == nil
