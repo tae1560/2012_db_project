@@ -8,6 +8,8 @@ gem 'rails', '3.2.8'
 gem 'mysql2'
 gem 'foreigner'
 gem 'therubyracer', '~> 0.10.0'
+gem 'gcm_on_rails'
+gem 'configatron'
 
 # Gems used only for assets and not required
 # in production environments by default.

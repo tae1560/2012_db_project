@@ -1,0 +1,5 @@
+configatron.gcm_on_rails.api_url = 'https://android.googleapis.com/gcm/send'
+#configatron.gcm_on_rails.api_key = 'AIzaSyDAbaYFx_wFeI4Y8SFQGIf1r2D_buR9DwE'
+configatron.gcm_on_rails.api_key = 'AIzaSyCj9U4I70QgTLH9p9pJtrT4ZRNxz8FrsQA'
+configatron.gcm_on_rails.app_name = 'org.poolc.dbproject'
+configatron.gcm_on_rails.delivery_format = 'json'
