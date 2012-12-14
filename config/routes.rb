@@ -2,6 +2,7 @@ DbProject::Application.routes.draw do
   get "sessions/login"
   match "sessions/login_attempt"
   match "sessions/login_test"
+  match "sessions/login_with_mobile"
 
   get "sessions/home"
   get "sessions/logout"

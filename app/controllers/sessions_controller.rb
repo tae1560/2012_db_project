@@ -29,6 +29,16 @@ class SessionsController < ApplicationController
     end
   end
 
+  def login_with_mobile
+    authorized_user = User.authenticate(params[:login_id],params[:password])
+    if authorized_user
+      session[:user_id] = authorized_user.id
+      redirect_to(:action => 'home')
+    else
+      render(:json => "failed")
+    end
+  end
+
   def logout
     session[:user_id] = nil
     flash[:notice] = "Logout successfully"
