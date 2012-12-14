@@ -9,6 +9,11 @@ class RequestorsController < ApplicationController
 
     @changed_services = []
     last_login = @current_user.last_login
+
+    if last_login == nil
+      last_login = Time.now
+    end
+
     @requestor.services.where(:team_id => nil).each do |service|
       # 서비스의 팀들 중 완성된 팀 고르기
 

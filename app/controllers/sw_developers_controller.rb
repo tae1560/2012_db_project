@@ -53,6 +53,63 @@ class SwDevelopersController < ApplicationController
   end
 
   def home
+    last_login = @current_user.last_login
+    if last_login == nil
+      last_login = Time.now
+    end
+
+    # 관리자에게 선정된 정보가 있는 경우
+    @selected_services = []
+    @sw_developer.pre_chosen_developers.each do |pre_chosen_developer|
+      if pre_chosen_developer.updated_at > last_login - 1.years # TODO  지우기
+                                                       # 바뀐 사람이 있으면 체크
+        @selected_services.push pre_chosen_developer.service
+      end
+    end
+
+    # 팀 초대 왔을때
+    # 자신에 관련된 모든 서비스
+    @invited_teams = []
+    @sw_developer.services.where(:team_id => nil).each do |service|
+      # 서비스에 관련된 모든 팀
+      service.teams.each do |team|
+        # 팀에 있는 모든 팀원중 내가 있는 팀원
+        team.team_people.where(:sw_developer_id => @sw_developer.id).each do |team_person|
+          # 미응답 상태
+          if team_person.state == 0
+            @invited_teams.push team
+          end
+        end
+      end
+    end
+
+    # 경매 정보 변경
+    @changed_services = []
+    @sw_developer.services.where(:team_id => nil).each do |service|
+      # 서비스의 팀들 중 완성된 팀 고르기
+
+      total_number_of_developers = 0
+
+      service.service_pro_fields.each do |service_pro_field|
+        total_number_of_developers += service_pro_field.number_of_developers
+      end
+
+
+      service.teams.each do |team|
+        # 완성된 팀
+        if team.team_people.size == total_number_of_developers
+          # 팀원 중 내용이 바뀐 사람이 있는지 체크
+          team.team_people.each do |team_person|
+            if team_person.updated_at > last_login - 1.years # TODO  지우기
+                                                             # 바뀐 사람이 있으면 체크
+              @changed_services.push service
+              break
+            end
+          end
+        end
+      end
+    end
+
     # last_login 업데이트
     @current_user.last_login = Time.now
     @current_user.save

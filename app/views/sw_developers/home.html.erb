@@ -1,5 +1,25 @@
 <%= render 'menu' %>
 
-<div>
-    개발자 페이지
-</div>
+<% if @selected_services.size > 0 %>
+    <!-- 관리자에게 선택된 팀이 있을 경우 -->
+    <% @selected_services.each do |service| %>
+        <%= service.name %> 팀에 선정되셨습니다.
+    <% end %>
+    <%= link_to "용역 관리", "services" %>
+<% end %>
+
+<% if @invited_teams.size > 0 %>
+    <!-- 자신이 초대된 팀이 있을 경우 -->
+    <% @invited_teams.each do |team| %>
+        <%= team.id %> 팀으로 부터 초대되었습니다.
+    <% end %>
+    <%= link_to "용역 관리", "services" %>
+<% end %>
+
+<% if @changed_services.size > 0 %>
+   <!-- 팀정보가 변경된 용역이 있을경우 -->
+   <% @changed_services.each do |service| %>
+        <%= service.name %> 팀의 경매정보가 변경되었습니다.
+   <% end %>
+    <%= link_to "용역 관리", "services" %>
+<% end %>
