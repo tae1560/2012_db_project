@@ -9,14 +9,12 @@ class User < ActiveRecord::Base
   EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i
   validates :name, :presence => true
   validates :login_id, :presence => true, :uniqueness => true
-  validates :password, :presence => true, :length => { :in => 3..20 }
+  validates :password, :presence => true, :length => { :minimum => 3 }
   validates_confirmation_of :password
   validates :roll, :presence => true
   validates :email, :presence => true, :format => EMAIL_REGEX
   validates :address, :presence => true
   validates :phone, :presence => true
-
-  before_save :encrypt_password
 
   def encrypt_password
     if self.password.present?

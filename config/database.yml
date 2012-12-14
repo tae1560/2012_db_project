@@ -15,9 +15,9 @@ development:
   database: db_project_development
   pool: 5
   username: root
-  password: thak
-#  socket: /tmp/mysql.sock
-  socket: /var/run/mysqld/mysqld.sock
+  password:
+  socket: /tmp/mysql.sock
+#  socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

@@ -42,6 +42,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        @user.encrypt_password
         u = nil
         case @user.roll
           when "개발자" then
@@ -66,6 +67,32 @@ class UsersController < ApplicationController
       end
     end
 
+  end
+
+  def update
+    @user = User.find(params[:id])
+    user_params = params[:user]
+
+    if !user_params[:password] or user_params[:password].length == 0
+      user_params.delete(:password)
+      user_params.delete(:password_confirmation)
+    end
+
+    user_params.each do |key, value|
+      @user[key] = value
+    end
+
+    if user_params[:password]
+      @user.encrypt_password
+    end
+
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to :back }
+      else
+        format.html { redirect_to :back, :notice => @user.errors.full_messages  }
+      end
+    end
   end
 
   def edit
