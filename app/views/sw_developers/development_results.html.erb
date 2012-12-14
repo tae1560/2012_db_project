@@ -59,6 +59,20 @@
         <% end #if-else %>
       </li>
       
+              <li>세부/응용분야 :
+                <% if development_result.sub_fields.empty? %>
+                    <div class="small_msg">세부/응용분야가 없습니다.</div>
+                <% else %>
+                    <div>
+                      <ul class="right_inline_ul">
+                        <% development_result.sub_fields.each do |sub_field| %>
+                            <li><%= sub_field.name %></li>
+                        <% end #each %>
+                      </ul>
+                    </div>
+                <% end #if-else %>
+              </li>
+              
       <li>첨부자료 :
         <ul>
         <% development_result.result_files.each do |result_file| %>
