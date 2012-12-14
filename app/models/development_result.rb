@@ -15,4 +15,7 @@ class DevelopmentResult < ActiveRecord::Base
 
   has_many :development_result_pro_fields
   has_many :pro_fields, :through => :development_result_pro_fields
+
+  has_many :development_result_sub_fields
+  has_many :sub_fields, :through => :development_result_sub_fields
 end

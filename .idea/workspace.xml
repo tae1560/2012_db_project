@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c89fee7f-2237-4288-94c2-30eda02b9fef" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/development_result.rb" afterPath="$PROJECT_DIR$/app/models/development_result.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/development_result_sub_fields.rb" afterPath="$PROJECT_DIR$/app/models/development_result_sub_fields.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/sub_field.rb" afterPath="$PROJECT_DIR$/app/models/sub_field.rb" />
     </list>
     <ignored path="2012_db_project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -21,19 +24,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="20121214070036_create_development_result_sub_fields.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="20121214070036_create_development_result_sub_fields.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db/migrate/20121214070036_create_development_result_sub_fields.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="63" selection-start="326" selection-end="326" vertical-scroll-proportion="0.2184466">
+            <state line="8" column="0" selection-start="262" selection-end="262" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="20121209113041_create_evaluation_result_sub_fields.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="20121209113041_create_evaluation_result_sub_fields.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/db/migrate/20121209113041_create_evaluation_result_sub_fields.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="70" selection-start="82" selection-end="394" vertical-scroll-proportion="0.0">
+            <state line="11" column="70" selection-start="82" selection-end="394" vertical-scroll-proportion="0.2669903">
               <folding />
             </state>
           </provider>
@@ -52,12 +55,9 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/evaluators/profile.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/evaluators/edit_profile.html.erb" />
         <option value="$PROJECT_DIR$/app/views/sw_developers/services.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/sw_developers_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/sw_developers/_team_information.html.erb" />
-        <option value="$PROJECT_DIR$/app/models/development_result.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20121213181652_add_state_column_to_development_result.rb" />
         <option value="$PROJECT_DIR$/app/controllers/development_results_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/administrators/evaluation_request.html.erb" />
@@ -68,6 +68,9 @@
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/users/_edit_profile_form.erb" />
         <option value="$PROJECT_DIR$/db/migrate/20121214070036_create_development_result_sub_fields.rb" />
+        <option value="$PROJECT_DIR$/app/models/development_result_sub_fields.rb" />
+        <option value="$PROJECT_DIR$/app/models/sub_field.rb" />
+        <option value="$PROJECT_DIR$/app/models/development_result.rb" />
       </list>
     </option>
   </component>
@@ -149,24 +152,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="db" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="2012_db_project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="2012_db_project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="db" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="migrate" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -703,34 +688,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/sw_developers_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="62" selection-start="1249" selection-end="1249" vertical-scroll-proportion="0.37751678">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/administrators/evaluation_request.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="131" column="21" selection-start="4232" selection-end="4232" vertical-scroll-proportion="0.63286716">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/evaluators_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="5" selection-start="928" selection-end="928" vertical-scroll-proportion="0.7298658">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/administrators/edit_profile.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/administrators_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="3" selection-start="205" selection-end="205" vertical-scroll-proportion="0.31553397">
@@ -801,16 +758,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20121209113041_create_evaluation_result_sub_fields.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/development_result_pro_field.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="70" selection-start="82" selection-end="394" vertical-scroll-proportion="0.0">
+        <state line="4" column="32" selection-start="144" selection-end="144" vertical-scroll-proportion="0.10067114">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/development_result_sub_fields.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="23" selection-start="112" selection-end="112" vertical-scroll-proportion="0.07550336">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/sub_field.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="75" selection-start="294" selection-end="294" vertical-scroll-proportion="0.1699029">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/development_result.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="41" selection-start="581" selection-end="581" vertical-scroll-proportion="0.4368932">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20121214070036_create_development_result_sub_fields.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="63" selection-start="326" selection-end="326" vertical-scroll-proportion="0.2184466">
+        <state line="8" column="0" selection-start="262" selection-end="262" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121209113041_create_evaluation_result_sub_fields.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="70" selection-start="82" selection-end="394" vertical-scroll-proportion="0.2669903">
           <folding />
         </state>
       </provider>
