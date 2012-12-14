@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121214072358) do
+ActiveRecord::Schema.define(:version => 20121214082759) do
 
   create_table "administrators", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -220,6 +220,7 @@ ActiveRecord::Schema.define(:version => 20121214072358) do
     t.string   "password"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.datetime "last_login"
   end
 
   add_index "users", ["login_id"], :name => "index_users_on_login_id", :unique => true

@@ -27,8 +27,10 @@ class ServicesController < ApplicationController
       end
     end
 
+    requestor_id = params[:requestor][:id].to_i
+
     respond_to do |format|
-      if @service.save
+      if requestor_id and @service.save
         folder_path = Rails.root.join('public', 'data')
         FileUtils.mkdir_p(folder_path) unless File.exists?(folder_path)
 
@@ -37,6 +39,8 @@ class ServicesController < ApplicationController
           File.open(path, "wb") { |f| f.write(last_uploaded_file.read) }
         end
 
+        @service.requestor = Requestor.find(requestor_id)
+        @service.save
 
         format.html { redirect_to :back, :notice => "Service was added"}
       else

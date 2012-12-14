@@ -1,5 +1,23 @@
 <%= render 'menu' %>
 
 <div>
-  용역의뢰자 페이지
+  <% if @time_out_services.exists? %>
+      <!-- 시간이 완료된 용역이 있는데 아직 선정 안한경우 -->
+      경매 마감 시간이 지난 용역이 있습니다.
+      <%= link_to "용역 보기", "services" %>
+  <% end %>
 </div>
+
+<div>
+  <% if @changed_services.size > 0 %>
+      <!-- 경매 정보가 변경된 팀들 목록 -->
+      경매 정보가 변경된 팀들이 있습니다.
+      <% @changed_services.each do |service| %>
+        <%= service.name %>
+      <% end %>
+
+      <%= link_to "용역 보기", "services" %>
+  <% end %>
+</div>
+
+

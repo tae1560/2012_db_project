@@ -59,6 +59,9 @@ class UsersController < ApplicationController
           u.save
         end
 
+        @user.last_login = Time.now
+        @user.save
+
         format.html { redirect_to sessions_login_path, :notice => "joined successfully" }
         format.json { render json: @users, status: :created, location: @user }
       else

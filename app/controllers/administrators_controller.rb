@@ -4,7 +4,11 @@ class AdministratorsController < ApplicationController
   before_filter :proper_user
 
   def home
+    # last_login 업데이트
+    @current_user.last_login = Time.now
+    @current_user.save
 
+    redirect_to "/administrators/profile"
   end
 
   def profile

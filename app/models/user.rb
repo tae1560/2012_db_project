@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :address, :email, :phone, :join_date, :roll, :login_id, :password, :password_confirmation
+  attr_accessible :name, :address, :email, :phone, :join_date, :roll, :login_id, :password, :password_confirmation, :last_login
 
   has_one :requestor, :foreign_key => :id
   has_one :administrator, :foreign_key => :id
@@ -26,6 +26,8 @@ class User < ActiveRecord::Base
     user = User.find_by_login_id(login_id)
 
     if user && user.match_password(password)
+      #user.last_login = Time.now
+      #user.save
       return user
     else
       return false

@@ -4,7 +4,13 @@
   <h2>용역 등록</h2>
 </div>
 
+<% if notice %>
+    <%= notice %>
+    <% notice = nil %>
+<% end %>
+
 <%= form_for @service, :html => {:multipart => true} do |f| %>
+    <%= hidden_field :requestor, :id, :value => @requestor.id %>
 
 <div class="fullsize_box box">
   <ul id="new_service">
@@ -143,8 +149,3 @@
 	});
 	//$("#control_cre_con").
 </script>
-
-<% if notice %>
-    <%= notice %>
-    <% notice = nil %>
-<% end %>

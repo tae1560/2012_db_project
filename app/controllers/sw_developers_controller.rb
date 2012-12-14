@@ -53,7 +53,9 @@ class SwDevelopersController < ApplicationController
   end
 
   def home
-
+    # last_login 업데이트
+    @current_user.last_login = Time.now
+    @current_user.save
   end
 
   def profile
