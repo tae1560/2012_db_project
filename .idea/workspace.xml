@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c89fee7f-2237-4288-94c2-30eda02b9fef" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/sw_developers/development_results.html.erb" afterPath="$PROJECT_DIR$/app/views/sw_developers/development_results.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/sw_developers/profile.html.erb" afterPath="$PROJECT_DIR$/app/views/sw_developers/profile.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.yml" afterPath="$PROJECT_DIR$/config/database.yml" />
     </list>
     <ignored path="2012_db_project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,7 +24,16 @@
       <file leaf-file-name="requestors_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/requestors_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="4" selection-start="1040" selection-end="1120" vertical-scroll-proportion="-20.76923">
+            <state line="16" column="21" selection-start="480" selection-end="480" vertical-scroll-proportion="-9.230769">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="database.yml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config/database.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="0" selection-start="453" selection-end="453" vertical-scroll-proportion="0.46116504">
               <folding />
             </state>
           </provider>
@@ -36,15 +43,6 @@
         <entry file="file://$PROJECT_DIR$/app/controllers/sw_developers_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="56" column="16" selection-start="1468" selection-end="1468" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profile.html.erb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/sw_developers/profile.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="101" column="0" selection-start="4067" selection-end="4067" vertical-scroll-proportion="0.07745267">
               <folding />
             </state>
           </provider>
@@ -63,7 +61,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/evaluators/evaluation_request.html.erb" />
         <option value="$PROJECT_DIR$/app/views/administrators/evaluation_request.html.erb" />
         <option value="$PROJECT_DIR$/app/views/administrators/_menu.html.erb" />
         <option value="$PROJECT_DIR$/app/views/evaluators/_menu.html.erb" />
@@ -79,6 +76,7 @@
         <option value="$PROJECT_DIR$/app/controllers/sw_developers_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/evaluators_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/sw_developers/profile.html.erb" />
+        <option value="$PROJECT_DIR$/config/database.yml" />
       </list>
     </option>
   </component>
@@ -718,13 +716,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/db/migrate/20121214082759_add_users_last_login.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="34" selection-start="93" selection-end="93" vertical-scroll-proportion="0.048543688">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/sessions/login.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="0" selection-start="152" selection-end="152" vertical-scroll-proportion="0.2020202">
@@ -802,16 +793,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/requestors_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/evaluators_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="4" selection-start="1040" selection-end="1120" vertical-scroll-proportion="-20.76923">
+        <state line="36" column="4" selection-start="964" selection-end="964" vertical-scroll-proportion="0.5177994">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/evaluators_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/sw_developers/profile.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="4" selection-start="964" selection-end="964" vertical-scroll-proportion="0.5177994">
+        <state line="101" column="0" selection-start="4067" selection-end="4067" vertical-scroll-proportion="0.38726333">
           <folding />
         </state>
       </provider>
@@ -823,9 +814,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/sw_developers/profile.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/requestors_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="0" selection-start="4067" selection-end="4067" vertical-scroll-proportion="0.07745267">
+        <state line="16" column="21" selection-start="480" selection-end="480" vertical-scroll-proportion="-9.230769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/database.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="453" selection-end="453" vertical-scroll-proportion="0.46116504">
           <folding />
         </state>
       </provider>
