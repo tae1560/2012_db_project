@@ -3,9 +3,18 @@
 <div class="fullsize_box box">
 <h2>용역 보기</h2>
 </div>
-<div class="fullsize_box box">
 
+
+
+
+<div class="fullsize_box box">
 <% @services.each do |service| %>
+	<%
+	_confirm_msg = "정말 이 팀을 용역 대상으로 선택하시겠습니까?"
+	if Time.now.utc < service.due_date
+		_confirm_msg += "\\n  [경고: 공지한 마감 시각 이전입니다!]"
+	end
+	%>
     <div>
       <h3 style="margin-bottom:1.0em"><%= service.name %></h3>
       <ul>
@@ -27,6 +36,10 @@
 <li class="font_skill">기술력 : <%= service.skill %>%</li>
 <li class="font_will">의지력 : <%= service.will %>%</li>
       </ul>
+    </div>
+    <div class="service_full_spec box">
+      <h4>완성된 팀 정보</h4>
+      <hr />
 
       <!-- 참여중인 팀정보 (완성된 팀) 시작 -->
           <% total_number_of_developers = 0 %>
@@ -35,17 +48,22 @@
           <% end %>
 
           <% service.teams.each do |team| %>
-              <% if team.team_people.size < total_number_of_developers %>
+              <% if team.team_people.size == total_number_of_developers %>
+                <div class="service_full_spec box">
                   <%= render "/sw_developers/team_information", :team => team %>
 
                   <%= form_for service, :url => "/services/select_team.json" do |f| %>
                       <%= f.hidden_field :id, :value => service.id %>
                       <%= hidden_field :team, :id, :value => team.id %>
-                      <%= f.submit "선택하기" %>
+                      <div class="right input_submit" style="margin:0.25em 2px 0">
+                        <%= f.submit "이 팀 최종 선택하기", :onclick => "return confirm('" + _confirm_msg + "');" %>
+                      </div>
                   <% end %>
+                </div>
               <% end %>
           <% end %>
       <!-- 참여중인 팀정보 (완성된 팀) 끝  -->
+    </div>
     <hr />
 <% end %>
 </div>

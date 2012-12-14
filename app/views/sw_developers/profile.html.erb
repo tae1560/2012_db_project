@@ -16,7 +16,7 @@
     <% if @user.sw_developer.pro_fields.empty? %>
         아직 선택하지 않았습니다.
     <% else %>
-        <ul>
+        <ul style="display:inline">
           <% @user.sw_developer.pro_fields.each do |pro_field| %>
               <li style="display: inline-block;margin-right: 5px;"><%= pro_field.name %></li>
           <% end #each %>
@@ -142,13 +142,13 @@
                       </div>
 
                       <ul>
-                        <li class="font_creativity">창의력 : <span class="score_number"><%= _creativity %></span>
+                        <li class="font_creativity">창의력 : <span class="score_number"><%= _creativity / count %></span>
                           <span class="underscore"> / 100 </span><div class="star"></div></li>
-                        <li class="font_concentration">몰입력 : <span class="score_number"><%= _concentration %></span>
+                        <li class="font_concentration">몰입력 : <span class="score_number"><%= _concentration / count %></span>
                           <span class="underscore"> / 100 </span><div class="star"></div></li>
-                        <li class="font_skill">기술력 : <span class="score_number"><%= _skill %></span>
+                        <li class="font_skill">기술력 : <span class="score_number"><%= _skill / count %></span>
                           <span class="underscore"> / 100 </span><div class="star"></div></li>
-                        <li class="font_will">의지력 : <span class="score_number"><%= _will %></span>
+                        <li class="font_will">의지력 : <span class="score_number"><%= _will / count %></span>
                           <span class="underscore"> / 100 </span><div class="star"></div></li>
                       </ul>
 
