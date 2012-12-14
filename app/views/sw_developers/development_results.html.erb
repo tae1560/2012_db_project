@@ -67,12 +67,19 @@
         </ul>
       </li>
       
-      <li>평가결과 :
+      <li>평가결과 : 
+      <%
+      if development_result.state == 1
+      	_msg = "평가 완료"
+      elsif development_result.state == 0
+      	_msg = "평가 진행 중"
+      end
+      %>
+      <span><%= _msg %></span>
       <% if development_result.evaluation_results.empty? %>
       <div class="small_msg">평가 대기 중입니다.</div>
       <% else %>
       <div class="box fullsize_box">
-        
 		<%
 		_creativity = 0;
 		_concentration = 0;
