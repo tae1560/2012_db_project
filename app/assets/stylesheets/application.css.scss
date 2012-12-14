@@ -75,6 +75,15 @@ input, button, select
 	font-family: "NanumGothic" "Malgun Gothic" sans-serif;
 }
 
+.absolute_right
+{
+	position: absolute;
+	float: right;
+	right: 1%;
+	top: 50%;
+	margin-top: -0.75em;
+}
+
 .box
 {
 	position: absolute;
@@ -82,6 +91,21 @@ input, button, select
 	background:rgba(0, 0, 0, 0.4);
 	font-size: 1em;
 	line-height: 1.5em;
+}
+
+.small_info_span
+{
+	color: #91A2ff;
+}
+
+.small_msg_span
+{
+	color: #f66;
+}
+
+.notify
+{
+	font-size: 0.95em;
 }
 
 .small_msg

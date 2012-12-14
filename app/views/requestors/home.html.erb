@@ -1,23 +1,34 @@
 <%= render 'menu' %>
 
-<div>
-  <% if @time_out_services.exists? %>
+<div class="fullsize_box box">
+<h2>알림</h2>
+</div>
+
+  <% if @time_out_services.exists? 
+	_no_notify = false
+%>
+    <div class="fullsize_box box">
       <!-- 시간이 완료된 용역이 있는데 아직 선정 안한경우 -->
-      경매 마감 시간이 지난 용역이 있습니다.
-      <%= link_to "용역 보기", "services" %>
+      <span class="small_msg_span">경매가 마감된 용역</span>이 있습니다.
+      <div class="absolute_right"><%= link_to "용역 보기", "services" %></div>
+    </div>
   <% end %>
-</div>
 
-<div>
-  <% if @changed_services.size > 0 %>
+  <% if @changed_services.size > 0
+	_no_notify = false
+%>
       <!-- 경매 정보가 변경된 팀들 목록 -->
-      경매 정보가 변경된 팀들이 있습니다.
       <% @changed_services.each do |service| %>
-        <%= service.name %>
-      <% end %>
+      <div class="fullsize_box box">
+      <span class="small_info_span"><%= service.name %></span>의 <span class="small_msg_span">경매 상황이 변경</span>되었습니다.
+        <div class="absolute_right"><%= link_to "용역 보기", "services" %></div> 
+      </div>
 
-      <%= link_to "용역 보기", "services" %>
-  <% end %>
-</div>
+      <% end %> 
+    <% end %>
 
-
+<% if _no_notify %>
+	<div class="fullsize_box box small_msg">
+		야호! 메시지가 하나도 없네요~
+	</div>
+<% end %>
