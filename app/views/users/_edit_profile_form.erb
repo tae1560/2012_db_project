@@ -8,7 +8,7 @@
     <%= form_for(@user, :url => {:controller => 'users', :action => :create}) do |f| %>
         <ul>
           <li><hr /></li>
-          <li><span>아이디</span> <%= @user.login_id %></li>
+          <li><%= @user.login_id %></li>
           <li><span>비밀번호</span><%= f.password_field :password%></li>
           <li><span>비밀번호 확인</span><%= f.password_field :password_confirmation%></li>
           <li><hr /></li>

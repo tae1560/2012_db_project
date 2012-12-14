@@ -4,31 +4,31 @@
 
 <div class="center_div">
 <div id= "signup_box" style="top:29em;" class="box">
-  
-개발자용 프로필 수정
+<ul>
 <%= form_for @sw_developer do |f| %>
-    단가 : <%= f.text_field :developer_pay %>
+      <li>단가 <div class="right" style="float:right">만 원</div><%= f.text_field :developer_pay, :style => "width:9.5em;right:3em" %></li>
 
-    <div><h4>전문분야</h4>
+      <li><hr /></li>
+      <li><strong>전문분야</strong></li>
+      <li><hr /></li>
       <% # 전문분야들을 체크해주기 위한 부분 %>
       <% pro_field_ids = [] %>
       <% @sw_developer.pro_fields.each do |pro_field| %>
           <% pro_field_ids.push pro_field.id %>
       <% end %>
 
-      <%= form_for @sw_developer do |f| %>
-          <% @pro_fields.each do |pro_field| %>
-              <%= check_box :pro_field, pro_field.id, :checked => pro_field_ids.include?(pro_field.id) %>
+      	    <% @pro_fields.each do |pro_field| %>
+            <li>
               <%= pro_field.name %>
-          <% end %>
-          &nbsp;&nbsp;
+              <%= check_box :pro_field, pro_field.id, :checked => pro_field_ids.include?(pro_field.id) %>
+            </li>
+            <% end %>
           <% if @sw_developer.pro_fields.empty? %>
-              <div class="input_submit right"><%= f.submit "선정" %></div>
+            <li><div class="input_submit right" style="position:relative;height:2em"><%= f.submit "선정" %></div></li>
           <% else %>
-              <div class="input_submit right"><%= f.submit "수정" %></div>
+            <li><div class="input_submit right" style="position:relative;height:2em"><%= f.submit "수정" %></div></li>
           <% end #if-else %>
-      <% end %>
-    </div>
+      	  </ul>
 
 <% end %>
 </div>

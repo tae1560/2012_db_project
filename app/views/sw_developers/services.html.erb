@@ -117,28 +117,34 @@
             <%= form_for service_datum[:own_team][:team] do |f| %>
             <% pro_field = ProField.find(pro_field_id) %>
             <%= hidden_field :pro_field, :id, :value => pro_field_id %>
-
-            <tr>
-             <td rowspan="<%= sw_developers.length %>" style="text-align:center"><%= pro_field.name %></td>
-             <td>
-             <%= radio_button :team_person, :sw_developer_id, sw_developers[0].id %>
-             <%= render "users/user_link", :user => sw_developers[0].user %>
-             </td>
-             <td class="input_submit" rowspan="<%= sw_developers.length %>" style="text-align:center"><%= f.submit "팀원 선택하기" %></td>
-            </tr>
-
-            <% sw_developers[1..-1].each do |sw_developer| %>
-            <tr>
-             <td>
-	          <%= radio_button :team_person, :sw_developer_id, sw_developer.id %>
-              <%= render "users/user_link", :user => sw_developer.user %>
-             </td>
-            </tr>
-            <% end # end of sw_developers.each %>
-
+             <tr>
+              <% if not sw_developers.empty? %>
+              <td rowspan="<%= sw_developers.length %>" style="text-align:center"><%= pro_field.name %></td>
+              <td>
+               <%= radio_button :team_person, :sw_developer_id, sw_developers[0].id %>
+               <%= render "users/user_link", :user => sw_developers[0].user %>
+              </td>
+              <td class="input_submit" rowspan="<%= sw_developers.length %>" style="text-align:center"><%= f.submit "팀원 선택하기" %></td>
+              <% else %>
+              <td style="text-align:center"><%= pro_field.name %></td>
+              <td><div class="small_msg">분야에 맞는 개발자가 없습니다! 관리자에게 문의 바랍니다.</div></td>
+              <td></td>
+              <% end # end if %>
+              </td>
+             </tr>
+             <% if not sw_developers.empty? %>
+              <% sw_developers[1..-1].each do |sw_developer| %>
+               <tr>
+                <td>
+	             <%= radio_button :team_person, :sw_developer_id, sw_developer.id %>
+                 <%= render "users/user_link", :user => sw_developer.user %>
+                </td>
+               </tr>
+              <% end # end of each %>
+             <% end # end of if %>
             <% end # end of form %>
-           <% end # end if %>
            <% end # end of pro_field_id_iter %>
+           <% end # end if %>
           </table>
 
       <% end # end of service_datum[:own_team] %>
