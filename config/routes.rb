@@ -35,6 +35,7 @@ DbProject::Application.routes.draw do
   match "requestors/edit_profile"
   match "requestors/services"
   match "requestors/new_service"
+  match "requestors/finished_services"
 
   match "services/add_service_pro_field"
   match "services/select_team"

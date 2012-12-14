@@ -70,4 +70,8 @@ class RequestorsController < ApplicationController
   def new_service
     @service = Service.new
   end
+
+  def finished_services
+    @services = Service.where("team_id IS NOT NULL").all
+  end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121214082759) do
+ActiveRecord::Schema.define(:version => 20121214100832) do
 
   create_table "administrators", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -190,9 +190,10 @@ ActiveRecord::Schema.define(:version => 20121214082759) do
     t.integer  "team_id"
     t.integer  "state"
     t.integer  "personal_pay"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.integer  "pro_field_id"
+    t.integer  "change_counter",  :default => 3
   end
 
   add_index "team_people", ["sw_developer_id"], :name => "team_people_sw_developer_id_fk"
