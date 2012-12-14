@@ -19,6 +19,7 @@ class AdministratorsController < ApplicationController
     @sw_developers = SwDeveloper.all
     @development_results = DevelopmentResult.where(:state => 0).all
     @pro_fields = ProField.all
+    @sub_fields = SubField.all
     @evaluators = Evaluator.all
 
     @selected_evaluators = ""

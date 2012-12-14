@@ -61,6 +61,29 @@
 			<% end #if-else %>
         <% end %>
       </div>
+
+        <div><h4>세부분야</h4>
+          <hr />
+
+          <% # 세부분야들을 체크해주기 위한 부분 %>
+          <% sub_field_ids = [] %>
+          <% development_result.sub_fields.each do |sub_field| %>
+              <% sub_field_ids.push sub_field.id %>
+          <% end %>
+
+          <%= form_for development_result do |f| %>
+              <% @sub_fields.each do |sub_field| %>
+                  <%= check_box :sub_field, sub_field.id, :checked => sub_field_ids.include?(sub_field.id) %>
+                  <%= sub_field.name %>
+              <% end %>
+              &nbsp;&nbsp;
+              <% if development_result.sub_fields.empty? %>
+                  <div class="input_submit right"><%= f.submit "선정" %></div>
+              <% else %>
+                  <div class="input_submit right"><%= f.submit "수정" %></div>
+              <% end #if-else %>
+          <% end %>
+        </div>
       
       <p></p>
       

@@ -99,6 +99,20 @@
                 	</div>
                 <% end #if-else %>
               </li>
+              
+              <li>세부분야 :
+                <% if development_result.sub_fields.empty? %>
+                    <div class="small_msg">없습니다.</div>
+                <% else %>
+                    <div>
+                      <ul class="right_inline_ul">
+                        <% development_result.sub_fields.each do |sub_field| %>
+                            <li><%= sub_field.name %></li>
+                        <% end #each %>
+                      </ul>
+                    </div>
+                <% end #if-else %>
+              </li>
 
               <li>첨부자료 :
                 <ul>
