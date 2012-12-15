@@ -52,6 +52,7 @@ class SessionsController < ApplicationController
 
   def login_with_mobile
     authorized_user = User.authenticate(params[:login_id],params[:password])
+    session[:last_seen] = Time.now
     if authorized_user
       session[:user_id] = authorized_user.id
 
