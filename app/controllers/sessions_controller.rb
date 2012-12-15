@@ -11,12 +11,15 @@ class SessionsController < ApplicationController
 
   def login_attempt
     authorized_user = User.authenticate(params[:login_id],params[:password])
+    session[:last_seen] = Time.now
     if authorized_user
       session[:user_id] = authorized_user.id
+
       redirect_to(:action => 'home')
     else
       flash[:notice] = "Invalid Username or Password"
       #flash[:color]= "invalid"
+      session[:user_id] = nil
       redirect_to :back
     end
   end
@@ -33,10 +36,12 @@ class SessionsController < ApplicationController
 
         #device_token = "APA91bHrGaBsrD1RVCSwULqq1YMH4QpXCQC5l-uxyvZptYBnyPaIFWMOUmnlAFT6JZoYmzHvKHw9M_k-oonw2_Cgp8vCIdmGS8nD2MFmQ7khDyZ9zFuQqqrP7HKWK5RRoZ3BV_KoByH6g4H0pKQsDxwoVoNFSCl8iw"
         device = Gcm::Device.find_or_create_by_registration_id(:registration_id => "#{device_id}")
-        device.user_id = authorized_user.id
-        device.save
 
-        authorized_user.send_message "#{authorized_user.name}님의 핸드폰이 등록되었습니다."
+        unless device.user_id == authorized_user.id
+          device.user_id = authorized_user.id
+          device.save
+          authorized_user.send_message "#{authorized_user.name}님의 핸드폰이 등록되었습니다."
+        end
 
         message = "success"
       end
