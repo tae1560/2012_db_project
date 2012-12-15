@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121214113932) do
+ActiveRecord::Schema.define(:version => 20121215154924) do
 
   create_table "administrators", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(:version => 20121214113932) do
     t.datetime "last_registered_at"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.integer  "user_id"
   end
 
   add_index "gcm_devices", ["registration_id"], :name => "index_gcm_devices_on_registration_id", :unique => true

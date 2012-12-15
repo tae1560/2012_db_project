@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   validates :address, :presence => true
   validates :phone, :presence => true
 
+  has_many :gcm_devices, :class => Gcm::Device
+
   def encrypt_password
     if self.password.present?
       self.password = Digest::SHA1.hexdigest(self.password)

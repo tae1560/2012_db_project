@@ -23,7 +23,18 @@ class SessionsController < ApplicationController
   def login_test
     authorized_user = User.authenticate(params[:login_id],params[:password])
     if authorized_user
-      render(:json => "success")
+
+      # 디바이스 등록
+      device_id = params[:device_id]
+
+      if device_id
+        #device_token = "APA91bHrGaBsrD1RVCSwULqq1YMH4QpXCQC5l-uxyvZptYBnyPaIFWMOUmnlAFT6JZoYmzHvKHw9M_k-oonw2_Cgp8vCIdmGS8nD2MFmQ7khDyZ9zFuQqqrP7HKWK5RRoZ3BV_KoByH6g4H0pKQsDxwoVoNFSCl8iw"
+        device = Gcm::Device.find_or_create_by_registration_id(:registration_id => "#{device_id}", :user_id => authorized_user.id)
+
+        render(:json => "success")
+      else
+        render(:json => "failed")
+      end
     else
       render(:json => "failed")
     end
@@ -33,6 +44,11 @@ class SessionsController < ApplicationController
     authorized_user = User.authenticate(params[:login_id],params[:password])
     if authorized_user
       session[:user_id] = authorized_user.id
+
+
+
+
+
       redirect_to(:action => 'home')
     else
       render(:json => "failed")
