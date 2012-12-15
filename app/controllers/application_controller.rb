@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 
   protected
   def authenticate_user
+    unless session[:last_seen]
+      session[:last_seen] = Time.now
+    end
+    
     if session[:user_id] == nil or session[:last_seen] < Time.now - 30.minutes
       redirect_to(:controller => 'sessions', :action => 'login')
       return false
