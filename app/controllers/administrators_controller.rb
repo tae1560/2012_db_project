@@ -85,6 +85,8 @@ class AdministratorsController < ApplicationController
         pre_chosen_developer = selected_developer.pre_chosen_developers.new
         pre_chosen_developer.service = @service
         pre_chosen_developer.save
+
+        selected_developer.user.send_message "#{@service.name} 용역에 선정되었습니다."
       end
     end
     #respond_to do |format|

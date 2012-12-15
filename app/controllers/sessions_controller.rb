@@ -1,3 +1,4 @@
+# coding: utf-8
 class SessionsController < ApplicationController
   before_filter :authenticate_user, :only => [:home, :profile, :setting]
   before_filter :save_login_state, :only => [:login, :login_attempt]
@@ -22,6 +23,7 @@ class SessionsController < ApplicationController
 
   def login_test
     authorized_user = User.authenticate(params[:login_id],params[:password])
+    message = "failed"
     if authorized_user
 
       # 디바이스 등록
@@ -34,23 +36,19 @@ class SessionsController < ApplicationController
         device.user_id = authorized_user.id
         device.save
 
-        render(:json => "success")
-      else
-        render(:json => "failed")
+        authorized_user.send_message "#{authorized_user.name}님의 핸드폰이 등록되었습니다."
+
+        message = "success"
       end
-    else
-      render(:json => "failed")
     end
+
+    render(:json => message)
   end
 
   def login_with_mobile
     authorized_user = User.authenticate(params[:login_id],params[:password])
     if authorized_user
       session[:user_id] = authorized_user.id
-
-
-
-
 
       redirect_to(:action => 'home')
     else

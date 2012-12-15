@@ -61,7 +61,7 @@ class SwDevelopersController < ApplicationController
     # 관리자에게 선정된 정보가 있는 경우
     @selected_services = []
     @sw_developer.pre_chosen_developers.each do |pre_chosen_developer|
-      if pre_chosen_developer.updated_at > last_login - 1.years # TODO  지우기
+      if pre_chosen_developer.updated_at > last_login - User.debug_time
                                                        # 바뀐 사람이 있으면 체크
         @selected_services.push pre_chosen_developer.service
       end
@@ -100,7 +100,7 @@ class SwDevelopersController < ApplicationController
         if team.team_people.size == total_number_of_developers
           # 팀원 중 내용이 바뀐 사람이 있는지 체크
           team.team_people.each do |team_person|
-            if team_person.updated_at > last_login - 1.years # TODO  지우기
+            if team_person.updated_at > last_login - User.debug_time
                                                              # 바뀐 사람이 있으면 체크
               @changed_services.push service
               break
@@ -136,7 +136,7 @@ class SwDevelopersController < ApplicationController
 
   def services
     @pro_fields = ProField.all
-    @services = @sw_developer.services.where("due_date > ?", Time.now).where(:team_id => nil)
+    @services = @sw_developer.services.where("due_date > ?", Time.now - User.debug_time).where(:team_id => nil)
 
     # 자신이 만든 팀
 

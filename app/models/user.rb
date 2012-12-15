@@ -39,4 +39,21 @@ class User < ActiveRecord::Base
   def match_password(password="")
     self.password == Digest::SHA1.hexdigest(password)
   end
+
+  def send_message message
+    self.gcm_devices.each do |gcm_device|
+      notification = Gcm::Notification.new
+      notification.device = gcm_device
+      notification.collapse_key = "updates_available"
+      notification.delay_while_idle = false
+      notification.data = {:registration_ids => ["#{gcm_device.registration_id}"], :data => {:message_text => message}}
+      notification.save!
+    end
+    Gcm::Notification.send_notifications
+  end
+
+  def self.debug_time
+    #return 0
+    return 1.years
+  end
 end

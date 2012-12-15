@@ -1,3 +1,4 @@
+# coding: utf-8
 class TeamsController < ApplicationController
 
   def create
@@ -11,7 +12,7 @@ class TeamsController < ApplicationController
     @team.sw_developer = SwDeveloper.find(sw_developer_id)
 
     respond_to do |format|
-      if @team.save
+      if pro_field_id > 0 and @team.save
         # 자신을 team member로 추가
         team_person = TeamPerson.new(:personal_pay => personal_pay, :state => 1)
         team_person.pro_field = ProField.find(pro_field_id)
@@ -39,6 +40,8 @@ class TeamsController < ApplicationController
       team_person.pro_field = ProField.find(pro_field_id)
       team_person.sw_developer = SwDeveloper.find(sw_developer_id)
       @team.team_people << team_person
+
+      team_person.sw_developer.user.send_message "#{@team.sw_developer.user.name}님의 팀에 초대되었습니다."
     end
 
     respond_to do |format|
