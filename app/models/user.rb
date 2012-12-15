@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   validates :address, :presence => true
   validates :phone, :presence => true
 
-  has_many :gcm_devices, :class => Gcm::Device
+  has_many :gcm_devices, :class_name => Gcm::Device
 
   def encrypt_password
     if self.password.present?

@@ -27,9 +27,12 @@ class SessionsController < ApplicationController
       # 디바이스 등록
       device_id = params[:device_id]
 
-      if device_id
+      if device_id and device_id.length > 0
+
         #device_token = "APA91bHrGaBsrD1RVCSwULqq1YMH4QpXCQC5l-uxyvZptYBnyPaIFWMOUmnlAFT6JZoYmzHvKHw9M_k-oonw2_Cgp8vCIdmGS8nD2MFmQ7khDyZ9zFuQqqrP7HKWK5RRoZ3BV_KoByH6g4H0pKQsDxwoVoNFSCl8iw"
-        device = Gcm::Device.find_or_create_by_registration_id(:registration_id => "#{device_id}", :user_id => authorized_user.id)
+        device = Gcm::Device.find_or_create_by_registration_id(:registration_id => "#{device_id}")
+        device.user_id = authorized_user.id
+        device.save
 
         render(:json => "success")
       else
