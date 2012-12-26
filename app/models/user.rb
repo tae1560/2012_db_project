@@ -22,6 +22,9 @@ class User < ActiveRecord::Base
     if self.password.present?
       self.password = Digest::SHA1.hexdigest(self.password)
     end
+    if self.password_confirmation.present?
+      self.password_confirmation = Digest::SHA1.hexdigest(self.password_confirmation)
+    end
   end
 
   def self.authenticate(login_id="", password="")
