@@ -39,10 +39,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    @user.encrypt_password
 
     respond_to do |format|
       if @user.save
-        @user.encrypt_password
         u = nil
         case @user.roll
           when "개발자" then
