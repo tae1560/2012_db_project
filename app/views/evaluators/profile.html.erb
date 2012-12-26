@@ -6,15 +6,20 @@
 
 <%= render 'users/profile' %>
 
-전문분야 :
+<div class="fullsize_box box">
+ <ul style="display:inline" class="user_box_info"><li>
+전문분야 <span class="left_tab">:
+ 
   <% if @user.evaluator.pro_fields.empty? %>
       아직 선택하지 않았습니다.
   <% else %>
-      <ul>
+      <ul style="display:inline">
         <% @user.evaluator.pro_fields.each do |pro_field| %>
             <li style="display: inline-block;margin-right: 5px;"><%= pro_field.name %></li>
         <% end #each %>
       </ul>
   <% end #if-else %>
+</span>
+  </li></ul>
 
-
+</div>

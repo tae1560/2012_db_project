@@ -6,6 +6,7 @@
 <div class="fullsize_box box">
 
 <% @services.each do |service| %>
+  <% unless service.selected_team %>
     <div>
       <h3 class="service_name_t pseudo_link dropdown"><%= service.name %></h3>
       <div class="service_content" style="display:none">
@@ -93,6 +94,7 @@
       </div>
     </div>
     <hr />
+  <% end %>
 <% end %>
 </div>
 
